@@ -36,6 +36,7 @@ export class AuthenticationController {
       return c.json({ success: true, message: "Verification code sent to your email", data: result }, 201);
 
     } catch (error) {
+       console.error("SIGNUP ERROR:", error);
       if (error instanceof Error) {
         if (error.message.includes("already exists")) {
           return c.json({ success: false, message: error.message }, 409);
@@ -85,11 +86,15 @@ export class AuthenticationController {
         return c.json({ success: false, message: "Validation failed", errors: parsedData.error.flatten() }, 400);
       }
 
-      const result = await this.verifyOtpService.execute(parsedData.data);
+      // Pass fullName from body if available (for signup verification)
+      const result = await this.verifyOtpService.execute(parsedData.data, {
+        fullName: body.fullName,
+      });
 
       return c.json({ success: true, message: "Email verified successfully", data: result }, 200);
 
     } catch (error) {
+      console.error("VERIFY OTP ERROR:", error);
       if (error instanceof Error) {
         if (error.message.includes("Invalid or expired")) {
           return c.json({ success: false, message: error.message }, 400);

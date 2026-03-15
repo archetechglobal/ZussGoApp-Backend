@@ -1,60 +1,86 @@
 import type { SignupInput } from "../schemas/signup.schema.ts";
 import { supabaseAdmin } from "../../../config/supabase_client.ts";
 import { AuthenticationRepository } from "../repository/authentication.repository.ts";
-import { AuthenticationMapper } from "../mapper/authentication.mapper.ts";
 
 export class SignupService {
   private repository = new AuthenticationRepository();
-  private mapper = new AuthenticationMapper();
 
   execute = async (signupData: SignupInput) => {
 
-    // Step 1: Check if user already exists in our DB
-    const existingUser = await this.repository.findUserByEmail(signupData.email);
+    // Step 1: Check if verified user exists in OUR database
+    const existingDbUser = await this.repository.findUserByEmail(signupData.email);
 
-    if (existingUser) {
+    if (existingDbUser) {
       throw new Error("User with this email already exists");
     }
 
-    // Step 2: Create auth user in Supabase Auth
-    // email_confirm: false → user must verify via OTP
-    // Supabase automatically sends a confirmation email with 6-digit OTP
+    // Step 2: Try to create auth user
+    // If it fails because email exists in Supabase Auth (leftover unverified),
+    // delete the old one and try again
+    let authUser;
+
     const { data: authData, error: authError } =
       await supabaseAdmin.auth.admin.createUser({
         email: signupData.email,
         password: signupData.password,
         email_confirm: false,
-        user_metadata: {
-          fullName: signupData.fullName,
-        },
+        user_metadata: { fullName: signupData.fullName },
       });
 
-    if (authError || !authData.user) {
-      throw new Error(authError?.message || "Failed to create auth user");
+    if (authError) {
+      // If error is "user already exists" — it's a leftover unverified user
+      if (authError.message.includes("already been registered") || 
+          authError.message.includes("already exists") ||
+          authError.status === 422) {
+
+        // Find and delete the old unverified auth user
+        // Since no DB user exists (checked in Step 1), this is safe to delete
+        const { data: { users } } = await supabaseAdmin.auth.admin.listUsers();
+        const oldUser = users.find((u) => u.email === signupData.email);
+
+        if (oldUser) {
+          await supabaseAdmin.auth.admin.deleteUser(oldUser.id);
+        }
+
+        // Retry creating the auth user
+        const { data: retryData, error: retryError } =
+          await supabaseAdmin.auth.admin.createUser({
+            email: signupData.email,
+            password: signupData.password,
+            email_confirm: false,
+            user_metadata: { fullName: signupData.fullName },
+          });
+
+        if (retryError || !retryData.user) {
+          throw new Error(retryError?.message || "Failed to create account");
+        }
+
+        authUser = retryData.user;
+      } else {
+        throw new Error(authError.message || "Failed to create account");
+      }
+    } else {
+      authUser = authData.user;
     }
 
-    // Step 3: Create app user in our DB via Prisma
-    // isEmailVerified starts as false
-    const appUser = await this.repository.createUser({
-      authUserId: authData.user.id,
-      fullName: signupData.fullName,
-      email: signupData.email,
-    });
+    if (!authUser) {
+      throw new Error("Failed to create account");
+    }
 
-    // Step 4: Send OTP email via Supabase
-    // signInWithOtp sends the 6-digit code to the user's email
+    // Step 3: Send OTP
     const { error: otpError } = await supabaseAdmin.auth.signInWithOtp({
       email: signupData.email,
     });
 
     if (otpError) {
-      console.error("Failed to send OTP email:", otpError.message);
-      // Don't throw — user is created, they can resend OTP later
+      console.error("Failed to send OTP:", otpError.message);
     }
 
-    // Step 5: Return response (without session — user not verified yet)
+    // Step 4: Return — NO DB user yet
     return {
-      ...this.mapper.toSignupResponse(appUser),
+      authUserId: authUser.id,
+      email: signupData.email,
+      fullName: signupData.fullName,
       message: "Verification code sent to your email",
     };
   };
