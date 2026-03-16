@@ -51,7 +51,16 @@ export const AnyNull = runtime.AnyNull
 
 
 export const ModelName = {
-  User: 'User'
+  User: 'User',
+  Destination: 'Destination',
+  Trip: 'Trip',
+  MatchRequest: 'MatchRequest',
+  Match: 'Match',
+  Conversation: 'Conversation',
+  Message: 'Message',
+  Rating: 'Rating',
+  Block: 'Block',
+  Report: 'Report'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -88,6 +97,126 @@ export const UserScalarFieldEnum = {
 } as const
 
 export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
+
+
+export const DestinationScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  slug: 'slug',
+  emoji: 'emoji',
+  description: 'description',
+  state: 'state',
+  country: 'country',
+  imageUrl: 'imageUrl',
+  isActive: 'isActive',
+  createdAt: 'createdAt'
+} as const
+
+export type DestinationScalarFieldEnum = (typeof DestinationScalarFieldEnum)[keyof typeof DestinationScalarFieldEnum]
+
+
+export const TripScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  destinationId: 'destinationId',
+  startDate: 'startDate',
+  endDate: 'endDate',
+  budget: 'budget',
+  notes: 'notes',
+  status: 'status',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type TripScalarFieldEnum = (typeof TripScalarFieldEnum)[keyof typeof TripScalarFieldEnum]
+
+
+export const MatchRequestScalarFieldEnum = {
+  id: 'id',
+  senderId: 'senderId',
+  receiverId: 'receiverId',
+  tripId: 'tripId',
+  status: 'status',
+  message: 'message',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type MatchRequestScalarFieldEnum = (typeof MatchRequestScalarFieldEnum)[keyof typeof MatchRequestScalarFieldEnum]
+
+
+export const MatchScalarFieldEnum = {
+  id: 'id',
+  userAId: 'userAId',
+  userBId: 'userBId',
+  tripId: 'tripId',
+  matchScore: 'matchScore',
+  isActive: 'isActive',
+  createdAt: 'createdAt'
+} as const
+
+export type MatchScalarFieldEnum = (typeof MatchScalarFieldEnum)[keyof typeof MatchScalarFieldEnum]
+
+
+export const ConversationScalarFieldEnum = {
+  id: 'id',
+  matchId: 'matchId',
+  lastMessage: 'lastMessage',
+  lastMessageAt: 'lastMessageAt',
+  createdAt: 'createdAt'
+} as const
+
+export type ConversationScalarFieldEnum = (typeof ConversationScalarFieldEnum)[keyof typeof ConversationScalarFieldEnum]
+
+
+export const MessageScalarFieldEnum = {
+  id: 'id',
+  conversationId: 'conversationId',
+  senderId: 'senderId',
+  content: 'content',
+  isRead: 'isRead',
+  createdAt: 'createdAt'
+} as const
+
+export type MessageScalarFieldEnum = (typeof MessageScalarFieldEnum)[keyof typeof MessageScalarFieldEnum]
+
+
+export const RatingScalarFieldEnum = {
+  id: 'id',
+  raterId: 'raterId',
+  ratedId: 'ratedId',
+  tripId: 'tripId',
+  score: 'score',
+  review: 'review',
+  moodTags: 'moodTags',
+  createdAt: 'createdAt'
+} as const
+
+export type RatingScalarFieldEnum = (typeof RatingScalarFieldEnum)[keyof typeof RatingScalarFieldEnum]
+
+
+export const BlockScalarFieldEnum = {
+  id: 'id',
+  blockerId: 'blockerId',
+  blockedId: 'blockedId',
+  reason: 'reason',
+  createdAt: 'createdAt'
+} as const
+
+export type BlockScalarFieldEnum = (typeof BlockScalarFieldEnum)[keyof typeof BlockScalarFieldEnum]
+
+
+export const ReportScalarFieldEnum = {
+  id: 'id',
+  reporterId: 'reporterId',
+  reportedId: 'reportedId',
+  reason: 'reason',
+  description: 'description',
+  status: 'status',
+  createdAt: 'createdAt'
+} as const
+
+export type ReportScalarFieldEnum = (typeof ReportScalarFieldEnum)[keyof typeof ReportScalarFieldEnum]
 
 
 export const SortOrder = {

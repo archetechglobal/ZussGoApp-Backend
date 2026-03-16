@@ -24,5 +24,192 @@ model User {
   createdAt          DateTime @default(now())
   updatedAt          DateTime @updatedAt
 
+  trips              Trip[]
+  sentRequests       MatchRequest[]   @relation("SentRequests")
+  receivedRequests   MatchRequest[]   @relation("ReceivedRequests")
+  matchesAsUserA     Match[]          @relation("MatchUserA")
+  matchesAsUserB     Match[]          @relation("MatchUserB")
+  messages           Message[]
+  ratings            Rating[]         @relation("RaterUser")
+  ratingsReceived    Rating[]         @relation("RatedUser")
+  blockedUsers       Block[]          @relation("BlockedByUser")
+  blockedByUsers     Block[]          @relation("BlockedUser")
+  reports            Report[]
+
   @@map("users")
+}
+
+model Destination {
+  id          String   @id @default(uuid())
+  name        String   @unique
+  slug        String   @unique
+  emoji       String
+  description String?
+  state       String?
+  country     String   @default("India")
+  imageUrl    String?
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+
+  trips       Trip[]
+
+  @@map("destinations")
+}
+
+model Trip {
+  id            String      @id @default(uuid())
+  userId        String
+  destinationId String
+  startDate     DateTime
+  endDate       DateTime
+  budget        String?
+  notes         String?
+  status        TripStatus  @default(PLANNED)
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+
+  user          User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  destination   Destination @relation(fields: [destinationId], references: [id])
+  matchRequests MatchRequest[]
+  matches       Match[]
+
+  @@map("trips")
+}
+
+enum TripStatus {
+  PLANNED
+  ONGOING
+  COMPLETED
+  CANCELLED
+}
+
+model MatchRequest {
+  id          String             @id @default(uuid())
+  senderId    String
+  receiverId  String
+  tripId      String
+  status      MatchRequestStatus @default(PENDING)
+  message     String?
+  createdAt   DateTime           @default(now())
+  updatedAt   DateTime           @updatedAt
+
+  sender      User               @relation("SentRequests", fields: [senderId], references: [id], onDelete: Cascade)
+  receiver    User               @relation("ReceivedRequests", fields: [receiverId], references: [id], onDelete: Cascade)
+  trip        Trip               @relation(fields: [tripId], references: [id])
+
+  @@unique([senderId, receiverId, tripId])
+  @@map("match_requests")
+}
+
+enum MatchRequestStatus {
+  PENDING
+  ACCEPTED
+  REJECTED
+  CANCELLED
+}
+
+model Match {
+  id           String        @id @default(uuid())
+  userAId      String
+  userBId      String
+  tripId       String
+  matchScore   Int?
+  isActive     Boolean       @default(true)
+  createdAt    DateTime      @default(now())
+
+  userA        User          @relation("MatchUserA", fields: [userAId], references: [id], onDelete: Cascade)
+  userB        User          @relation("MatchUserB", fields: [userBId], references: [id], onDelete: Cascade)
+  trip         Trip          @relation(fields: [tripId], references: [id])
+  conversation Conversation?
+
+  @@unique([userAId, userBId, tripId])
+  @@map("matches")
+}
+
+model Conversation {
+  id            String    @id @default(uuid())
+  matchId       String    @unique
+  lastMessage   String?
+  lastMessageAt DateTime?
+  createdAt     DateTime  @default(now())
+
+  match         Match     @relation(fields: [matchId], references: [id], onDelete: Cascade)
+  messages      Message[]
+
+  @@map("conversations")
+}
+
+model Message {
+  id             String       @id @default(uuid())
+  conversationId String
+  senderId       String
+  content        String
+  isRead         Boolean      @default(false)
+  createdAt      DateTime     @default(now())
+
+  conversation   Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+  sender         User         @relation(fields: [senderId], references: [id], onDelete: Cascade)
+
+  @@map("messages")
+}
+
+model Rating {
+  id        String   @id @default(uuid())
+  raterId   String
+  ratedId   String
+  tripId    String
+  score     Int
+  review    String?
+  moodTags  String[]
+  createdAt DateTime @default(now())
+
+  rater     User     @relation("RaterUser", fields: [raterId], references: [id], onDelete: Cascade)
+  rated     User     @relation("RatedUser", fields: [ratedId], references: [id], onDelete: Cascade)
+
+  @@unique([raterId, ratedId, tripId])
+  @@map("ratings")
+}
+
+model Block {
+  id        String   @id @default(uuid())
+  blockerId String
+  blockedId String
+  reason    String?
+  createdAt DateTime @default(now())
+
+  blocker   User     @relation("BlockedByUser", fields: [blockerId], references: [id], onDelete: Cascade)
+  blocked   User     @relation("BlockedUser", fields: [blockedId], references: [id], onDelete: Cascade)
+
+  @@unique([blockerId, blockedId])
+  @@map("blocks")
+}
+
+model Report {
+  id          String       @id @default(uuid())
+  reporterId  String
+  reportedId  String
+  reason      ReportReason
+  description String?
+  status      ReportStatus @default(PENDING)
+  createdAt   DateTime     @default(now())
+
+  reporter    User         @relation(fields: [reporterId], references: [id], onDelete: Cascade)
+
+  @@map("reports")
+}
+
+enum ReportReason {
+  HARASSMENT
+  FAKE_PROFILE
+  SPAM
+  INAPPROPRIATE
+  SAFETY
+  OTHER
+}
+
+enum ReportStatus {
+  PENDING
+  REVIEWED
+  RESOLVED
+  DISMISSED
 }

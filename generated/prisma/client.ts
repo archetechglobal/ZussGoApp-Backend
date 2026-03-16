@@ -46,3 +46,48 @@ export { Prisma }
  * 
  */
 export type User = Prisma.UserModel
+/**
+ * Model Destination
+ * 
+ */
+export type Destination = Prisma.DestinationModel
+/**
+ * Model Trip
+ * 
+ */
+export type Trip = Prisma.TripModel
+/**
+ * Model MatchRequest
+ * 
+ */
+export type MatchRequest = Prisma.MatchRequestModel
+/**
+ * Model Match
+ * 
+ */
+export type Match = Prisma.MatchModel
+/**
+ * Model Conversation
+ * 
+ */
+export type Conversation = Prisma.ConversationModel
+/**
+ * Model Message
+ * 
+ */
+export type Message = Prisma.MessageModel
+/**
+ * Model Rating
+ * 
+ */
+export type Rating = Prisma.RatingModel
+/**
+ * Model Block
+ * 
+ */
+export type Block = Prisma.BlockModel
+/**
+ * Model Report
+ * 
+ */
+export type Report = Prisma.ReportModel

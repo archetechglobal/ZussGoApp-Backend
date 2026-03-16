@@ -288,6 +288,17 @@ export type UserWhereInput = {
   isVerified?: Prisma.BoolFilter<"User"> | boolean
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
+  trips?: Prisma.TripListRelationFilter
+  sentRequests?: Prisma.MatchRequestListRelationFilter
+  receivedRequests?: Prisma.MatchRequestListRelationFilter
+  matchesAsUserA?: Prisma.MatchListRelationFilter
+  matchesAsUserB?: Prisma.MatchListRelationFilter
+  messages?: Prisma.MessageListRelationFilter
+  ratings?: Prisma.RatingListRelationFilter
+  ratingsReceived?: Prisma.RatingListRelationFilter
+  blockedUsers?: Prisma.BlockListRelationFilter
+  blockedByUsers?: Prisma.BlockListRelationFilter
+  reports?: Prisma.ReportListRelationFilter
 }
 
 export type UserOrderByWithRelationInput = {
@@ -305,6 +316,17 @@ export type UserOrderByWithRelationInput = {
   isVerified?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  trips?: Prisma.TripOrderByRelationAggregateInput
+  sentRequests?: Prisma.MatchRequestOrderByRelationAggregateInput
+  receivedRequests?: Prisma.MatchRequestOrderByRelationAggregateInput
+  matchesAsUserA?: Prisma.MatchOrderByRelationAggregateInput
+  matchesAsUserB?: Prisma.MatchOrderByRelationAggregateInput
+  messages?: Prisma.MessageOrderByRelationAggregateInput
+  ratings?: Prisma.RatingOrderByRelationAggregateInput
+  ratingsReceived?: Prisma.RatingOrderByRelationAggregateInput
+  blockedUsers?: Prisma.BlockOrderByRelationAggregateInput
+  blockedByUsers?: Prisma.BlockOrderByRelationAggregateInput
+  reports?: Prisma.ReportOrderByRelationAggregateInput
 }
 
 export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -325,6 +347,17 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   isVerified?: Prisma.BoolFilter<"User"> | boolean
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
+  trips?: Prisma.TripListRelationFilter
+  sentRequests?: Prisma.MatchRequestListRelationFilter
+  receivedRequests?: Prisma.MatchRequestListRelationFilter
+  matchesAsUserA?: Prisma.MatchListRelationFilter
+  matchesAsUserB?: Prisma.MatchListRelationFilter
+  messages?: Prisma.MessageListRelationFilter
+  ratings?: Prisma.RatingListRelationFilter
+  ratingsReceived?: Prisma.RatingListRelationFilter
+  blockedUsers?: Prisma.BlockListRelationFilter
+  blockedByUsers?: Prisma.BlockListRelationFilter
+  reports?: Prisma.ReportListRelationFilter
 }, "id" | "authUserId" | "email">
 
 export type UserOrderByWithAggregationInput = {
@@ -384,6 +417,17 @@ export type UserCreateInput = {
   isVerified?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  trips?: Prisma.TripCreateNestedManyWithoutUserInput
+  sentRequests?: Prisma.MatchRequestCreateNestedManyWithoutSenderInput
+  receivedRequests?: Prisma.MatchRequestCreateNestedManyWithoutReceiverInput
+  matchesAsUserA?: Prisma.MatchCreateNestedManyWithoutUserAInput
+  matchesAsUserB?: Prisma.MatchCreateNestedManyWithoutUserBInput
+  messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
+  ratings?: Prisma.RatingCreateNestedManyWithoutRaterInput
+  ratingsReceived?: Prisma.RatingCreateNestedManyWithoutRatedInput
+  blockedUsers?: Prisma.BlockCreateNestedManyWithoutBlockerInput
+  blockedByUsers?: Prisma.BlockCreateNestedManyWithoutBlockedInput
+  reports?: Prisma.ReportCreateNestedManyWithoutReporterInput
 }
 
 export type UserUncheckedCreateInput = {
@@ -401,6 +445,17 @@ export type UserUncheckedCreateInput = {
   isVerified?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  trips?: Prisma.TripUncheckedCreateNestedManyWithoutUserInput
+  sentRequests?: Prisma.MatchRequestUncheckedCreateNestedManyWithoutSenderInput
+  receivedRequests?: Prisma.MatchRequestUncheckedCreateNestedManyWithoutReceiverInput
+  matchesAsUserA?: Prisma.MatchUncheckedCreateNestedManyWithoutUserAInput
+  matchesAsUserB?: Prisma.MatchUncheckedCreateNestedManyWithoutUserBInput
+  messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
+  ratings?: Prisma.RatingUncheckedCreateNestedManyWithoutRaterInput
+  ratingsReceived?: Prisma.RatingUncheckedCreateNestedManyWithoutRatedInput
+  blockedUsers?: Prisma.BlockUncheckedCreateNestedManyWithoutBlockerInput
+  blockedByUsers?: Prisma.BlockUncheckedCreateNestedManyWithoutBlockedInput
+  reports?: Prisma.ReportUncheckedCreateNestedManyWithoutReporterInput
 }
 
 export type UserUpdateInput = {
@@ -418,6 +473,17 @@ export type UserUpdateInput = {
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  trips?: Prisma.TripUpdateManyWithoutUserNestedInput
+  sentRequests?: Prisma.MatchRequestUpdateManyWithoutSenderNestedInput
+  receivedRequests?: Prisma.MatchRequestUpdateManyWithoutReceiverNestedInput
+  matchesAsUserA?: Prisma.MatchUpdateManyWithoutUserANestedInput
+  matchesAsUserB?: Prisma.MatchUpdateManyWithoutUserBNestedInput
+  messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
+  ratings?: Prisma.RatingUpdateManyWithoutRaterNestedInput
+  ratingsReceived?: Prisma.RatingUpdateManyWithoutRatedNestedInput
+  blockedUsers?: Prisma.BlockUpdateManyWithoutBlockerNestedInput
+  blockedByUsers?: Prisma.BlockUpdateManyWithoutBlockedNestedInput
+  reports?: Prisma.ReportUpdateManyWithoutReporterNestedInput
 }
 
 export type UserUncheckedUpdateInput = {
@@ -435,6 +501,17 @@ export type UserUncheckedUpdateInput = {
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  trips?: Prisma.TripUncheckedUpdateManyWithoutUserNestedInput
+  sentRequests?: Prisma.MatchRequestUncheckedUpdateManyWithoutSenderNestedInput
+  receivedRequests?: Prisma.MatchRequestUncheckedUpdateManyWithoutReceiverNestedInput
+  matchesAsUserA?: Prisma.MatchUncheckedUpdateManyWithoutUserANestedInput
+  matchesAsUserB?: Prisma.MatchUncheckedUpdateManyWithoutUserBNestedInput
+  messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
+  ratings?: Prisma.RatingUncheckedUpdateManyWithoutRaterNestedInput
+  ratingsReceived?: Prisma.RatingUncheckedUpdateManyWithoutRatedNestedInput
+  blockedUsers?: Prisma.BlockUncheckedUpdateManyWithoutBlockerNestedInput
+  blockedByUsers?: Prisma.BlockUncheckedUpdateManyWithoutBlockedNestedInput
+  reports?: Prisma.ReportUncheckedUpdateManyWithoutReporterNestedInput
 }
 
 export type UserCreateManyInput = {
@@ -547,6 +624,11 @@ export type UserSumOrderByAggregateInput = {
   age?: Prisma.SortOrder
 }
 
+export type UserScalarRelationFilter = {
+  is?: Prisma.UserWhereInput
+  isNot?: Prisma.UserWhereInput
+}
+
 export type StringFieldUpdateOperationsInput = {
   set?: string
 }
@@ -571,6 +653,1643 @@ export type DateTimeFieldUpdateOperationsInput = {
   set?: Date | string
 }
 
+export type UserCreateNestedOneWithoutTripsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutTripsInput, Prisma.UserUncheckedCreateWithoutTripsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutTripsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutTripsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutTripsInput, Prisma.UserUncheckedCreateWithoutTripsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutTripsInput
+  upsert?: Prisma.UserUpsertWithoutTripsInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutTripsInput, Prisma.UserUpdateWithoutTripsInput>, Prisma.UserUncheckedUpdateWithoutTripsInput>
+}
+
+export type UserCreateNestedOneWithoutSentRequestsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutSentRequestsInput, Prisma.UserUncheckedCreateWithoutSentRequestsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutSentRequestsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserCreateNestedOneWithoutReceivedRequestsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutReceivedRequestsInput, Prisma.UserUncheckedCreateWithoutReceivedRequestsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutReceivedRequestsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutSentRequestsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutSentRequestsInput, Prisma.UserUncheckedCreateWithoutSentRequestsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutSentRequestsInput
+  upsert?: Prisma.UserUpsertWithoutSentRequestsInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutSentRequestsInput, Prisma.UserUpdateWithoutSentRequestsInput>, Prisma.UserUncheckedUpdateWithoutSentRequestsInput>
+}
+
+export type UserUpdateOneRequiredWithoutReceivedRequestsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutReceivedRequestsInput, Prisma.UserUncheckedCreateWithoutReceivedRequestsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutReceivedRequestsInput
+  upsert?: Prisma.UserUpsertWithoutReceivedRequestsInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutReceivedRequestsInput, Prisma.UserUpdateWithoutReceivedRequestsInput>, Prisma.UserUncheckedUpdateWithoutReceivedRequestsInput>
+}
+
+export type UserCreateNestedOneWithoutMatchesAsUserAInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutMatchesAsUserAInput, Prisma.UserUncheckedCreateWithoutMatchesAsUserAInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutMatchesAsUserAInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserCreateNestedOneWithoutMatchesAsUserBInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutMatchesAsUserBInput, Prisma.UserUncheckedCreateWithoutMatchesAsUserBInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutMatchesAsUserBInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutMatchesAsUserANestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutMatchesAsUserAInput, Prisma.UserUncheckedCreateWithoutMatchesAsUserAInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutMatchesAsUserAInput
+  upsert?: Prisma.UserUpsertWithoutMatchesAsUserAInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutMatchesAsUserAInput, Prisma.UserUpdateWithoutMatchesAsUserAInput>, Prisma.UserUncheckedUpdateWithoutMatchesAsUserAInput>
+}
+
+export type UserUpdateOneRequiredWithoutMatchesAsUserBNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutMatchesAsUserBInput, Prisma.UserUncheckedCreateWithoutMatchesAsUserBInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutMatchesAsUserBInput
+  upsert?: Prisma.UserUpsertWithoutMatchesAsUserBInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutMatchesAsUserBInput, Prisma.UserUpdateWithoutMatchesAsUserBInput>, Prisma.UserUncheckedUpdateWithoutMatchesAsUserBInput>
+}
+
+export type UserCreateNestedOneWithoutMessagesInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutMessagesInput, Prisma.UserUncheckedCreateWithoutMessagesInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutMessagesInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutMessagesNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutMessagesInput, Prisma.UserUncheckedCreateWithoutMessagesInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutMessagesInput
+  upsert?: Prisma.UserUpsertWithoutMessagesInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutMessagesInput, Prisma.UserUpdateWithoutMessagesInput>, Prisma.UserUncheckedUpdateWithoutMessagesInput>
+}
+
+export type UserCreateNestedOneWithoutRatingsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutRatingsInput, Prisma.UserUncheckedCreateWithoutRatingsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutRatingsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserCreateNestedOneWithoutRatingsReceivedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutRatingsReceivedInput, Prisma.UserUncheckedCreateWithoutRatingsReceivedInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutRatingsReceivedInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutRatingsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutRatingsInput, Prisma.UserUncheckedCreateWithoutRatingsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutRatingsInput
+  upsert?: Prisma.UserUpsertWithoutRatingsInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutRatingsInput, Prisma.UserUpdateWithoutRatingsInput>, Prisma.UserUncheckedUpdateWithoutRatingsInput>
+}
+
+export type UserUpdateOneRequiredWithoutRatingsReceivedNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutRatingsReceivedInput, Prisma.UserUncheckedCreateWithoutRatingsReceivedInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutRatingsReceivedInput
+  upsert?: Prisma.UserUpsertWithoutRatingsReceivedInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutRatingsReceivedInput, Prisma.UserUpdateWithoutRatingsReceivedInput>, Prisma.UserUncheckedUpdateWithoutRatingsReceivedInput>
+}
+
+export type UserCreateNestedOneWithoutBlockedUsersInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutBlockedUsersInput, Prisma.UserUncheckedCreateWithoutBlockedUsersInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutBlockedUsersInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserCreateNestedOneWithoutBlockedByUsersInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutBlockedByUsersInput, Prisma.UserUncheckedCreateWithoutBlockedByUsersInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutBlockedByUsersInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutBlockedUsersNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutBlockedUsersInput, Prisma.UserUncheckedCreateWithoutBlockedUsersInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutBlockedUsersInput
+  upsert?: Prisma.UserUpsertWithoutBlockedUsersInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutBlockedUsersInput, Prisma.UserUpdateWithoutBlockedUsersInput>, Prisma.UserUncheckedUpdateWithoutBlockedUsersInput>
+}
+
+export type UserUpdateOneRequiredWithoutBlockedByUsersNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutBlockedByUsersInput, Prisma.UserUncheckedCreateWithoutBlockedByUsersInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutBlockedByUsersInput
+  upsert?: Prisma.UserUpsertWithoutBlockedByUsersInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutBlockedByUsersInput, Prisma.UserUpdateWithoutBlockedByUsersInput>, Prisma.UserUncheckedUpdateWithoutBlockedByUsersInput>
+}
+
+export type UserCreateNestedOneWithoutReportsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutReportsInput, Prisma.UserUncheckedCreateWithoutReportsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutReportsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutReportsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutReportsInput, Prisma.UserUncheckedCreateWithoutReportsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutReportsInput
+  upsert?: Prisma.UserUpsertWithoutReportsInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutReportsInput, Prisma.UserUpdateWithoutReportsInput>, Prisma.UserUncheckedUpdateWithoutReportsInput>
+}
+
+export type UserCreateWithoutTripsInput = {
+  id?: string
+  authUserId: string
+  fullName: string
+  email: string
+  gender?: string | null
+  age?: number | null
+  city?: string | null
+  bio?: string | null
+  travelStyle?: string | null
+  profilePhotoUrl?: string | null
+  isProfileCompleted?: boolean
+  isVerified?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  sentRequests?: Prisma.MatchRequestCreateNestedManyWithoutSenderInput
+  receivedRequests?: Prisma.MatchRequestCreateNestedManyWithoutReceiverInput
+  matchesAsUserA?: Prisma.MatchCreateNestedManyWithoutUserAInput
+  matchesAsUserB?: Prisma.MatchCreateNestedManyWithoutUserBInput
+  messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
+  ratings?: Prisma.RatingCreateNestedManyWithoutRaterInput
+  ratingsReceived?: Prisma.RatingCreateNestedManyWithoutRatedInput
+  blockedUsers?: Prisma.BlockCreateNestedManyWithoutBlockerInput
+  blockedByUsers?: Prisma.BlockCreateNestedManyWithoutBlockedInput
+  reports?: Prisma.ReportCreateNestedManyWithoutReporterInput
+}
+
+export type UserUncheckedCreateWithoutTripsInput = {
+  id?: string
+  authUserId: string
+  fullName: string
+  email: string
+  gender?: string | null
+  age?: number | null
+  city?: string | null
+  bio?: string | null
+  travelStyle?: string | null
+  profilePhotoUrl?: string | null
+  isProfileCompleted?: boolean
+  isVerified?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  sentRequests?: Prisma.MatchRequestUncheckedCreateNestedManyWithoutSenderInput
+  receivedRequests?: Prisma.MatchRequestUncheckedCreateNestedManyWithoutReceiverInput
+  matchesAsUserA?: Prisma.MatchUncheckedCreateNestedManyWithoutUserAInput
+  matchesAsUserB?: Prisma.MatchUncheckedCreateNestedManyWithoutUserBInput
+  messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
+  ratings?: Prisma.RatingUncheckedCreateNestedManyWithoutRaterInput
+  ratingsReceived?: Prisma.RatingUncheckedCreateNestedManyWithoutRatedInput
+  blockedUsers?: Prisma.BlockUncheckedCreateNestedManyWithoutBlockerInput
+  blockedByUsers?: Prisma.BlockUncheckedCreateNestedManyWithoutBlockedInput
+  reports?: Prisma.ReportUncheckedCreateNestedManyWithoutReporterInput
+}
+
+export type UserCreateOrConnectWithoutTripsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutTripsInput, Prisma.UserUncheckedCreateWithoutTripsInput>
+}
+
+export type UserUpsertWithoutTripsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutTripsInput, Prisma.UserUncheckedUpdateWithoutTripsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutTripsInput, Prisma.UserUncheckedCreateWithoutTripsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutTripsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutTripsInput, Prisma.UserUncheckedUpdateWithoutTripsInput>
+}
+
+export type UserUpdateWithoutTripsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  authUserId?: Prisma.StringFieldUpdateOperationsInput | string
+  fullName?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  age?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  travelStyle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profilePhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isProfileCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sentRequests?: Prisma.MatchRequestUpdateManyWithoutSenderNestedInput
+  receivedRequests?: Prisma.MatchRequestUpdateManyWithoutReceiverNestedInput
+  matchesAsUserA?: Prisma.MatchUpdateManyWithoutUserANestedInput
+  matchesAsUserB?: Prisma.MatchUpdateManyWithoutUserBNestedInput
+  messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
+  ratings?: Prisma.RatingUpdateManyWithoutRaterNestedInput
+  ratingsReceived?: Prisma.RatingUpdateManyWithoutRatedNestedInput
+  blockedUsers?: Prisma.BlockUpdateManyWithoutBlockerNestedInput
+  blockedByUsers?: Prisma.BlockUpdateManyWithoutBlockedNestedInput
+  reports?: Prisma.ReportUpdateManyWithoutReporterNestedInput
+}
+
+export type UserUncheckedUpdateWithoutTripsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  authUserId?: Prisma.StringFieldUpdateOperationsInput | string
+  fullName?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  age?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  travelStyle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profilePhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isProfileCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sentRequests?: Prisma.MatchRequestUncheckedUpdateManyWithoutSenderNestedInput
+  receivedRequests?: Prisma.MatchRequestUncheckedUpdateManyWithoutReceiverNestedInput
+  matchesAsUserA?: Prisma.MatchUncheckedUpdateManyWithoutUserANestedInput
+  matchesAsUserB?: Prisma.MatchUncheckedUpdateManyWithoutUserBNestedInput
+  messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
+  ratings?: Prisma.RatingUncheckedUpdateManyWithoutRaterNestedInput
+  ratingsReceived?: Prisma.RatingUncheckedUpdateManyWithoutRatedNestedInput
+  blockedUsers?: Prisma.BlockUncheckedUpdateManyWithoutBlockerNestedInput
+  blockedByUsers?: Prisma.BlockUncheckedUpdateManyWithoutBlockedNestedInput
+  reports?: Prisma.ReportUncheckedUpdateManyWithoutReporterNestedInput
+}
+
+export type UserCreateWithoutSentRequestsInput = {
+  id?: string
+  authUserId: string
+  fullName: string
+  email: string
+  gender?: string | null
+  age?: number | null
+  city?: string | null
+  bio?: string | null
+  travelStyle?: string | null
+  profilePhotoUrl?: string | null
+  isProfileCompleted?: boolean
+  isVerified?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  trips?: Prisma.TripCreateNestedManyWithoutUserInput
+  receivedRequests?: Prisma.MatchRequestCreateNestedManyWithoutReceiverInput
+  matchesAsUserA?: Prisma.MatchCreateNestedManyWithoutUserAInput
+  matchesAsUserB?: Prisma.MatchCreateNestedManyWithoutUserBInput
+  messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
+  ratings?: Prisma.RatingCreateNestedManyWithoutRaterInput
+  ratingsReceived?: Prisma.RatingCreateNestedManyWithoutRatedInput
+  blockedUsers?: Prisma.BlockCreateNestedManyWithoutBlockerInput
+  blockedByUsers?: Prisma.BlockCreateNestedManyWithoutBlockedInput
+  reports?: Prisma.ReportCreateNestedManyWithoutReporterInput
+}
+
+export type UserUncheckedCreateWithoutSentRequestsInput = {
+  id?: string
+  authUserId: string
+  fullName: string
+  email: string
+  gender?: string | null
+  age?: number | null
+  city?: string | null
+  bio?: string | null
+  travelStyle?: string | null
+  profilePhotoUrl?: string | null
+  isProfileCompleted?: boolean
+  isVerified?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  trips?: Prisma.TripUncheckedCreateNestedManyWithoutUserInput
+  receivedRequests?: Prisma.MatchRequestUncheckedCreateNestedManyWithoutReceiverInput
+  matchesAsUserA?: Prisma.MatchUncheckedCreateNestedManyWithoutUserAInput
+  matchesAsUserB?: Prisma.MatchUncheckedCreateNestedManyWithoutUserBInput
+  messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
+  ratings?: Prisma.RatingUncheckedCreateNestedManyWithoutRaterInput
+  ratingsReceived?: Prisma.RatingUncheckedCreateNestedManyWithoutRatedInput
+  blockedUsers?: Prisma.BlockUncheckedCreateNestedManyWithoutBlockerInput
+  blockedByUsers?: Prisma.BlockUncheckedCreateNestedManyWithoutBlockedInput
+  reports?: Prisma.ReportUncheckedCreateNestedManyWithoutReporterInput
+}
+
+export type UserCreateOrConnectWithoutSentRequestsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutSentRequestsInput, Prisma.UserUncheckedCreateWithoutSentRequestsInput>
+}
+
+export type UserCreateWithoutReceivedRequestsInput = {
+  id?: string
+  authUserId: string
+  fullName: string
+  email: string
+  gender?: string | null
+  age?: number | null
+  city?: string | null
+  bio?: string | null
+  travelStyle?: string | null
+  profilePhotoUrl?: string | null
+  isProfileCompleted?: boolean
+  isVerified?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  trips?: Prisma.TripCreateNestedManyWithoutUserInput
+  sentRequests?: Prisma.MatchRequestCreateNestedManyWithoutSenderInput
+  matchesAsUserA?: Prisma.MatchCreateNestedManyWithoutUserAInput
+  matchesAsUserB?: Prisma.MatchCreateNestedManyWithoutUserBInput
+  messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
+  ratings?: Prisma.RatingCreateNestedManyWithoutRaterInput
+  ratingsReceived?: Prisma.RatingCreateNestedManyWithoutRatedInput
+  blockedUsers?: Prisma.BlockCreateNestedManyWithoutBlockerInput
+  blockedByUsers?: Prisma.BlockCreateNestedManyWithoutBlockedInput
+  reports?: Prisma.ReportCreateNestedManyWithoutReporterInput
+}
+
+export type UserUncheckedCreateWithoutReceivedRequestsInput = {
+  id?: string
+  authUserId: string
+  fullName: string
+  email: string
+  gender?: string | null
+  age?: number | null
+  city?: string | null
+  bio?: string | null
+  travelStyle?: string | null
+  profilePhotoUrl?: string | null
+  isProfileCompleted?: boolean
+  isVerified?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  trips?: Prisma.TripUncheckedCreateNestedManyWithoutUserInput
+  sentRequests?: Prisma.MatchRequestUncheckedCreateNestedManyWithoutSenderInput
+  matchesAsUserA?: Prisma.MatchUncheckedCreateNestedManyWithoutUserAInput
+  matchesAsUserB?: Prisma.MatchUncheckedCreateNestedManyWithoutUserBInput
+  messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
+  ratings?: Prisma.RatingUncheckedCreateNestedManyWithoutRaterInput
+  ratingsReceived?: Prisma.RatingUncheckedCreateNestedManyWithoutRatedInput
+  blockedUsers?: Prisma.BlockUncheckedCreateNestedManyWithoutBlockerInput
+  blockedByUsers?: Prisma.BlockUncheckedCreateNestedManyWithoutBlockedInput
+  reports?: Prisma.ReportUncheckedCreateNestedManyWithoutReporterInput
+}
+
+export type UserCreateOrConnectWithoutReceivedRequestsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutReceivedRequestsInput, Prisma.UserUncheckedCreateWithoutReceivedRequestsInput>
+}
+
+export type UserUpsertWithoutSentRequestsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutSentRequestsInput, Prisma.UserUncheckedUpdateWithoutSentRequestsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutSentRequestsInput, Prisma.UserUncheckedCreateWithoutSentRequestsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutSentRequestsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutSentRequestsInput, Prisma.UserUncheckedUpdateWithoutSentRequestsInput>
+}
+
+export type UserUpdateWithoutSentRequestsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  authUserId?: Prisma.StringFieldUpdateOperationsInput | string
+  fullName?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  age?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  travelStyle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profilePhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isProfileCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  trips?: Prisma.TripUpdateManyWithoutUserNestedInput
+  receivedRequests?: Prisma.MatchRequestUpdateManyWithoutReceiverNestedInput
+  matchesAsUserA?: Prisma.MatchUpdateManyWithoutUserANestedInput
+  matchesAsUserB?: Prisma.MatchUpdateManyWithoutUserBNestedInput
+  messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
+  ratings?: Prisma.RatingUpdateManyWithoutRaterNestedInput
+  ratingsReceived?: Prisma.RatingUpdateManyWithoutRatedNestedInput
+  blockedUsers?: Prisma.BlockUpdateManyWithoutBlockerNestedInput
+  blockedByUsers?: Prisma.BlockUpdateManyWithoutBlockedNestedInput
+  reports?: Prisma.ReportUpdateManyWithoutReporterNestedInput
+}
+
+export type UserUncheckedUpdateWithoutSentRequestsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  authUserId?: Prisma.StringFieldUpdateOperationsInput | string
+  fullName?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  age?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  travelStyle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profilePhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isProfileCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  trips?: Prisma.TripUncheckedUpdateManyWithoutUserNestedInput
+  receivedRequests?: Prisma.MatchRequestUncheckedUpdateManyWithoutReceiverNestedInput
+  matchesAsUserA?: Prisma.MatchUncheckedUpdateManyWithoutUserANestedInput
+  matchesAsUserB?: Prisma.MatchUncheckedUpdateManyWithoutUserBNestedInput
+  messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
+  ratings?: Prisma.RatingUncheckedUpdateManyWithoutRaterNestedInput
+  ratingsReceived?: Prisma.RatingUncheckedUpdateManyWithoutRatedNestedInput
+  blockedUsers?: Prisma.BlockUncheckedUpdateManyWithoutBlockerNestedInput
+  blockedByUsers?: Prisma.BlockUncheckedUpdateManyWithoutBlockedNestedInput
+  reports?: Prisma.ReportUncheckedUpdateManyWithoutReporterNestedInput
+}
+
+export type UserUpsertWithoutReceivedRequestsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutReceivedRequestsInput, Prisma.UserUncheckedUpdateWithoutReceivedRequestsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutReceivedRequestsInput, Prisma.UserUncheckedCreateWithoutReceivedRequestsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutReceivedRequestsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutReceivedRequestsInput, Prisma.UserUncheckedUpdateWithoutReceivedRequestsInput>
+}
+
+export type UserUpdateWithoutReceivedRequestsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  authUserId?: Prisma.StringFieldUpdateOperationsInput | string
+  fullName?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  age?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  travelStyle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profilePhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isProfileCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  trips?: Prisma.TripUpdateManyWithoutUserNestedInput
+  sentRequests?: Prisma.MatchRequestUpdateManyWithoutSenderNestedInput
+  matchesAsUserA?: Prisma.MatchUpdateManyWithoutUserANestedInput
+  matchesAsUserB?: Prisma.MatchUpdateManyWithoutUserBNestedInput
+  messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
+  ratings?: Prisma.RatingUpdateManyWithoutRaterNestedInput
+  ratingsReceived?: Prisma.RatingUpdateManyWithoutRatedNestedInput
+  blockedUsers?: Prisma.BlockUpdateManyWithoutBlockerNestedInput
+  blockedByUsers?: Prisma.BlockUpdateManyWithoutBlockedNestedInput
+  reports?: Prisma.ReportUpdateManyWithoutReporterNestedInput
+}
+
+export type UserUncheckedUpdateWithoutReceivedRequestsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  authUserId?: Prisma.StringFieldUpdateOperationsInput | string
+  fullName?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  age?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  travelStyle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profilePhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isProfileCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  trips?: Prisma.TripUncheckedUpdateManyWithoutUserNestedInput
+  sentRequests?: Prisma.MatchRequestUncheckedUpdateManyWithoutSenderNestedInput
+  matchesAsUserA?: Prisma.MatchUncheckedUpdateManyWithoutUserANestedInput
+  matchesAsUserB?: Prisma.MatchUncheckedUpdateManyWithoutUserBNestedInput
+  messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
+  ratings?: Prisma.RatingUncheckedUpdateManyWithoutRaterNestedInput
+  ratingsReceived?: Prisma.RatingUncheckedUpdateManyWithoutRatedNestedInput
+  blockedUsers?: Prisma.BlockUncheckedUpdateManyWithoutBlockerNestedInput
+  blockedByUsers?: Prisma.BlockUncheckedUpdateManyWithoutBlockedNestedInput
+  reports?: Prisma.ReportUncheckedUpdateManyWithoutReporterNestedInput
+}
+
+export type UserCreateWithoutMatchesAsUserAInput = {
+  id?: string
+  authUserId: string
+  fullName: string
+  email: string
+  gender?: string | null
+  age?: number | null
+  city?: string | null
+  bio?: string | null
+  travelStyle?: string | null
+  profilePhotoUrl?: string | null
+  isProfileCompleted?: boolean
+  isVerified?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  trips?: Prisma.TripCreateNestedManyWithoutUserInput
+  sentRequests?: Prisma.MatchRequestCreateNestedManyWithoutSenderInput
+  receivedRequests?: Prisma.MatchRequestCreateNestedManyWithoutReceiverInput
+  matchesAsUserB?: Prisma.MatchCreateNestedManyWithoutUserBInput
+  messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
+  ratings?: Prisma.RatingCreateNestedManyWithoutRaterInput
+  ratingsReceived?: Prisma.RatingCreateNestedManyWithoutRatedInput
+  blockedUsers?: Prisma.BlockCreateNestedManyWithoutBlockerInput
+  blockedByUsers?: Prisma.BlockCreateNestedManyWithoutBlockedInput
+  reports?: Prisma.ReportCreateNestedManyWithoutReporterInput
+}
+
+export type UserUncheckedCreateWithoutMatchesAsUserAInput = {
+  id?: string
+  authUserId: string
+  fullName: string
+  email: string
+  gender?: string | null
+  age?: number | null
+  city?: string | null
+  bio?: string | null
+  travelStyle?: string | null
+  profilePhotoUrl?: string | null
+  isProfileCompleted?: boolean
+  isVerified?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  trips?: Prisma.TripUncheckedCreateNestedManyWithoutUserInput
+  sentRequests?: Prisma.MatchRequestUncheckedCreateNestedManyWithoutSenderInput
+  receivedRequests?: Prisma.MatchRequestUncheckedCreateNestedManyWithoutReceiverInput
+  matchesAsUserB?: Prisma.MatchUncheckedCreateNestedManyWithoutUserBInput
+  messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
+  ratings?: Prisma.RatingUncheckedCreateNestedManyWithoutRaterInput
+  ratingsReceived?: Prisma.RatingUncheckedCreateNestedManyWithoutRatedInput
+  blockedUsers?: Prisma.BlockUncheckedCreateNestedManyWithoutBlockerInput
+  blockedByUsers?: Prisma.BlockUncheckedCreateNestedManyWithoutBlockedInput
+  reports?: Prisma.ReportUncheckedCreateNestedManyWithoutReporterInput
+}
+
+export type UserCreateOrConnectWithoutMatchesAsUserAInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutMatchesAsUserAInput, Prisma.UserUncheckedCreateWithoutMatchesAsUserAInput>
+}
+
+export type UserCreateWithoutMatchesAsUserBInput = {
+  id?: string
+  authUserId: string
+  fullName: string
+  email: string
+  gender?: string | null
+  age?: number | null
+  city?: string | null
+  bio?: string | null
+  travelStyle?: string | null
+  profilePhotoUrl?: string | null
+  isProfileCompleted?: boolean
+  isVerified?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  trips?: Prisma.TripCreateNestedManyWithoutUserInput
+  sentRequests?: Prisma.MatchRequestCreateNestedManyWithoutSenderInput
+  receivedRequests?: Prisma.MatchRequestCreateNestedManyWithoutReceiverInput
+  matchesAsUserA?: Prisma.MatchCreateNestedManyWithoutUserAInput
+  messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
+  ratings?: Prisma.RatingCreateNestedManyWithoutRaterInput
+  ratingsReceived?: Prisma.RatingCreateNestedManyWithoutRatedInput
+  blockedUsers?: Prisma.BlockCreateNestedManyWithoutBlockerInput
+  blockedByUsers?: Prisma.BlockCreateNestedManyWithoutBlockedInput
+  reports?: Prisma.ReportCreateNestedManyWithoutReporterInput
+}
+
+export type UserUncheckedCreateWithoutMatchesAsUserBInput = {
+  id?: string
+  authUserId: string
+  fullName: string
+  email: string
+  gender?: string | null
+  age?: number | null
+  city?: string | null
+  bio?: string | null
+  travelStyle?: string | null
+  profilePhotoUrl?: string | null
+  isProfileCompleted?: boolean
+  isVerified?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  trips?: Prisma.TripUncheckedCreateNestedManyWithoutUserInput
+  sentRequests?: Prisma.MatchRequestUncheckedCreateNestedManyWithoutSenderInput
+  receivedRequests?: Prisma.MatchRequestUncheckedCreateNestedManyWithoutReceiverInput
+  matchesAsUserA?: Prisma.MatchUncheckedCreateNestedManyWithoutUserAInput
+  messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
+  ratings?: Prisma.RatingUncheckedCreateNestedManyWithoutRaterInput
+  ratingsReceived?: Prisma.RatingUncheckedCreateNestedManyWithoutRatedInput
+  blockedUsers?: Prisma.BlockUncheckedCreateNestedManyWithoutBlockerInput
+  blockedByUsers?: Prisma.BlockUncheckedCreateNestedManyWithoutBlockedInput
+  reports?: Prisma.ReportUncheckedCreateNestedManyWithoutReporterInput
+}
+
+export type UserCreateOrConnectWithoutMatchesAsUserBInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutMatchesAsUserBInput, Prisma.UserUncheckedCreateWithoutMatchesAsUserBInput>
+}
+
+export type UserUpsertWithoutMatchesAsUserAInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutMatchesAsUserAInput, Prisma.UserUncheckedUpdateWithoutMatchesAsUserAInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutMatchesAsUserAInput, Prisma.UserUncheckedCreateWithoutMatchesAsUserAInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutMatchesAsUserAInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutMatchesAsUserAInput, Prisma.UserUncheckedUpdateWithoutMatchesAsUserAInput>
+}
+
+export type UserUpdateWithoutMatchesAsUserAInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  authUserId?: Prisma.StringFieldUpdateOperationsInput | string
+  fullName?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  age?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  travelStyle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profilePhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isProfileCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  trips?: Prisma.TripUpdateManyWithoutUserNestedInput
+  sentRequests?: Prisma.MatchRequestUpdateManyWithoutSenderNestedInput
+  receivedRequests?: Prisma.MatchRequestUpdateManyWithoutReceiverNestedInput
+  matchesAsUserB?: Prisma.MatchUpdateManyWithoutUserBNestedInput
+  messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
+  ratings?: Prisma.RatingUpdateManyWithoutRaterNestedInput
+  ratingsReceived?: Prisma.RatingUpdateManyWithoutRatedNestedInput
+  blockedUsers?: Prisma.BlockUpdateManyWithoutBlockerNestedInput
+  blockedByUsers?: Prisma.BlockUpdateManyWithoutBlockedNestedInput
+  reports?: Prisma.ReportUpdateManyWithoutReporterNestedInput
+}
+
+export type UserUncheckedUpdateWithoutMatchesAsUserAInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  authUserId?: Prisma.StringFieldUpdateOperationsInput | string
+  fullName?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  age?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  travelStyle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profilePhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isProfileCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  trips?: Prisma.TripUncheckedUpdateManyWithoutUserNestedInput
+  sentRequests?: Prisma.MatchRequestUncheckedUpdateManyWithoutSenderNestedInput
+  receivedRequests?: Prisma.MatchRequestUncheckedUpdateManyWithoutReceiverNestedInput
+  matchesAsUserB?: Prisma.MatchUncheckedUpdateManyWithoutUserBNestedInput
+  messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
+  ratings?: Prisma.RatingUncheckedUpdateManyWithoutRaterNestedInput
+  ratingsReceived?: Prisma.RatingUncheckedUpdateManyWithoutRatedNestedInput
+  blockedUsers?: Prisma.BlockUncheckedUpdateManyWithoutBlockerNestedInput
+  blockedByUsers?: Prisma.BlockUncheckedUpdateManyWithoutBlockedNestedInput
+  reports?: Prisma.ReportUncheckedUpdateManyWithoutReporterNestedInput
+}
+
+export type UserUpsertWithoutMatchesAsUserBInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutMatchesAsUserBInput, Prisma.UserUncheckedUpdateWithoutMatchesAsUserBInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutMatchesAsUserBInput, Prisma.UserUncheckedCreateWithoutMatchesAsUserBInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutMatchesAsUserBInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutMatchesAsUserBInput, Prisma.UserUncheckedUpdateWithoutMatchesAsUserBInput>
+}
+
+export type UserUpdateWithoutMatchesAsUserBInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  authUserId?: Prisma.StringFieldUpdateOperationsInput | string
+  fullName?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  age?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  travelStyle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profilePhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isProfileCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  trips?: Prisma.TripUpdateManyWithoutUserNestedInput
+  sentRequests?: Prisma.MatchRequestUpdateManyWithoutSenderNestedInput
+  receivedRequests?: Prisma.MatchRequestUpdateManyWithoutReceiverNestedInput
+  matchesAsUserA?: Prisma.MatchUpdateManyWithoutUserANestedInput
+  messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
+  ratings?: Prisma.RatingUpdateManyWithoutRaterNestedInput
+  ratingsReceived?: Prisma.RatingUpdateManyWithoutRatedNestedInput
+  blockedUsers?: Prisma.BlockUpdateManyWithoutBlockerNestedInput
+  blockedByUsers?: Prisma.BlockUpdateManyWithoutBlockedNestedInput
+  reports?: Prisma.ReportUpdateManyWithoutReporterNestedInput
+}
+
+export type UserUncheckedUpdateWithoutMatchesAsUserBInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  authUserId?: Prisma.StringFieldUpdateOperationsInput | string
+  fullName?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  age?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  travelStyle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profilePhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isProfileCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  trips?: Prisma.TripUncheckedUpdateManyWithoutUserNestedInput
+  sentRequests?: Prisma.MatchRequestUncheckedUpdateManyWithoutSenderNestedInput
+  receivedRequests?: Prisma.MatchRequestUncheckedUpdateManyWithoutReceiverNestedInput
+  matchesAsUserA?: Prisma.MatchUncheckedUpdateManyWithoutUserANestedInput
+  messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
+  ratings?: Prisma.RatingUncheckedUpdateManyWithoutRaterNestedInput
+  ratingsReceived?: Prisma.RatingUncheckedUpdateManyWithoutRatedNestedInput
+  blockedUsers?: Prisma.BlockUncheckedUpdateManyWithoutBlockerNestedInput
+  blockedByUsers?: Prisma.BlockUncheckedUpdateManyWithoutBlockedNestedInput
+  reports?: Prisma.ReportUncheckedUpdateManyWithoutReporterNestedInput
+}
+
+export type UserCreateWithoutMessagesInput = {
+  id?: string
+  authUserId: string
+  fullName: string
+  email: string
+  gender?: string | null
+  age?: number | null
+  city?: string | null
+  bio?: string | null
+  travelStyle?: string | null
+  profilePhotoUrl?: string | null
+  isProfileCompleted?: boolean
+  isVerified?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  trips?: Prisma.TripCreateNestedManyWithoutUserInput
+  sentRequests?: Prisma.MatchRequestCreateNestedManyWithoutSenderInput
+  receivedRequests?: Prisma.MatchRequestCreateNestedManyWithoutReceiverInput
+  matchesAsUserA?: Prisma.MatchCreateNestedManyWithoutUserAInput
+  matchesAsUserB?: Prisma.MatchCreateNestedManyWithoutUserBInput
+  ratings?: Prisma.RatingCreateNestedManyWithoutRaterInput
+  ratingsReceived?: Prisma.RatingCreateNestedManyWithoutRatedInput
+  blockedUsers?: Prisma.BlockCreateNestedManyWithoutBlockerInput
+  blockedByUsers?: Prisma.BlockCreateNestedManyWithoutBlockedInput
+  reports?: Prisma.ReportCreateNestedManyWithoutReporterInput
+}
+
+export type UserUncheckedCreateWithoutMessagesInput = {
+  id?: string
+  authUserId: string
+  fullName: string
+  email: string
+  gender?: string | null
+  age?: number | null
+  city?: string | null
+  bio?: string | null
+  travelStyle?: string | null
+  profilePhotoUrl?: string | null
+  isProfileCompleted?: boolean
+  isVerified?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  trips?: Prisma.TripUncheckedCreateNestedManyWithoutUserInput
+  sentRequests?: Prisma.MatchRequestUncheckedCreateNestedManyWithoutSenderInput
+  receivedRequests?: Prisma.MatchRequestUncheckedCreateNestedManyWithoutReceiverInput
+  matchesAsUserA?: Prisma.MatchUncheckedCreateNestedManyWithoutUserAInput
+  matchesAsUserB?: Prisma.MatchUncheckedCreateNestedManyWithoutUserBInput
+  ratings?: Prisma.RatingUncheckedCreateNestedManyWithoutRaterInput
+  ratingsReceived?: Prisma.RatingUncheckedCreateNestedManyWithoutRatedInput
+  blockedUsers?: Prisma.BlockUncheckedCreateNestedManyWithoutBlockerInput
+  blockedByUsers?: Prisma.BlockUncheckedCreateNestedManyWithoutBlockedInput
+  reports?: Prisma.ReportUncheckedCreateNestedManyWithoutReporterInput
+}
+
+export type UserCreateOrConnectWithoutMessagesInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutMessagesInput, Prisma.UserUncheckedCreateWithoutMessagesInput>
+}
+
+export type UserUpsertWithoutMessagesInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutMessagesInput, Prisma.UserUncheckedUpdateWithoutMessagesInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutMessagesInput, Prisma.UserUncheckedCreateWithoutMessagesInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutMessagesInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutMessagesInput, Prisma.UserUncheckedUpdateWithoutMessagesInput>
+}
+
+export type UserUpdateWithoutMessagesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  authUserId?: Prisma.StringFieldUpdateOperationsInput | string
+  fullName?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  age?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  travelStyle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profilePhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isProfileCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  trips?: Prisma.TripUpdateManyWithoutUserNestedInput
+  sentRequests?: Prisma.MatchRequestUpdateManyWithoutSenderNestedInput
+  receivedRequests?: Prisma.MatchRequestUpdateManyWithoutReceiverNestedInput
+  matchesAsUserA?: Prisma.MatchUpdateManyWithoutUserANestedInput
+  matchesAsUserB?: Prisma.MatchUpdateManyWithoutUserBNestedInput
+  ratings?: Prisma.RatingUpdateManyWithoutRaterNestedInput
+  ratingsReceived?: Prisma.RatingUpdateManyWithoutRatedNestedInput
+  blockedUsers?: Prisma.BlockUpdateManyWithoutBlockerNestedInput
+  blockedByUsers?: Prisma.BlockUpdateManyWithoutBlockedNestedInput
+  reports?: Prisma.ReportUpdateManyWithoutReporterNestedInput
+}
+
+export type UserUncheckedUpdateWithoutMessagesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  authUserId?: Prisma.StringFieldUpdateOperationsInput | string
+  fullName?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  age?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  travelStyle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profilePhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isProfileCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  trips?: Prisma.TripUncheckedUpdateManyWithoutUserNestedInput
+  sentRequests?: Prisma.MatchRequestUncheckedUpdateManyWithoutSenderNestedInput
+  receivedRequests?: Prisma.MatchRequestUncheckedUpdateManyWithoutReceiverNestedInput
+  matchesAsUserA?: Prisma.MatchUncheckedUpdateManyWithoutUserANestedInput
+  matchesAsUserB?: Prisma.MatchUncheckedUpdateManyWithoutUserBNestedInput
+  ratings?: Prisma.RatingUncheckedUpdateManyWithoutRaterNestedInput
+  ratingsReceived?: Prisma.RatingUncheckedUpdateManyWithoutRatedNestedInput
+  blockedUsers?: Prisma.BlockUncheckedUpdateManyWithoutBlockerNestedInput
+  blockedByUsers?: Prisma.BlockUncheckedUpdateManyWithoutBlockedNestedInput
+  reports?: Prisma.ReportUncheckedUpdateManyWithoutReporterNestedInput
+}
+
+export type UserCreateWithoutRatingsInput = {
+  id?: string
+  authUserId: string
+  fullName: string
+  email: string
+  gender?: string | null
+  age?: number | null
+  city?: string | null
+  bio?: string | null
+  travelStyle?: string | null
+  profilePhotoUrl?: string | null
+  isProfileCompleted?: boolean
+  isVerified?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  trips?: Prisma.TripCreateNestedManyWithoutUserInput
+  sentRequests?: Prisma.MatchRequestCreateNestedManyWithoutSenderInput
+  receivedRequests?: Prisma.MatchRequestCreateNestedManyWithoutReceiverInput
+  matchesAsUserA?: Prisma.MatchCreateNestedManyWithoutUserAInput
+  matchesAsUserB?: Prisma.MatchCreateNestedManyWithoutUserBInput
+  messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
+  ratingsReceived?: Prisma.RatingCreateNestedManyWithoutRatedInput
+  blockedUsers?: Prisma.BlockCreateNestedManyWithoutBlockerInput
+  blockedByUsers?: Prisma.BlockCreateNestedManyWithoutBlockedInput
+  reports?: Prisma.ReportCreateNestedManyWithoutReporterInput
+}
+
+export type UserUncheckedCreateWithoutRatingsInput = {
+  id?: string
+  authUserId: string
+  fullName: string
+  email: string
+  gender?: string | null
+  age?: number | null
+  city?: string | null
+  bio?: string | null
+  travelStyle?: string | null
+  profilePhotoUrl?: string | null
+  isProfileCompleted?: boolean
+  isVerified?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  trips?: Prisma.TripUncheckedCreateNestedManyWithoutUserInput
+  sentRequests?: Prisma.MatchRequestUncheckedCreateNestedManyWithoutSenderInput
+  receivedRequests?: Prisma.MatchRequestUncheckedCreateNestedManyWithoutReceiverInput
+  matchesAsUserA?: Prisma.MatchUncheckedCreateNestedManyWithoutUserAInput
+  matchesAsUserB?: Prisma.MatchUncheckedCreateNestedManyWithoutUserBInput
+  messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
+  ratingsReceived?: Prisma.RatingUncheckedCreateNestedManyWithoutRatedInput
+  blockedUsers?: Prisma.BlockUncheckedCreateNestedManyWithoutBlockerInput
+  blockedByUsers?: Prisma.BlockUncheckedCreateNestedManyWithoutBlockedInput
+  reports?: Prisma.ReportUncheckedCreateNestedManyWithoutReporterInput
+}
+
+export type UserCreateOrConnectWithoutRatingsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutRatingsInput, Prisma.UserUncheckedCreateWithoutRatingsInput>
+}
+
+export type UserCreateWithoutRatingsReceivedInput = {
+  id?: string
+  authUserId: string
+  fullName: string
+  email: string
+  gender?: string | null
+  age?: number | null
+  city?: string | null
+  bio?: string | null
+  travelStyle?: string | null
+  profilePhotoUrl?: string | null
+  isProfileCompleted?: boolean
+  isVerified?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  trips?: Prisma.TripCreateNestedManyWithoutUserInput
+  sentRequests?: Prisma.MatchRequestCreateNestedManyWithoutSenderInput
+  receivedRequests?: Prisma.MatchRequestCreateNestedManyWithoutReceiverInput
+  matchesAsUserA?: Prisma.MatchCreateNestedManyWithoutUserAInput
+  matchesAsUserB?: Prisma.MatchCreateNestedManyWithoutUserBInput
+  messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
+  ratings?: Prisma.RatingCreateNestedManyWithoutRaterInput
+  blockedUsers?: Prisma.BlockCreateNestedManyWithoutBlockerInput
+  blockedByUsers?: Prisma.BlockCreateNestedManyWithoutBlockedInput
+  reports?: Prisma.ReportCreateNestedManyWithoutReporterInput
+}
+
+export type UserUncheckedCreateWithoutRatingsReceivedInput = {
+  id?: string
+  authUserId: string
+  fullName: string
+  email: string
+  gender?: string | null
+  age?: number | null
+  city?: string | null
+  bio?: string | null
+  travelStyle?: string | null
+  profilePhotoUrl?: string | null
+  isProfileCompleted?: boolean
+  isVerified?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  trips?: Prisma.TripUncheckedCreateNestedManyWithoutUserInput
+  sentRequests?: Prisma.MatchRequestUncheckedCreateNestedManyWithoutSenderInput
+  receivedRequests?: Prisma.MatchRequestUncheckedCreateNestedManyWithoutReceiverInput
+  matchesAsUserA?: Prisma.MatchUncheckedCreateNestedManyWithoutUserAInput
+  matchesAsUserB?: Prisma.MatchUncheckedCreateNestedManyWithoutUserBInput
+  messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
+  ratings?: Prisma.RatingUncheckedCreateNestedManyWithoutRaterInput
+  blockedUsers?: Prisma.BlockUncheckedCreateNestedManyWithoutBlockerInput
+  blockedByUsers?: Prisma.BlockUncheckedCreateNestedManyWithoutBlockedInput
+  reports?: Prisma.ReportUncheckedCreateNestedManyWithoutReporterInput
+}
+
+export type UserCreateOrConnectWithoutRatingsReceivedInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutRatingsReceivedInput, Prisma.UserUncheckedCreateWithoutRatingsReceivedInput>
+}
+
+export type UserUpsertWithoutRatingsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutRatingsInput, Prisma.UserUncheckedUpdateWithoutRatingsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutRatingsInput, Prisma.UserUncheckedCreateWithoutRatingsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutRatingsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutRatingsInput, Prisma.UserUncheckedUpdateWithoutRatingsInput>
+}
+
+export type UserUpdateWithoutRatingsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  authUserId?: Prisma.StringFieldUpdateOperationsInput | string
+  fullName?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  age?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  travelStyle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profilePhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isProfileCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  trips?: Prisma.TripUpdateManyWithoutUserNestedInput
+  sentRequests?: Prisma.MatchRequestUpdateManyWithoutSenderNestedInput
+  receivedRequests?: Prisma.MatchRequestUpdateManyWithoutReceiverNestedInput
+  matchesAsUserA?: Prisma.MatchUpdateManyWithoutUserANestedInput
+  matchesAsUserB?: Prisma.MatchUpdateManyWithoutUserBNestedInput
+  messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
+  ratingsReceived?: Prisma.RatingUpdateManyWithoutRatedNestedInput
+  blockedUsers?: Prisma.BlockUpdateManyWithoutBlockerNestedInput
+  blockedByUsers?: Prisma.BlockUpdateManyWithoutBlockedNestedInput
+  reports?: Prisma.ReportUpdateManyWithoutReporterNestedInput
+}
+
+export type UserUncheckedUpdateWithoutRatingsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  authUserId?: Prisma.StringFieldUpdateOperationsInput | string
+  fullName?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  age?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  travelStyle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profilePhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isProfileCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  trips?: Prisma.TripUncheckedUpdateManyWithoutUserNestedInput
+  sentRequests?: Prisma.MatchRequestUncheckedUpdateManyWithoutSenderNestedInput
+  receivedRequests?: Prisma.MatchRequestUncheckedUpdateManyWithoutReceiverNestedInput
+  matchesAsUserA?: Prisma.MatchUncheckedUpdateManyWithoutUserANestedInput
+  matchesAsUserB?: Prisma.MatchUncheckedUpdateManyWithoutUserBNestedInput
+  messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
+  ratingsReceived?: Prisma.RatingUncheckedUpdateManyWithoutRatedNestedInput
+  blockedUsers?: Prisma.BlockUncheckedUpdateManyWithoutBlockerNestedInput
+  blockedByUsers?: Prisma.BlockUncheckedUpdateManyWithoutBlockedNestedInput
+  reports?: Prisma.ReportUncheckedUpdateManyWithoutReporterNestedInput
+}
+
+export type UserUpsertWithoutRatingsReceivedInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutRatingsReceivedInput, Prisma.UserUncheckedUpdateWithoutRatingsReceivedInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutRatingsReceivedInput, Prisma.UserUncheckedCreateWithoutRatingsReceivedInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutRatingsReceivedInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutRatingsReceivedInput, Prisma.UserUncheckedUpdateWithoutRatingsReceivedInput>
+}
+
+export type UserUpdateWithoutRatingsReceivedInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  authUserId?: Prisma.StringFieldUpdateOperationsInput | string
+  fullName?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  age?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  travelStyle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profilePhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isProfileCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  trips?: Prisma.TripUpdateManyWithoutUserNestedInput
+  sentRequests?: Prisma.MatchRequestUpdateManyWithoutSenderNestedInput
+  receivedRequests?: Prisma.MatchRequestUpdateManyWithoutReceiverNestedInput
+  matchesAsUserA?: Prisma.MatchUpdateManyWithoutUserANestedInput
+  matchesAsUserB?: Prisma.MatchUpdateManyWithoutUserBNestedInput
+  messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
+  ratings?: Prisma.RatingUpdateManyWithoutRaterNestedInput
+  blockedUsers?: Prisma.BlockUpdateManyWithoutBlockerNestedInput
+  blockedByUsers?: Prisma.BlockUpdateManyWithoutBlockedNestedInput
+  reports?: Prisma.ReportUpdateManyWithoutReporterNestedInput
+}
+
+export type UserUncheckedUpdateWithoutRatingsReceivedInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  authUserId?: Prisma.StringFieldUpdateOperationsInput | string
+  fullName?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  age?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  travelStyle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profilePhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isProfileCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  trips?: Prisma.TripUncheckedUpdateManyWithoutUserNestedInput
+  sentRequests?: Prisma.MatchRequestUncheckedUpdateManyWithoutSenderNestedInput
+  receivedRequests?: Prisma.MatchRequestUncheckedUpdateManyWithoutReceiverNestedInput
+  matchesAsUserA?: Prisma.MatchUncheckedUpdateManyWithoutUserANestedInput
+  matchesAsUserB?: Prisma.MatchUncheckedUpdateManyWithoutUserBNestedInput
+  messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
+  ratings?: Prisma.RatingUncheckedUpdateManyWithoutRaterNestedInput
+  blockedUsers?: Prisma.BlockUncheckedUpdateManyWithoutBlockerNestedInput
+  blockedByUsers?: Prisma.BlockUncheckedUpdateManyWithoutBlockedNestedInput
+  reports?: Prisma.ReportUncheckedUpdateManyWithoutReporterNestedInput
+}
+
+export type UserCreateWithoutBlockedUsersInput = {
+  id?: string
+  authUserId: string
+  fullName: string
+  email: string
+  gender?: string | null
+  age?: number | null
+  city?: string | null
+  bio?: string | null
+  travelStyle?: string | null
+  profilePhotoUrl?: string | null
+  isProfileCompleted?: boolean
+  isVerified?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  trips?: Prisma.TripCreateNestedManyWithoutUserInput
+  sentRequests?: Prisma.MatchRequestCreateNestedManyWithoutSenderInput
+  receivedRequests?: Prisma.MatchRequestCreateNestedManyWithoutReceiverInput
+  matchesAsUserA?: Prisma.MatchCreateNestedManyWithoutUserAInput
+  matchesAsUserB?: Prisma.MatchCreateNestedManyWithoutUserBInput
+  messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
+  ratings?: Prisma.RatingCreateNestedManyWithoutRaterInput
+  ratingsReceived?: Prisma.RatingCreateNestedManyWithoutRatedInput
+  blockedByUsers?: Prisma.BlockCreateNestedManyWithoutBlockedInput
+  reports?: Prisma.ReportCreateNestedManyWithoutReporterInput
+}
+
+export type UserUncheckedCreateWithoutBlockedUsersInput = {
+  id?: string
+  authUserId: string
+  fullName: string
+  email: string
+  gender?: string | null
+  age?: number | null
+  city?: string | null
+  bio?: string | null
+  travelStyle?: string | null
+  profilePhotoUrl?: string | null
+  isProfileCompleted?: boolean
+  isVerified?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  trips?: Prisma.TripUncheckedCreateNestedManyWithoutUserInput
+  sentRequests?: Prisma.MatchRequestUncheckedCreateNestedManyWithoutSenderInput
+  receivedRequests?: Prisma.MatchRequestUncheckedCreateNestedManyWithoutReceiverInput
+  matchesAsUserA?: Prisma.MatchUncheckedCreateNestedManyWithoutUserAInput
+  matchesAsUserB?: Prisma.MatchUncheckedCreateNestedManyWithoutUserBInput
+  messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
+  ratings?: Prisma.RatingUncheckedCreateNestedManyWithoutRaterInput
+  ratingsReceived?: Prisma.RatingUncheckedCreateNestedManyWithoutRatedInput
+  blockedByUsers?: Prisma.BlockUncheckedCreateNestedManyWithoutBlockedInput
+  reports?: Prisma.ReportUncheckedCreateNestedManyWithoutReporterInput
+}
+
+export type UserCreateOrConnectWithoutBlockedUsersInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutBlockedUsersInput, Prisma.UserUncheckedCreateWithoutBlockedUsersInput>
+}
+
+export type UserCreateWithoutBlockedByUsersInput = {
+  id?: string
+  authUserId: string
+  fullName: string
+  email: string
+  gender?: string | null
+  age?: number | null
+  city?: string | null
+  bio?: string | null
+  travelStyle?: string | null
+  profilePhotoUrl?: string | null
+  isProfileCompleted?: boolean
+  isVerified?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  trips?: Prisma.TripCreateNestedManyWithoutUserInput
+  sentRequests?: Prisma.MatchRequestCreateNestedManyWithoutSenderInput
+  receivedRequests?: Prisma.MatchRequestCreateNestedManyWithoutReceiverInput
+  matchesAsUserA?: Prisma.MatchCreateNestedManyWithoutUserAInput
+  matchesAsUserB?: Prisma.MatchCreateNestedManyWithoutUserBInput
+  messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
+  ratings?: Prisma.RatingCreateNestedManyWithoutRaterInput
+  ratingsReceived?: Prisma.RatingCreateNestedManyWithoutRatedInput
+  blockedUsers?: Prisma.BlockCreateNestedManyWithoutBlockerInput
+  reports?: Prisma.ReportCreateNestedManyWithoutReporterInput
+}
+
+export type UserUncheckedCreateWithoutBlockedByUsersInput = {
+  id?: string
+  authUserId: string
+  fullName: string
+  email: string
+  gender?: string | null
+  age?: number | null
+  city?: string | null
+  bio?: string | null
+  travelStyle?: string | null
+  profilePhotoUrl?: string | null
+  isProfileCompleted?: boolean
+  isVerified?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  trips?: Prisma.TripUncheckedCreateNestedManyWithoutUserInput
+  sentRequests?: Prisma.MatchRequestUncheckedCreateNestedManyWithoutSenderInput
+  receivedRequests?: Prisma.MatchRequestUncheckedCreateNestedManyWithoutReceiverInput
+  matchesAsUserA?: Prisma.MatchUncheckedCreateNestedManyWithoutUserAInput
+  matchesAsUserB?: Prisma.MatchUncheckedCreateNestedManyWithoutUserBInput
+  messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
+  ratings?: Prisma.RatingUncheckedCreateNestedManyWithoutRaterInput
+  ratingsReceived?: Prisma.RatingUncheckedCreateNestedManyWithoutRatedInput
+  blockedUsers?: Prisma.BlockUncheckedCreateNestedManyWithoutBlockerInput
+  reports?: Prisma.ReportUncheckedCreateNestedManyWithoutReporterInput
+}
+
+export type UserCreateOrConnectWithoutBlockedByUsersInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutBlockedByUsersInput, Prisma.UserUncheckedCreateWithoutBlockedByUsersInput>
+}
+
+export type UserUpsertWithoutBlockedUsersInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutBlockedUsersInput, Prisma.UserUncheckedUpdateWithoutBlockedUsersInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutBlockedUsersInput, Prisma.UserUncheckedCreateWithoutBlockedUsersInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutBlockedUsersInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutBlockedUsersInput, Prisma.UserUncheckedUpdateWithoutBlockedUsersInput>
+}
+
+export type UserUpdateWithoutBlockedUsersInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  authUserId?: Prisma.StringFieldUpdateOperationsInput | string
+  fullName?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  age?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  travelStyle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profilePhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isProfileCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  trips?: Prisma.TripUpdateManyWithoutUserNestedInput
+  sentRequests?: Prisma.MatchRequestUpdateManyWithoutSenderNestedInput
+  receivedRequests?: Prisma.MatchRequestUpdateManyWithoutReceiverNestedInput
+  matchesAsUserA?: Prisma.MatchUpdateManyWithoutUserANestedInput
+  matchesAsUserB?: Prisma.MatchUpdateManyWithoutUserBNestedInput
+  messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
+  ratings?: Prisma.RatingUpdateManyWithoutRaterNestedInput
+  ratingsReceived?: Prisma.RatingUpdateManyWithoutRatedNestedInput
+  blockedByUsers?: Prisma.BlockUpdateManyWithoutBlockedNestedInput
+  reports?: Prisma.ReportUpdateManyWithoutReporterNestedInput
+}
+
+export type UserUncheckedUpdateWithoutBlockedUsersInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  authUserId?: Prisma.StringFieldUpdateOperationsInput | string
+  fullName?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  age?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  travelStyle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profilePhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isProfileCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  trips?: Prisma.TripUncheckedUpdateManyWithoutUserNestedInput
+  sentRequests?: Prisma.MatchRequestUncheckedUpdateManyWithoutSenderNestedInput
+  receivedRequests?: Prisma.MatchRequestUncheckedUpdateManyWithoutReceiverNestedInput
+  matchesAsUserA?: Prisma.MatchUncheckedUpdateManyWithoutUserANestedInput
+  matchesAsUserB?: Prisma.MatchUncheckedUpdateManyWithoutUserBNestedInput
+  messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
+  ratings?: Prisma.RatingUncheckedUpdateManyWithoutRaterNestedInput
+  ratingsReceived?: Prisma.RatingUncheckedUpdateManyWithoutRatedNestedInput
+  blockedByUsers?: Prisma.BlockUncheckedUpdateManyWithoutBlockedNestedInput
+  reports?: Prisma.ReportUncheckedUpdateManyWithoutReporterNestedInput
+}
+
+export type UserUpsertWithoutBlockedByUsersInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutBlockedByUsersInput, Prisma.UserUncheckedUpdateWithoutBlockedByUsersInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutBlockedByUsersInput, Prisma.UserUncheckedCreateWithoutBlockedByUsersInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutBlockedByUsersInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutBlockedByUsersInput, Prisma.UserUncheckedUpdateWithoutBlockedByUsersInput>
+}
+
+export type UserUpdateWithoutBlockedByUsersInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  authUserId?: Prisma.StringFieldUpdateOperationsInput | string
+  fullName?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  age?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  travelStyle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profilePhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isProfileCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  trips?: Prisma.TripUpdateManyWithoutUserNestedInput
+  sentRequests?: Prisma.MatchRequestUpdateManyWithoutSenderNestedInput
+  receivedRequests?: Prisma.MatchRequestUpdateManyWithoutReceiverNestedInput
+  matchesAsUserA?: Prisma.MatchUpdateManyWithoutUserANestedInput
+  matchesAsUserB?: Prisma.MatchUpdateManyWithoutUserBNestedInput
+  messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
+  ratings?: Prisma.RatingUpdateManyWithoutRaterNestedInput
+  ratingsReceived?: Prisma.RatingUpdateManyWithoutRatedNestedInput
+  blockedUsers?: Prisma.BlockUpdateManyWithoutBlockerNestedInput
+  reports?: Prisma.ReportUpdateManyWithoutReporterNestedInput
+}
+
+export type UserUncheckedUpdateWithoutBlockedByUsersInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  authUserId?: Prisma.StringFieldUpdateOperationsInput | string
+  fullName?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  age?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  travelStyle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profilePhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isProfileCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  trips?: Prisma.TripUncheckedUpdateManyWithoutUserNestedInput
+  sentRequests?: Prisma.MatchRequestUncheckedUpdateManyWithoutSenderNestedInput
+  receivedRequests?: Prisma.MatchRequestUncheckedUpdateManyWithoutReceiverNestedInput
+  matchesAsUserA?: Prisma.MatchUncheckedUpdateManyWithoutUserANestedInput
+  matchesAsUserB?: Prisma.MatchUncheckedUpdateManyWithoutUserBNestedInput
+  messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
+  ratings?: Prisma.RatingUncheckedUpdateManyWithoutRaterNestedInput
+  ratingsReceived?: Prisma.RatingUncheckedUpdateManyWithoutRatedNestedInput
+  blockedUsers?: Prisma.BlockUncheckedUpdateManyWithoutBlockerNestedInput
+  reports?: Prisma.ReportUncheckedUpdateManyWithoutReporterNestedInput
+}
+
+export type UserCreateWithoutReportsInput = {
+  id?: string
+  authUserId: string
+  fullName: string
+  email: string
+  gender?: string | null
+  age?: number | null
+  city?: string | null
+  bio?: string | null
+  travelStyle?: string | null
+  profilePhotoUrl?: string | null
+  isProfileCompleted?: boolean
+  isVerified?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  trips?: Prisma.TripCreateNestedManyWithoutUserInput
+  sentRequests?: Prisma.MatchRequestCreateNestedManyWithoutSenderInput
+  receivedRequests?: Prisma.MatchRequestCreateNestedManyWithoutReceiverInput
+  matchesAsUserA?: Prisma.MatchCreateNestedManyWithoutUserAInput
+  matchesAsUserB?: Prisma.MatchCreateNestedManyWithoutUserBInput
+  messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
+  ratings?: Prisma.RatingCreateNestedManyWithoutRaterInput
+  ratingsReceived?: Prisma.RatingCreateNestedManyWithoutRatedInput
+  blockedUsers?: Prisma.BlockCreateNestedManyWithoutBlockerInput
+  blockedByUsers?: Prisma.BlockCreateNestedManyWithoutBlockedInput
+}
+
+export type UserUncheckedCreateWithoutReportsInput = {
+  id?: string
+  authUserId: string
+  fullName: string
+  email: string
+  gender?: string | null
+  age?: number | null
+  city?: string | null
+  bio?: string | null
+  travelStyle?: string | null
+  profilePhotoUrl?: string | null
+  isProfileCompleted?: boolean
+  isVerified?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  trips?: Prisma.TripUncheckedCreateNestedManyWithoutUserInput
+  sentRequests?: Prisma.MatchRequestUncheckedCreateNestedManyWithoutSenderInput
+  receivedRequests?: Prisma.MatchRequestUncheckedCreateNestedManyWithoutReceiverInput
+  matchesAsUserA?: Prisma.MatchUncheckedCreateNestedManyWithoutUserAInput
+  matchesAsUserB?: Prisma.MatchUncheckedCreateNestedManyWithoutUserBInput
+  messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
+  ratings?: Prisma.RatingUncheckedCreateNestedManyWithoutRaterInput
+  ratingsReceived?: Prisma.RatingUncheckedCreateNestedManyWithoutRatedInput
+  blockedUsers?: Prisma.BlockUncheckedCreateNestedManyWithoutBlockerInput
+  blockedByUsers?: Prisma.BlockUncheckedCreateNestedManyWithoutBlockedInput
+}
+
+export type UserCreateOrConnectWithoutReportsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutReportsInput, Prisma.UserUncheckedCreateWithoutReportsInput>
+}
+
+export type UserUpsertWithoutReportsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutReportsInput, Prisma.UserUncheckedUpdateWithoutReportsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutReportsInput, Prisma.UserUncheckedCreateWithoutReportsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutReportsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutReportsInput, Prisma.UserUncheckedUpdateWithoutReportsInput>
+}
+
+export type UserUpdateWithoutReportsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  authUserId?: Prisma.StringFieldUpdateOperationsInput | string
+  fullName?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  age?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  travelStyle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profilePhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isProfileCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  trips?: Prisma.TripUpdateManyWithoutUserNestedInput
+  sentRequests?: Prisma.MatchRequestUpdateManyWithoutSenderNestedInput
+  receivedRequests?: Prisma.MatchRequestUpdateManyWithoutReceiverNestedInput
+  matchesAsUserA?: Prisma.MatchUpdateManyWithoutUserANestedInput
+  matchesAsUserB?: Prisma.MatchUpdateManyWithoutUserBNestedInput
+  messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
+  ratings?: Prisma.RatingUpdateManyWithoutRaterNestedInput
+  ratingsReceived?: Prisma.RatingUpdateManyWithoutRatedNestedInput
+  blockedUsers?: Prisma.BlockUpdateManyWithoutBlockerNestedInput
+  blockedByUsers?: Prisma.BlockUpdateManyWithoutBlockedNestedInput
+}
+
+export type UserUncheckedUpdateWithoutReportsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  authUserId?: Prisma.StringFieldUpdateOperationsInput | string
+  fullName?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  age?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  travelStyle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profilePhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isProfileCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  trips?: Prisma.TripUncheckedUpdateManyWithoutUserNestedInput
+  sentRequests?: Prisma.MatchRequestUncheckedUpdateManyWithoutSenderNestedInput
+  receivedRequests?: Prisma.MatchRequestUncheckedUpdateManyWithoutReceiverNestedInput
+  matchesAsUserA?: Prisma.MatchUncheckedUpdateManyWithoutUserANestedInput
+  matchesAsUserB?: Prisma.MatchUncheckedUpdateManyWithoutUserBNestedInput
+  messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
+  ratings?: Prisma.RatingUncheckedUpdateManyWithoutRaterNestedInput
+  ratingsReceived?: Prisma.RatingUncheckedUpdateManyWithoutRatedNestedInput
+  blockedUsers?: Prisma.BlockUncheckedUpdateManyWithoutBlockerNestedInput
+  blockedByUsers?: Prisma.BlockUncheckedUpdateManyWithoutBlockedNestedInput
+}
+
+
+/**
+ * Count Type UserCountOutputType
+ */
+
+export type UserCountOutputType = {
+  trips: number
+  sentRequests: number
+  receivedRequests: number
+  matchesAsUserA: number
+  matchesAsUserB: number
+  messages: number
+  ratings: number
+  ratingsReceived: number
+  blockedUsers: number
+  blockedByUsers: number
+  reports: number
+}
+
+export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  trips?: boolean | UserCountOutputTypeCountTripsArgs
+  sentRequests?: boolean | UserCountOutputTypeCountSentRequestsArgs
+  receivedRequests?: boolean | UserCountOutputTypeCountReceivedRequestsArgs
+  matchesAsUserA?: boolean | UserCountOutputTypeCountMatchesAsUserAArgs
+  matchesAsUserB?: boolean | UserCountOutputTypeCountMatchesAsUserBArgs
+  messages?: boolean | UserCountOutputTypeCountMessagesArgs
+  ratings?: boolean | UserCountOutputTypeCountRatingsArgs
+  ratingsReceived?: boolean | UserCountOutputTypeCountRatingsReceivedArgs
+  blockedUsers?: boolean | UserCountOutputTypeCountBlockedUsersArgs
+  blockedByUsers?: boolean | UserCountOutputTypeCountBlockedByUsersArgs
+  reports?: boolean | UserCountOutputTypeCountReportsArgs
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the UserCountOutputType
+   */
+  select?: Prisma.UserCountOutputTypeSelect<ExtArgs> | null
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountTripsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.TripWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountSentRequestsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.MatchRequestWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountReceivedRequestsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.MatchRequestWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountMatchesAsUserAArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.MatchWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountMatchesAsUserBArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.MatchWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountMessagesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.MessageWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountRatingsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.RatingWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountRatingsReceivedArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.RatingWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountBlockedUsersArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.BlockWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountBlockedByUsersArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.BlockWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountReportsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ReportWhereInput
+}
 
 
 export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -588,6 +2307,18 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   isVerified?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  trips?: boolean | Prisma.User$tripsArgs<ExtArgs>
+  sentRequests?: boolean | Prisma.User$sentRequestsArgs<ExtArgs>
+  receivedRequests?: boolean | Prisma.User$receivedRequestsArgs<ExtArgs>
+  matchesAsUserA?: boolean | Prisma.User$matchesAsUserAArgs<ExtArgs>
+  matchesAsUserB?: boolean | Prisma.User$matchesAsUserBArgs<ExtArgs>
+  messages?: boolean | Prisma.User$messagesArgs<ExtArgs>
+  ratings?: boolean | Prisma.User$ratingsArgs<ExtArgs>
+  ratingsReceived?: boolean | Prisma.User$ratingsReceivedArgs<ExtArgs>
+  blockedUsers?: boolean | Prisma.User$blockedUsersArgs<ExtArgs>
+  blockedByUsers?: boolean | Prisma.User$blockedByUsersArgs<ExtArgs>
+  reports?: boolean | Prisma.User$reportsArgs<ExtArgs>
+  _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
 export type UserSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -642,10 +2373,38 @@ export type UserSelectScalar = {
 }
 
 export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "authUserId" | "fullName" | "email" | "gender" | "age" | "city" | "bio" | "travelStyle" | "profilePhotoUrl" | "isProfileCompleted" | "isVerified" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
+export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  trips?: boolean | Prisma.User$tripsArgs<ExtArgs>
+  sentRequests?: boolean | Prisma.User$sentRequestsArgs<ExtArgs>
+  receivedRequests?: boolean | Prisma.User$receivedRequestsArgs<ExtArgs>
+  matchesAsUserA?: boolean | Prisma.User$matchesAsUserAArgs<ExtArgs>
+  matchesAsUserB?: boolean | Prisma.User$matchesAsUserBArgs<ExtArgs>
+  messages?: boolean | Prisma.User$messagesArgs<ExtArgs>
+  ratings?: boolean | Prisma.User$ratingsArgs<ExtArgs>
+  ratingsReceived?: boolean | Prisma.User$ratingsReceivedArgs<ExtArgs>
+  blockedUsers?: boolean | Prisma.User$blockedUsersArgs<ExtArgs>
+  blockedByUsers?: boolean | Prisma.User$blockedByUsersArgs<ExtArgs>
+  reports?: boolean | Prisma.User$reportsArgs<ExtArgs>
+  _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
+}
+export type UserIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
+export type UserIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
 
 export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "User"
-  objects: {}
+  objects: {
+    trips: Prisma.$TripPayload<ExtArgs>[]
+    sentRequests: Prisma.$MatchRequestPayload<ExtArgs>[]
+    receivedRequests: Prisma.$MatchRequestPayload<ExtArgs>[]
+    matchesAsUserA: Prisma.$MatchPayload<ExtArgs>[]
+    matchesAsUserB: Prisma.$MatchPayload<ExtArgs>[]
+    messages: Prisma.$MessagePayload<ExtArgs>[]
+    ratings: Prisma.$RatingPayload<ExtArgs>[]
+    ratingsReceived: Prisma.$RatingPayload<ExtArgs>[]
+    blockedUsers: Prisma.$BlockPayload<ExtArgs>[]
+    blockedByUsers: Prisma.$BlockPayload<ExtArgs>[]
+    reports: Prisma.$ReportPayload<ExtArgs>[]
+  }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     authUserId: string
@@ -1055,6 +2814,17 @@ readonly fields: UserFieldRefs;
  */
 export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
+  trips<T extends Prisma.User$tripsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$tripsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TripPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  sentRequests<T extends Prisma.User$sentRequestsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$sentRequestsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MatchRequestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  receivedRequests<T extends Prisma.User$receivedRequestsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$receivedRequestsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MatchRequestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  matchesAsUserA<T extends Prisma.User$matchesAsUserAArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$matchesAsUserAArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MatchPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  matchesAsUserB<T extends Prisma.User$matchesAsUserBArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$matchesAsUserBArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MatchPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  messages<T extends Prisma.User$messagesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$messagesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MessagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  ratings<T extends Prisma.User$ratingsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$ratingsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$RatingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  ratingsReceived<T extends Prisma.User$ratingsReceivedArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$ratingsReceivedArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$RatingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  blockedUsers<T extends Prisma.User$blockedUsersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$blockedUsersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BlockPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  blockedByUsers<T extends Prisma.User$blockedByUsersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$blockedByUsersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BlockPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  reports<T extends Prisma.User$reportsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$reportsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ReportPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1115,6 +2885,10 @@ export type UserFindUniqueArgs<ExtArgs extends runtime.Types.Extensions.Internal
    */
   omit?: Prisma.UserOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null
+  /**
    * Filter, which User to fetch.
    */
   where: Prisma.UserWhereUniqueInput
@@ -1133,6 +2907,10 @@ export type UserFindUniqueOrThrowArgs<ExtArgs extends runtime.Types.Extensions.I
    */
   omit?: Prisma.UserOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null
+  /**
    * Filter, which User to fetch.
    */
   where: Prisma.UserWhereUniqueInput
@@ -1150,6 +2928,10 @@ export type UserFindFirstArgs<ExtArgs extends runtime.Types.Extensions.InternalA
    * Omit specific fields from the User
    */
   omit?: Prisma.UserOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null
   /**
    * Filter, which User to fetch.
    */
@@ -1199,6 +2981,10 @@ export type UserFindFirstOrThrowArgs<ExtArgs extends runtime.Types.Extensions.In
    */
   omit?: Prisma.UserOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null
+  /**
    * Filter, which User to fetch.
    */
   where?: Prisma.UserWhereInput
@@ -1246,6 +3032,10 @@ export type UserFindManyArgs<ExtArgs extends runtime.Types.Extensions.InternalAr
    * Omit specific fields from the User
    */
   omit?: Prisma.UserOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null
   /**
    * Filter, which Users to fetch.
    */
@@ -1295,6 +3085,10 @@ export type UserCreateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs
    */
   omit?: Prisma.UserOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null
+  /**
    * The data needed to create a User.
    */
   data: Prisma.XOR<Prisma.UserCreateInput, Prisma.UserUncheckedCreateInput>
@@ -1342,6 +3136,10 @@ export type UserUpdateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs
    * Omit specific fields from the User
    */
   omit?: Prisma.UserOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null
   /**
    * The data needed to update a User.
    */
@@ -1409,6 +3207,10 @@ export type UserUpsertArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs
    */
   omit?: Prisma.UserOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null
+  /**
    * The filter to search for the User to update in case it exists.
    */
   where: Prisma.UserWhereUniqueInput
@@ -1435,6 +3237,10 @@ export type UserDeleteArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs
    */
   omit?: Prisma.UserOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null
+  /**
    * Filter which User to delete.
    */
   where: Prisma.UserWhereUniqueInput
@@ -1455,6 +3261,270 @@ export type UserDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Internal
 }
 
 /**
+ * User.trips
+ */
+export type User$tripsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Trip
+   */
+  select?: Prisma.TripSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Trip
+   */
+  omit?: Prisma.TripOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.TripInclude<ExtArgs> | null
+  where?: Prisma.TripWhereInput
+  orderBy?: Prisma.TripOrderByWithRelationInput | Prisma.TripOrderByWithRelationInput[]
+  cursor?: Prisma.TripWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.TripScalarFieldEnum | Prisma.TripScalarFieldEnum[]
+}
+
+/**
+ * User.sentRequests
+ */
+export type User$sentRequestsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the MatchRequest
+   */
+  select?: Prisma.MatchRequestSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the MatchRequest
+   */
+  omit?: Prisma.MatchRequestOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.MatchRequestInclude<ExtArgs> | null
+  where?: Prisma.MatchRequestWhereInput
+  orderBy?: Prisma.MatchRequestOrderByWithRelationInput | Prisma.MatchRequestOrderByWithRelationInput[]
+  cursor?: Prisma.MatchRequestWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.MatchRequestScalarFieldEnum | Prisma.MatchRequestScalarFieldEnum[]
+}
+
+/**
+ * User.receivedRequests
+ */
+export type User$receivedRequestsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the MatchRequest
+   */
+  select?: Prisma.MatchRequestSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the MatchRequest
+   */
+  omit?: Prisma.MatchRequestOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.MatchRequestInclude<ExtArgs> | null
+  where?: Prisma.MatchRequestWhereInput
+  orderBy?: Prisma.MatchRequestOrderByWithRelationInput | Prisma.MatchRequestOrderByWithRelationInput[]
+  cursor?: Prisma.MatchRequestWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.MatchRequestScalarFieldEnum | Prisma.MatchRequestScalarFieldEnum[]
+}
+
+/**
+ * User.matchesAsUserA
+ */
+export type User$matchesAsUserAArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Match
+   */
+  select?: Prisma.MatchSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Match
+   */
+  omit?: Prisma.MatchOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.MatchInclude<ExtArgs> | null
+  where?: Prisma.MatchWhereInput
+  orderBy?: Prisma.MatchOrderByWithRelationInput | Prisma.MatchOrderByWithRelationInput[]
+  cursor?: Prisma.MatchWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.MatchScalarFieldEnum | Prisma.MatchScalarFieldEnum[]
+}
+
+/**
+ * User.matchesAsUserB
+ */
+export type User$matchesAsUserBArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Match
+   */
+  select?: Prisma.MatchSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Match
+   */
+  omit?: Prisma.MatchOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.MatchInclude<ExtArgs> | null
+  where?: Prisma.MatchWhereInput
+  orderBy?: Prisma.MatchOrderByWithRelationInput | Prisma.MatchOrderByWithRelationInput[]
+  cursor?: Prisma.MatchWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.MatchScalarFieldEnum | Prisma.MatchScalarFieldEnum[]
+}
+
+/**
+ * User.messages
+ */
+export type User$messagesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Message
+   */
+  select?: Prisma.MessageSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Message
+   */
+  omit?: Prisma.MessageOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.MessageInclude<ExtArgs> | null
+  where?: Prisma.MessageWhereInput
+  orderBy?: Prisma.MessageOrderByWithRelationInput | Prisma.MessageOrderByWithRelationInput[]
+  cursor?: Prisma.MessageWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.MessageScalarFieldEnum | Prisma.MessageScalarFieldEnum[]
+}
+
+/**
+ * User.ratings
+ */
+export type User$ratingsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Rating
+   */
+  select?: Prisma.RatingSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Rating
+   */
+  omit?: Prisma.RatingOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.RatingInclude<ExtArgs> | null
+  where?: Prisma.RatingWhereInput
+  orderBy?: Prisma.RatingOrderByWithRelationInput | Prisma.RatingOrderByWithRelationInput[]
+  cursor?: Prisma.RatingWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.RatingScalarFieldEnum | Prisma.RatingScalarFieldEnum[]
+}
+
+/**
+ * User.ratingsReceived
+ */
+export type User$ratingsReceivedArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Rating
+   */
+  select?: Prisma.RatingSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Rating
+   */
+  omit?: Prisma.RatingOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.RatingInclude<ExtArgs> | null
+  where?: Prisma.RatingWhereInput
+  orderBy?: Prisma.RatingOrderByWithRelationInput | Prisma.RatingOrderByWithRelationInput[]
+  cursor?: Prisma.RatingWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.RatingScalarFieldEnum | Prisma.RatingScalarFieldEnum[]
+}
+
+/**
+ * User.blockedUsers
+ */
+export type User$blockedUsersArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Block
+   */
+  select?: Prisma.BlockSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Block
+   */
+  omit?: Prisma.BlockOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.BlockInclude<ExtArgs> | null
+  where?: Prisma.BlockWhereInput
+  orderBy?: Prisma.BlockOrderByWithRelationInput | Prisma.BlockOrderByWithRelationInput[]
+  cursor?: Prisma.BlockWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.BlockScalarFieldEnum | Prisma.BlockScalarFieldEnum[]
+}
+
+/**
+ * User.blockedByUsers
+ */
+export type User$blockedByUsersArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Block
+   */
+  select?: Prisma.BlockSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Block
+   */
+  omit?: Prisma.BlockOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.BlockInclude<ExtArgs> | null
+  where?: Prisma.BlockWhereInput
+  orderBy?: Prisma.BlockOrderByWithRelationInput | Prisma.BlockOrderByWithRelationInput[]
+  cursor?: Prisma.BlockWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.BlockScalarFieldEnum | Prisma.BlockScalarFieldEnum[]
+}
+
+/**
+ * User.reports
+ */
+export type User$reportsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Report
+   */
+  select?: Prisma.ReportSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Report
+   */
+  omit?: Prisma.ReportOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ReportInclude<ExtArgs> | null
+  where?: Prisma.ReportWhereInput
+  orderBy?: Prisma.ReportOrderByWithRelationInput | Prisma.ReportOrderByWithRelationInput[]
+  cursor?: Prisma.ReportWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ReportScalarFieldEnum | Prisma.ReportScalarFieldEnum[]
+}
+
+/**
  * User without action
  */
 export type UserDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1466,4 +3536,8 @@ export type UserDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArg
    * Omit specific fields from the User
    */
   omit?: Prisma.UserOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null
 }

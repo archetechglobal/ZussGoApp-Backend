@@ -9,7 +9,43 @@
 * 🟢 You can import this file directly.
 */
 
+export const TripStatus = {
+  PLANNED: 'PLANNED',
+  ONGOING: 'ONGOING',
+  COMPLETED: 'COMPLETED',
+  CANCELLED: 'CANCELLED'
+} as const
+
+export type TripStatus = (typeof TripStatus)[keyof typeof TripStatus]
 
 
-// This file is empty because there are no enums in the schema.
-export {}
+export const MatchRequestStatus = {
+  PENDING: 'PENDING',
+  ACCEPTED: 'ACCEPTED',
+  REJECTED: 'REJECTED',
+  CANCELLED: 'CANCELLED'
+} as const
+
+export type MatchRequestStatus = (typeof MatchRequestStatus)[keyof typeof MatchRequestStatus]
+
+
+export const ReportReason = {
+  HARASSMENT: 'HARASSMENT',
+  FAKE_PROFILE: 'FAKE_PROFILE',
+  SPAM: 'SPAM',
+  INAPPROPRIATE: 'INAPPROPRIATE',
+  SAFETY: 'SAFETY',
+  OTHER: 'OTHER'
+} as const
+
+export type ReportReason = (typeof ReportReason)[keyof typeof ReportReason]
+
+
+export const ReportStatus = {
+  PENDING: 'PENDING',
+  REVIEWED: 'REVIEWED',
+  RESOLVED: 'RESOLVED',
+  DISMISSED: 'DISMISSED'
+} as const
+
+export type ReportStatus = (typeof ReportStatus)[keyof typeof ReportStatus]

@@ -9,4 +9,13 @@
  * 🟢 You can import this file directly.
  */
 export type * from './models/User.ts'
+export type * from './models/Destination.ts'
+export type * from './models/Trip.ts'
+export type * from './models/MatchRequest.ts'
+export type * from './models/Match.ts'
+export type * from './models/Conversation.ts'
+export type * from './models/Message.ts'
+export type * from './models/Rating.ts'
+export type * from './models/Block.ts'
+export type * from './models/Report.ts'
 export type * from './commonInputTypes.ts'
