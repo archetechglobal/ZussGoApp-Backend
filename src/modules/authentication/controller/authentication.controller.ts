@@ -11,6 +11,7 @@ import { ResendOtpService } from "../service/resend-otp.service.ts";
 import { profileSetupSchema } from "../schemas/profile-setup.schema.ts";
 import { ProfileSetupService } from "../service/profile-setup.service.ts";
 import { UsersService } from "../service/users.service.ts";
+import { AuthenticationRepository } from '../repository/authentication.repository.ts';
 
 export class AuthenticationController {
   private signupService = new SignupService();
@@ -20,6 +21,7 @@ export class AuthenticationController {
   private resendOtpService = new ResendOtpService();
   private profileSetupService = new ProfileSetupService();
   private usersService = new UsersService();
+  private repository = new AuthenticationRepository();
 
   // POST /auth/signup
   signup = async (c: Context) => {
@@ -127,21 +129,26 @@ export class AuthenticationController {
   resetPassword = async (c: Context) => {
     try {
       const body = await c.req.json();
-      const parsedData = resetPasswordSchema.safeParse(body);
+      const { email, newPassword } = body;
 
-      if (!parsedData.success) {
-        return c.json({ success: false, message: "Validation failed", errors: parsedData.error.flatten() }, 400);
+      if (!email || !newPassword) {
+        return c.json({ success: false, message: "Email and new password required" }, 400);
       }
 
-      const result = await this.forgotPasswordService.resetPassword(parsedData.data);
+      if (newPassword.length < 8) {
+        return c.json({ success: false, message: "Password must be at least 8 characters" }, 400);
+      }
 
+      const user = await this.repository.findUserByEmail(email);
+      if (!user) {
+        return c.json({ success: false, message: "User not found" }, 404);
+      }
+
+      const result = await this.forgotPasswordService.resetPassword(user.authUserId, email, newPassword);
       return c.json({ success: true, message: result.message }, 200);
-
     } catch (error) {
       if (error instanceof Error) {
-        if (error.message.includes("Invalid or expired")) {
-          return c.json({ success: false, message: error.message }, 400);
-        }
+        return c.json({ success: false, message: error.message }, 400);
       }
       return c.json({ success: false, message: "Something went wrong" }, 500);
     }
