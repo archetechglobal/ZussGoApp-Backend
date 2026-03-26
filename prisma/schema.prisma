@@ -21,6 +21,16 @@ model User {
   profilePhotoUrl    String?
   isProfileCompleted Boolean  @default(false)
   isVerified         Boolean  @default(false)
+
+  // Mindset fields
+  schedule           String?  // "Early Bird" | "Night Owl"
+  socialEnergy       String?  // "Social Butterfly" | "Ambivert" | "Introvert"
+  planningStyle      String?  // "Planner" | "Spontaneous"
+  energyLevel        String?  // "Chill" | "Energetic" | "Depends"
+  values             String[] // ["Eco-conscious", "Non-smoker", etc.]
+  interests          String[] // ["Photography", "Music", etc.]
+  travelPriority     String?  // "Foodie-first" | "Adventure" | etc.
+
   createdAt          DateTime @default(now())
   updatedAt          DateTime @updatedAt
 
@@ -35,6 +45,9 @@ model User {
   blockedUsers       Block[]          @relation("BlockedByUser")
   blockedByUsers     Block[]          @relation("BlockedUser")
   reports            Report[]
+  groupMemberships   GroupMember[]
+  emergencyContacts  EmergencyContact[]
+  activeTrips        ActiveTrip[]
 
   @@map("users")
 }
@@ -52,6 +65,7 @@ model Destination {
   createdAt   DateTime @default(now())
 
   trips       Trip[]
+  groups      GroupTrip[]
 
   @@map("destinations")
 }
@@ -128,12 +142,14 @@ model Match {
 
 model Conversation {
   id            String    @id @default(uuid())
-  matchId       String    @unique
+  matchId       String?   @unique
+  groupId       String?   @unique
   lastMessage   String?
   lastMessageAt DateTime?
   createdAt     DateTime  @default(now())
 
-  match         Match     @relation(fields: [matchId], references: [id], onDelete: Cascade)
+  match         Match?    @relation(fields: [matchId], references: [id], onDelete: Cascade)
+  group         GroupTrip? @relation(fields: [groupId], references: [id], onDelete: Cascade)
   messages      Message[]
 
   @@map("conversations")
@@ -157,7 +173,8 @@ model Rating {
   id        String   @id @default(uuid())
   raterId   String
   ratedId   String
-  tripId    String
+  tripId    String?
+  groupId   String?
   score     Int
   review    String?
   moodTags  String[]
@@ -212,4 +229,122 @@ enum ReportStatus {
   REVIEWED
   RESOLVED
   DISMISSED
+}
+
+// ─── GROUP TRIPS ───
+
+model GroupTrip {
+  id            String      @id @default(uuid())
+  name          String
+  destinationId String
+  startDate     DateTime
+  endDate       DateTime
+  budget        String?
+  maxMembers    Int         @default(6)
+  description   String?
+  creatorId     String
+  tags          String[]
+  genderFilter  String?     // "Everyone" | "Women only" | "Men only"
+  ageMin        Int?
+  ageMax        Int?
+  status        GroupStatus @default(OPEN)
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+
+  destination   Destination  @relation(fields: [destinationId], references: [id])
+  members       GroupMember[]
+  conversation  Conversation?
+
+  @@map("group_trips")
+}
+
+enum GroupStatus {
+  OPEN
+  FULL
+  ONGOING
+  COMPLETED
+  CANCELLED
+}
+
+model GroupMember {
+  id       String          @id @default(uuid())
+  groupId  String
+  userId   String
+  role     GroupRole        @default(MEMBER)
+  status   GroupMemberStatus @default(PENDING)
+  joinedAt DateTime        @default(now())
+
+  group    GroupTrip        @relation(fields: [groupId], references: [id], onDelete: Cascade)
+  user     User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([groupId, userId])
+  @@map("group_members")
+}
+
+enum GroupRole {
+  CREATOR
+  ADMIN
+  MEMBER
+}
+
+enum GroupMemberStatus {
+  PENDING
+  ACCEPTED
+  REJECTED
+}
+
+// ─── SAFETY & TRACKING ───
+
+model ActiveTrip {
+  id            String    @id @default(uuid())
+  userId        String
+  tripId        String?
+  groupId       String?
+  destination   String
+  startDate     DateTime
+  endDate       DateTime
+  status        ActiveTripStatus @default(ACTIVE)
+  lastLatitude  Float?
+  lastLongitude Float?
+  lastSeenAt    DateTime?
+  createdAt     DateTime  @default(now())
+
+  user          User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("active_trips")
+}
+
+enum ActiveTripStatus {
+  ACTIVE
+  COMPLETED
+  SOS
+}
+
+model EmergencyContact {
+  id       String @id @default(uuid())
+  userId   String
+  name     String
+  phone    String
+  relation String
+
+  user     User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("emergency_contacts")
+}
+
+model Event {
+  id              String   @id @default(uuid())
+  name            String
+  emoji           String
+  destination     String
+  destinationSlug String?
+  dates           String
+  month           Int
+  year            Int?
+  tag             String
+  description     String?
+  isActive        Boolean  @default(true)
+  createdAt       DateTime @default(now())
+
+  @@map("events")
 }

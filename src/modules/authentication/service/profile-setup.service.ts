@@ -5,7 +5,6 @@ export class ProfileSetupService {
 
   execute = async (userId: string, input: ProfileSetupInput) => {
 
-    // Update the user's profile in our database
     const updatedUser = await prisma.user.update({
       where: { id: userId },
       data: {
@@ -15,6 +14,14 @@ export class ProfileSetupService {
         travelStyle: input.travelStyle || null,
         bio: input.bio || null,
         isProfileCompleted: true,
+        // Mindset fields
+        schedule: input.schedule || undefined,
+        socialEnergy: input.socialEnergy || undefined,
+        planningStyle: input.planningStyle || undefined,
+        energyLevel: input.energyLevel || undefined,
+        values: input.values || undefined,
+        interests: input.interests || undefined,
+        travelPriority: input.travelPriority || undefined,
       },
     });
 
@@ -25,8 +32,16 @@ export class ProfileSetupService {
       gender: updatedUser.gender,
       age: updatedUser.age,
       city: updatedUser.city,
+      bio: updatedUser.bio,
       travelStyle: updatedUser.travelStyle,
       isProfileCompleted: updatedUser.isProfileCompleted,
+      schedule: updatedUser.schedule,
+      socialEnergy: updatedUser.socialEnergy,
+      planningStyle: updatedUser.planningStyle,
+      energyLevel: updatedUser.energyLevel,
+      values: updatedUser.values,
+      interests: updatedUser.interests,
+      travelPriority: updatedUser.travelPriority,
     };
   };
 }

@@ -47,6 +47,11 @@ export type UserMinAggregateOutputType = {
   profilePhotoUrl: string | null
   isProfileCompleted: boolean | null
   isVerified: boolean | null
+  schedule: string | null
+  socialEnergy: string | null
+  planningStyle: string | null
+  energyLevel: string | null
+  travelPriority: string | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -64,6 +69,11 @@ export type UserMaxAggregateOutputType = {
   profilePhotoUrl: string | null
   isProfileCompleted: boolean | null
   isVerified: boolean | null
+  schedule: string | null
+  socialEnergy: string | null
+  planningStyle: string | null
+  energyLevel: string | null
+  travelPriority: string | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -81,6 +91,13 @@ export type UserCountAggregateOutputType = {
   profilePhotoUrl: number
   isProfileCompleted: number
   isVerified: number
+  schedule: number
+  socialEnergy: number
+  planningStyle: number
+  energyLevel: number
+  values: number
+  interests: number
+  travelPriority: number
   createdAt: number
   updatedAt: number
   _all: number
@@ -108,6 +125,11 @@ export type UserMinAggregateInputType = {
   profilePhotoUrl?: true
   isProfileCompleted?: true
   isVerified?: true
+  schedule?: true
+  socialEnergy?: true
+  planningStyle?: true
+  energyLevel?: true
+  travelPriority?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -125,6 +147,11 @@ export type UserMaxAggregateInputType = {
   profilePhotoUrl?: true
   isProfileCompleted?: true
   isVerified?: true
+  schedule?: true
+  socialEnergy?: true
+  planningStyle?: true
+  energyLevel?: true
+  travelPriority?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -142,6 +169,13 @@ export type UserCountAggregateInputType = {
   profilePhotoUrl?: true
   isProfileCompleted?: true
   isVerified?: true
+  schedule?: true
+  socialEnergy?: true
+  planningStyle?: true
+  energyLevel?: true
+  values?: true
+  interests?: true
+  travelPriority?: true
   createdAt?: true
   updatedAt?: true
   _all?: true
@@ -246,6 +280,13 @@ export type UserGroupByOutputType = {
   profilePhotoUrl: string | null
   isProfileCompleted: boolean
   isVerified: boolean
+  schedule: string | null
+  socialEnergy: string | null
+  planningStyle: string | null
+  energyLevel: string | null
+  values: string[]
+  interests: string[]
+  travelPriority: string | null
   createdAt: Date
   updatedAt: Date
   _count: UserCountAggregateOutputType | null
@@ -286,6 +327,13 @@ export type UserWhereInput = {
   profilePhotoUrl?: Prisma.StringNullableFilter<"User"> | string | null
   isProfileCompleted?: Prisma.BoolFilter<"User"> | boolean
   isVerified?: Prisma.BoolFilter<"User"> | boolean
+  schedule?: Prisma.StringNullableFilter<"User"> | string | null
+  socialEnergy?: Prisma.StringNullableFilter<"User"> | string | null
+  planningStyle?: Prisma.StringNullableFilter<"User"> | string | null
+  energyLevel?: Prisma.StringNullableFilter<"User"> | string | null
+  values?: Prisma.StringNullableListFilter<"User">
+  interests?: Prisma.StringNullableListFilter<"User">
+  travelPriority?: Prisma.StringNullableFilter<"User"> | string | null
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
   trips?: Prisma.TripListRelationFilter
@@ -299,6 +347,9 @@ export type UserWhereInput = {
   blockedUsers?: Prisma.BlockListRelationFilter
   blockedByUsers?: Prisma.BlockListRelationFilter
   reports?: Prisma.ReportListRelationFilter
+  groupMemberships?: Prisma.GroupMemberListRelationFilter
+  emergencyContacts?: Prisma.EmergencyContactListRelationFilter
+  activeTrips?: Prisma.ActiveTripListRelationFilter
 }
 
 export type UserOrderByWithRelationInput = {
@@ -314,6 +365,13 @@ export type UserOrderByWithRelationInput = {
   profilePhotoUrl?: Prisma.SortOrderInput | Prisma.SortOrder
   isProfileCompleted?: Prisma.SortOrder
   isVerified?: Prisma.SortOrder
+  schedule?: Prisma.SortOrderInput | Prisma.SortOrder
+  socialEnergy?: Prisma.SortOrderInput | Prisma.SortOrder
+  planningStyle?: Prisma.SortOrderInput | Prisma.SortOrder
+  energyLevel?: Prisma.SortOrderInput | Prisma.SortOrder
+  values?: Prisma.SortOrder
+  interests?: Prisma.SortOrder
+  travelPriority?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   trips?: Prisma.TripOrderByRelationAggregateInput
@@ -327,6 +385,9 @@ export type UserOrderByWithRelationInput = {
   blockedUsers?: Prisma.BlockOrderByRelationAggregateInput
   blockedByUsers?: Prisma.BlockOrderByRelationAggregateInput
   reports?: Prisma.ReportOrderByRelationAggregateInput
+  groupMemberships?: Prisma.GroupMemberOrderByRelationAggregateInput
+  emergencyContacts?: Prisma.EmergencyContactOrderByRelationAggregateInput
+  activeTrips?: Prisma.ActiveTripOrderByRelationAggregateInput
 }
 
 export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -345,6 +406,13 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   profilePhotoUrl?: Prisma.StringNullableFilter<"User"> | string | null
   isProfileCompleted?: Prisma.BoolFilter<"User"> | boolean
   isVerified?: Prisma.BoolFilter<"User"> | boolean
+  schedule?: Prisma.StringNullableFilter<"User"> | string | null
+  socialEnergy?: Prisma.StringNullableFilter<"User"> | string | null
+  planningStyle?: Prisma.StringNullableFilter<"User"> | string | null
+  energyLevel?: Prisma.StringNullableFilter<"User"> | string | null
+  values?: Prisma.StringNullableListFilter<"User">
+  interests?: Prisma.StringNullableListFilter<"User">
+  travelPriority?: Prisma.StringNullableFilter<"User"> | string | null
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
   trips?: Prisma.TripListRelationFilter
@@ -358,6 +426,9 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   blockedUsers?: Prisma.BlockListRelationFilter
   blockedByUsers?: Prisma.BlockListRelationFilter
   reports?: Prisma.ReportListRelationFilter
+  groupMemberships?: Prisma.GroupMemberListRelationFilter
+  emergencyContacts?: Prisma.EmergencyContactListRelationFilter
+  activeTrips?: Prisma.ActiveTripListRelationFilter
 }, "id" | "authUserId" | "email">
 
 export type UserOrderByWithAggregationInput = {
@@ -373,6 +444,13 @@ export type UserOrderByWithAggregationInput = {
   profilePhotoUrl?: Prisma.SortOrderInput | Prisma.SortOrder
   isProfileCompleted?: Prisma.SortOrder
   isVerified?: Prisma.SortOrder
+  schedule?: Prisma.SortOrderInput | Prisma.SortOrder
+  socialEnergy?: Prisma.SortOrderInput | Prisma.SortOrder
+  planningStyle?: Prisma.SortOrderInput | Prisma.SortOrder
+  energyLevel?: Prisma.SortOrderInput | Prisma.SortOrder
+  values?: Prisma.SortOrder
+  interests?: Prisma.SortOrder
+  travelPriority?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.UserCountOrderByAggregateInput
@@ -398,6 +476,13 @@ export type UserScalarWhereWithAggregatesInput = {
   profilePhotoUrl?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   isProfileCompleted?: Prisma.BoolWithAggregatesFilter<"User"> | boolean
   isVerified?: Prisma.BoolWithAggregatesFilter<"User"> | boolean
+  schedule?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
+  socialEnergy?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
+  planningStyle?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
+  energyLevel?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
+  values?: Prisma.StringNullableListFilter<"User">
+  interests?: Prisma.StringNullableListFilter<"User">
+  travelPriority?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"User"> | Date | string
 }
@@ -415,6 +500,13 @@ export type UserCreateInput = {
   profilePhotoUrl?: string | null
   isProfileCompleted?: boolean
   isVerified?: boolean
+  schedule?: string | null
+  socialEnergy?: string | null
+  planningStyle?: string | null
+  energyLevel?: string | null
+  values?: Prisma.UserCreatevaluesInput | string[]
+  interests?: Prisma.UserCreateinterestsInput | string[]
+  travelPriority?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   trips?: Prisma.TripCreateNestedManyWithoutUserInput
@@ -428,6 +520,9 @@ export type UserCreateInput = {
   blockedUsers?: Prisma.BlockCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.BlockCreateNestedManyWithoutBlockedInput
   reports?: Prisma.ReportCreateNestedManyWithoutReporterInput
+  groupMemberships?: Prisma.GroupMemberCreateNestedManyWithoutUserInput
+  emergencyContacts?: Prisma.EmergencyContactCreateNestedManyWithoutUserInput
+  activeTrips?: Prisma.ActiveTripCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateInput = {
@@ -443,6 +538,13 @@ export type UserUncheckedCreateInput = {
   profilePhotoUrl?: string | null
   isProfileCompleted?: boolean
   isVerified?: boolean
+  schedule?: string | null
+  socialEnergy?: string | null
+  planningStyle?: string | null
+  energyLevel?: string | null
+  values?: Prisma.UserCreatevaluesInput | string[]
+  interests?: Prisma.UserCreateinterestsInput | string[]
+  travelPriority?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   trips?: Prisma.TripUncheckedCreateNestedManyWithoutUserInput
@@ -456,6 +558,9 @@ export type UserUncheckedCreateInput = {
   blockedUsers?: Prisma.BlockUncheckedCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.BlockUncheckedCreateNestedManyWithoutBlockedInput
   reports?: Prisma.ReportUncheckedCreateNestedManyWithoutReporterInput
+  groupMemberships?: Prisma.GroupMemberUncheckedCreateNestedManyWithoutUserInput
+  emergencyContacts?: Prisma.EmergencyContactUncheckedCreateNestedManyWithoutUserInput
+  activeTrips?: Prisma.ActiveTripUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserUpdateInput = {
@@ -471,6 +576,13 @@ export type UserUpdateInput = {
   profilePhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isProfileCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  schedule?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  socialEnergy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  planningStyle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  energyLevel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  values?: Prisma.UserUpdatevaluesInput | string[]
+  interests?: Prisma.UserUpdateinterestsInput | string[]
+  travelPriority?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   trips?: Prisma.TripUpdateManyWithoutUserNestedInput
@@ -484,6 +596,9 @@ export type UserUpdateInput = {
   blockedUsers?: Prisma.BlockUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.BlockUpdateManyWithoutBlockedNestedInput
   reports?: Prisma.ReportUpdateManyWithoutReporterNestedInput
+  groupMemberships?: Prisma.GroupMemberUpdateManyWithoutUserNestedInput
+  emergencyContacts?: Prisma.EmergencyContactUpdateManyWithoutUserNestedInput
+  activeTrips?: Prisma.ActiveTripUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateInput = {
@@ -499,6 +614,13 @@ export type UserUncheckedUpdateInput = {
   profilePhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isProfileCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  schedule?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  socialEnergy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  planningStyle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  energyLevel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  values?: Prisma.UserUpdatevaluesInput | string[]
+  interests?: Prisma.UserUpdateinterestsInput | string[]
+  travelPriority?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   trips?: Prisma.TripUncheckedUpdateManyWithoutUserNestedInput
@@ -512,6 +634,9 @@ export type UserUncheckedUpdateInput = {
   blockedUsers?: Prisma.BlockUncheckedUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.BlockUncheckedUpdateManyWithoutBlockedNestedInput
   reports?: Prisma.ReportUncheckedUpdateManyWithoutReporterNestedInput
+  groupMemberships?: Prisma.GroupMemberUncheckedUpdateManyWithoutUserNestedInput
+  emergencyContacts?: Prisma.EmergencyContactUncheckedUpdateManyWithoutUserNestedInput
+  activeTrips?: Prisma.ActiveTripUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateManyInput = {
@@ -527,6 +652,13 @@ export type UserCreateManyInput = {
   profilePhotoUrl?: string | null
   isProfileCompleted?: boolean
   isVerified?: boolean
+  schedule?: string | null
+  socialEnergy?: string | null
+  planningStyle?: string | null
+  energyLevel?: string | null
+  values?: Prisma.UserCreatevaluesInput | string[]
+  interests?: Prisma.UserCreateinterestsInput | string[]
+  travelPriority?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -544,6 +676,13 @@ export type UserUpdateManyMutationInput = {
   profilePhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isProfileCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  schedule?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  socialEnergy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  planningStyle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  energyLevel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  values?: Prisma.UserUpdatevaluesInput | string[]
+  interests?: Prisma.UserUpdateinterestsInput | string[]
+  travelPriority?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -561,8 +700,23 @@ export type UserUncheckedUpdateManyInput = {
   profilePhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isProfileCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  schedule?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  socialEnergy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  planningStyle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  energyLevel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  values?: Prisma.UserUpdatevaluesInput | string[]
+  interests?: Prisma.UserUpdateinterestsInput | string[]
+  travelPriority?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type StringNullableListFilter<$PrismaModel = never> = {
+  equals?: string[] | Prisma.ListStringFieldRefInput<$PrismaModel> | null
+  has?: string | Prisma.StringFieldRefInput<$PrismaModel> | null
+  hasEvery?: string[] | Prisma.ListStringFieldRefInput<$PrismaModel>
+  hasSome?: string[] | Prisma.ListStringFieldRefInput<$PrismaModel>
+  isEmpty?: boolean
 }
 
 export type UserCountOrderByAggregateInput = {
@@ -578,6 +732,13 @@ export type UserCountOrderByAggregateInput = {
   profilePhotoUrl?: Prisma.SortOrder
   isProfileCompleted?: Prisma.SortOrder
   isVerified?: Prisma.SortOrder
+  schedule?: Prisma.SortOrder
+  socialEnergy?: Prisma.SortOrder
+  planningStyle?: Prisma.SortOrder
+  energyLevel?: Prisma.SortOrder
+  values?: Prisma.SortOrder
+  interests?: Prisma.SortOrder
+  travelPriority?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -599,6 +760,11 @@ export type UserMaxOrderByAggregateInput = {
   profilePhotoUrl?: Prisma.SortOrder
   isProfileCompleted?: Prisma.SortOrder
   isVerified?: Prisma.SortOrder
+  schedule?: Prisma.SortOrder
+  socialEnergy?: Prisma.SortOrder
+  planningStyle?: Prisma.SortOrder
+  energyLevel?: Prisma.SortOrder
+  travelPriority?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -616,6 +782,11 @@ export type UserMinOrderByAggregateInput = {
   profilePhotoUrl?: Prisma.SortOrder
   isProfileCompleted?: Prisma.SortOrder
   isVerified?: Prisma.SortOrder
+  schedule?: Prisma.SortOrder
+  socialEnergy?: Prisma.SortOrder
+  planningStyle?: Prisma.SortOrder
+  energyLevel?: Prisma.SortOrder
+  travelPriority?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -627,6 +798,14 @@ export type UserSumOrderByAggregateInput = {
 export type UserScalarRelationFilter = {
   is?: Prisma.UserWhereInput
   isNot?: Prisma.UserWhereInput
+}
+
+export type UserCreatevaluesInput = {
+  set: string[]
+}
+
+export type UserCreateinterestsInput = {
+  set: string[]
 }
 
 export type StringFieldUpdateOperationsInput = {
@@ -647,6 +826,16 @@ export type NullableIntFieldUpdateOperationsInput = {
 
 export type BoolFieldUpdateOperationsInput = {
   set?: boolean
+}
+
+export type UserUpdatevaluesInput = {
+  set?: string[]
+  push?: string | string[]
+}
+
+export type UserUpdateinterestsInput = {
+  set?: string[]
+  push?: string | string[]
 }
 
 export type DateTimeFieldUpdateOperationsInput = {
@@ -807,6 +996,48 @@ export type UserUpdateOneRequiredWithoutReportsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutReportsInput, Prisma.UserUpdateWithoutReportsInput>, Prisma.UserUncheckedUpdateWithoutReportsInput>
 }
 
+export type UserCreateNestedOneWithoutGroupMembershipsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutGroupMembershipsInput, Prisma.UserUncheckedCreateWithoutGroupMembershipsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutGroupMembershipsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutGroupMembershipsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutGroupMembershipsInput, Prisma.UserUncheckedCreateWithoutGroupMembershipsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutGroupMembershipsInput
+  upsert?: Prisma.UserUpsertWithoutGroupMembershipsInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutGroupMembershipsInput, Prisma.UserUpdateWithoutGroupMembershipsInput>, Prisma.UserUncheckedUpdateWithoutGroupMembershipsInput>
+}
+
+export type UserCreateNestedOneWithoutActiveTripsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutActiveTripsInput, Prisma.UserUncheckedCreateWithoutActiveTripsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutActiveTripsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutActiveTripsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutActiveTripsInput, Prisma.UserUncheckedCreateWithoutActiveTripsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutActiveTripsInput
+  upsert?: Prisma.UserUpsertWithoutActiveTripsInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutActiveTripsInput, Prisma.UserUpdateWithoutActiveTripsInput>, Prisma.UserUncheckedUpdateWithoutActiveTripsInput>
+}
+
+export type UserCreateNestedOneWithoutEmergencyContactsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutEmergencyContactsInput, Prisma.UserUncheckedCreateWithoutEmergencyContactsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutEmergencyContactsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutEmergencyContactsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutEmergencyContactsInput, Prisma.UserUncheckedCreateWithoutEmergencyContactsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutEmergencyContactsInput
+  upsert?: Prisma.UserUpsertWithoutEmergencyContactsInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutEmergencyContactsInput, Prisma.UserUpdateWithoutEmergencyContactsInput>, Prisma.UserUncheckedUpdateWithoutEmergencyContactsInput>
+}
+
 export type UserCreateWithoutTripsInput = {
   id?: string
   authUserId: string
@@ -820,6 +1051,13 @@ export type UserCreateWithoutTripsInput = {
   profilePhotoUrl?: string | null
   isProfileCompleted?: boolean
   isVerified?: boolean
+  schedule?: string | null
+  socialEnergy?: string | null
+  planningStyle?: string | null
+  energyLevel?: string | null
+  values?: Prisma.UserCreatevaluesInput | string[]
+  interests?: Prisma.UserCreateinterestsInput | string[]
+  travelPriority?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   sentRequests?: Prisma.MatchRequestCreateNestedManyWithoutSenderInput
@@ -832,6 +1070,9 @@ export type UserCreateWithoutTripsInput = {
   blockedUsers?: Prisma.BlockCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.BlockCreateNestedManyWithoutBlockedInput
   reports?: Prisma.ReportCreateNestedManyWithoutReporterInput
+  groupMemberships?: Prisma.GroupMemberCreateNestedManyWithoutUserInput
+  emergencyContacts?: Prisma.EmergencyContactCreateNestedManyWithoutUserInput
+  activeTrips?: Prisma.ActiveTripCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutTripsInput = {
@@ -847,6 +1088,13 @@ export type UserUncheckedCreateWithoutTripsInput = {
   profilePhotoUrl?: string | null
   isProfileCompleted?: boolean
   isVerified?: boolean
+  schedule?: string | null
+  socialEnergy?: string | null
+  planningStyle?: string | null
+  energyLevel?: string | null
+  values?: Prisma.UserCreatevaluesInput | string[]
+  interests?: Prisma.UserCreateinterestsInput | string[]
+  travelPriority?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   sentRequests?: Prisma.MatchRequestUncheckedCreateNestedManyWithoutSenderInput
@@ -859,6 +1107,9 @@ export type UserUncheckedCreateWithoutTripsInput = {
   blockedUsers?: Prisma.BlockUncheckedCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.BlockUncheckedCreateNestedManyWithoutBlockedInput
   reports?: Prisma.ReportUncheckedCreateNestedManyWithoutReporterInput
+  groupMemberships?: Prisma.GroupMemberUncheckedCreateNestedManyWithoutUserInput
+  emergencyContacts?: Prisma.EmergencyContactUncheckedCreateNestedManyWithoutUserInput
+  activeTrips?: Prisma.ActiveTripUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutTripsInput = {
@@ -890,6 +1141,13 @@ export type UserUpdateWithoutTripsInput = {
   profilePhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isProfileCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  schedule?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  socialEnergy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  planningStyle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  energyLevel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  values?: Prisma.UserUpdatevaluesInput | string[]
+  interests?: Prisma.UserUpdateinterestsInput | string[]
+  travelPriority?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   sentRequests?: Prisma.MatchRequestUpdateManyWithoutSenderNestedInput
@@ -902,6 +1160,9 @@ export type UserUpdateWithoutTripsInput = {
   blockedUsers?: Prisma.BlockUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.BlockUpdateManyWithoutBlockedNestedInput
   reports?: Prisma.ReportUpdateManyWithoutReporterNestedInput
+  groupMemberships?: Prisma.GroupMemberUpdateManyWithoutUserNestedInput
+  emergencyContacts?: Prisma.EmergencyContactUpdateManyWithoutUserNestedInput
+  activeTrips?: Prisma.ActiveTripUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutTripsInput = {
@@ -917,6 +1178,13 @@ export type UserUncheckedUpdateWithoutTripsInput = {
   profilePhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isProfileCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  schedule?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  socialEnergy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  planningStyle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  energyLevel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  values?: Prisma.UserUpdatevaluesInput | string[]
+  interests?: Prisma.UserUpdateinterestsInput | string[]
+  travelPriority?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   sentRequests?: Prisma.MatchRequestUncheckedUpdateManyWithoutSenderNestedInput
@@ -929,6 +1197,9 @@ export type UserUncheckedUpdateWithoutTripsInput = {
   blockedUsers?: Prisma.BlockUncheckedUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.BlockUncheckedUpdateManyWithoutBlockedNestedInput
   reports?: Prisma.ReportUncheckedUpdateManyWithoutReporterNestedInput
+  groupMemberships?: Prisma.GroupMemberUncheckedUpdateManyWithoutUserNestedInput
+  emergencyContacts?: Prisma.EmergencyContactUncheckedUpdateManyWithoutUserNestedInput
+  activeTrips?: Prisma.ActiveTripUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutSentRequestsInput = {
@@ -944,6 +1215,13 @@ export type UserCreateWithoutSentRequestsInput = {
   profilePhotoUrl?: string | null
   isProfileCompleted?: boolean
   isVerified?: boolean
+  schedule?: string | null
+  socialEnergy?: string | null
+  planningStyle?: string | null
+  energyLevel?: string | null
+  values?: Prisma.UserCreatevaluesInput | string[]
+  interests?: Prisma.UserCreateinterestsInput | string[]
+  travelPriority?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   trips?: Prisma.TripCreateNestedManyWithoutUserInput
@@ -956,6 +1234,9 @@ export type UserCreateWithoutSentRequestsInput = {
   blockedUsers?: Prisma.BlockCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.BlockCreateNestedManyWithoutBlockedInput
   reports?: Prisma.ReportCreateNestedManyWithoutReporterInput
+  groupMemberships?: Prisma.GroupMemberCreateNestedManyWithoutUserInput
+  emergencyContacts?: Prisma.EmergencyContactCreateNestedManyWithoutUserInput
+  activeTrips?: Prisma.ActiveTripCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutSentRequestsInput = {
@@ -971,6 +1252,13 @@ export type UserUncheckedCreateWithoutSentRequestsInput = {
   profilePhotoUrl?: string | null
   isProfileCompleted?: boolean
   isVerified?: boolean
+  schedule?: string | null
+  socialEnergy?: string | null
+  planningStyle?: string | null
+  energyLevel?: string | null
+  values?: Prisma.UserCreatevaluesInput | string[]
+  interests?: Prisma.UserCreateinterestsInput | string[]
+  travelPriority?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   trips?: Prisma.TripUncheckedCreateNestedManyWithoutUserInput
@@ -983,6 +1271,9 @@ export type UserUncheckedCreateWithoutSentRequestsInput = {
   blockedUsers?: Prisma.BlockUncheckedCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.BlockUncheckedCreateNestedManyWithoutBlockedInput
   reports?: Prisma.ReportUncheckedCreateNestedManyWithoutReporterInput
+  groupMemberships?: Prisma.GroupMemberUncheckedCreateNestedManyWithoutUserInput
+  emergencyContacts?: Prisma.EmergencyContactUncheckedCreateNestedManyWithoutUserInput
+  activeTrips?: Prisma.ActiveTripUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutSentRequestsInput = {
@@ -1003,6 +1294,13 @@ export type UserCreateWithoutReceivedRequestsInput = {
   profilePhotoUrl?: string | null
   isProfileCompleted?: boolean
   isVerified?: boolean
+  schedule?: string | null
+  socialEnergy?: string | null
+  planningStyle?: string | null
+  energyLevel?: string | null
+  values?: Prisma.UserCreatevaluesInput | string[]
+  interests?: Prisma.UserCreateinterestsInput | string[]
+  travelPriority?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   trips?: Prisma.TripCreateNestedManyWithoutUserInput
@@ -1015,6 +1313,9 @@ export type UserCreateWithoutReceivedRequestsInput = {
   blockedUsers?: Prisma.BlockCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.BlockCreateNestedManyWithoutBlockedInput
   reports?: Prisma.ReportCreateNestedManyWithoutReporterInput
+  groupMemberships?: Prisma.GroupMemberCreateNestedManyWithoutUserInput
+  emergencyContacts?: Prisma.EmergencyContactCreateNestedManyWithoutUserInput
+  activeTrips?: Prisma.ActiveTripCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutReceivedRequestsInput = {
@@ -1030,6 +1331,13 @@ export type UserUncheckedCreateWithoutReceivedRequestsInput = {
   profilePhotoUrl?: string | null
   isProfileCompleted?: boolean
   isVerified?: boolean
+  schedule?: string | null
+  socialEnergy?: string | null
+  planningStyle?: string | null
+  energyLevel?: string | null
+  values?: Prisma.UserCreatevaluesInput | string[]
+  interests?: Prisma.UserCreateinterestsInput | string[]
+  travelPriority?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   trips?: Prisma.TripUncheckedCreateNestedManyWithoutUserInput
@@ -1042,6 +1350,9 @@ export type UserUncheckedCreateWithoutReceivedRequestsInput = {
   blockedUsers?: Prisma.BlockUncheckedCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.BlockUncheckedCreateNestedManyWithoutBlockedInput
   reports?: Prisma.ReportUncheckedCreateNestedManyWithoutReporterInput
+  groupMemberships?: Prisma.GroupMemberUncheckedCreateNestedManyWithoutUserInput
+  emergencyContacts?: Prisma.EmergencyContactUncheckedCreateNestedManyWithoutUserInput
+  activeTrips?: Prisma.ActiveTripUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutReceivedRequestsInput = {
@@ -1073,6 +1384,13 @@ export type UserUpdateWithoutSentRequestsInput = {
   profilePhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isProfileCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  schedule?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  socialEnergy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  planningStyle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  energyLevel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  values?: Prisma.UserUpdatevaluesInput | string[]
+  interests?: Prisma.UserUpdateinterestsInput | string[]
+  travelPriority?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   trips?: Prisma.TripUpdateManyWithoutUserNestedInput
@@ -1085,6 +1403,9 @@ export type UserUpdateWithoutSentRequestsInput = {
   blockedUsers?: Prisma.BlockUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.BlockUpdateManyWithoutBlockedNestedInput
   reports?: Prisma.ReportUpdateManyWithoutReporterNestedInput
+  groupMemberships?: Prisma.GroupMemberUpdateManyWithoutUserNestedInput
+  emergencyContacts?: Prisma.EmergencyContactUpdateManyWithoutUserNestedInput
+  activeTrips?: Prisma.ActiveTripUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutSentRequestsInput = {
@@ -1100,6 +1421,13 @@ export type UserUncheckedUpdateWithoutSentRequestsInput = {
   profilePhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isProfileCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  schedule?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  socialEnergy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  planningStyle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  energyLevel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  values?: Prisma.UserUpdatevaluesInput | string[]
+  interests?: Prisma.UserUpdateinterestsInput | string[]
+  travelPriority?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   trips?: Prisma.TripUncheckedUpdateManyWithoutUserNestedInput
@@ -1112,6 +1440,9 @@ export type UserUncheckedUpdateWithoutSentRequestsInput = {
   blockedUsers?: Prisma.BlockUncheckedUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.BlockUncheckedUpdateManyWithoutBlockedNestedInput
   reports?: Prisma.ReportUncheckedUpdateManyWithoutReporterNestedInput
+  groupMemberships?: Prisma.GroupMemberUncheckedUpdateManyWithoutUserNestedInput
+  emergencyContacts?: Prisma.EmergencyContactUncheckedUpdateManyWithoutUserNestedInput
+  activeTrips?: Prisma.ActiveTripUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserUpsertWithoutReceivedRequestsInput = {
@@ -1138,6 +1469,13 @@ export type UserUpdateWithoutReceivedRequestsInput = {
   profilePhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isProfileCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  schedule?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  socialEnergy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  planningStyle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  energyLevel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  values?: Prisma.UserUpdatevaluesInput | string[]
+  interests?: Prisma.UserUpdateinterestsInput | string[]
+  travelPriority?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   trips?: Prisma.TripUpdateManyWithoutUserNestedInput
@@ -1150,6 +1488,9 @@ export type UserUpdateWithoutReceivedRequestsInput = {
   blockedUsers?: Prisma.BlockUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.BlockUpdateManyWithoutBlockedNestedInput
   reports?: Prisma.ReportUpdateManyWithoutReporterNestedInput
+  groupMemberships?: Prisma.GroupMemberUpdateManyWithoutUserNestedInput
+  emergencyContacts?: Prisma.EmergencyContactUpdateManyWithoutUserNestedInput
+  activeTrips?: Prisma.ActiveTripUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutReceivedRequestsInput = {
@@ -1165,6 +1506,13 @@ export type UserUncheckedUpdateWithoutReceivedRequestsInput = {
   profilePhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isProfileCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  schedule?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  socialEnergy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  planningStyle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  energyLevel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  values?: Prisma.UserUpdatevaluesInput | string[]
+  interests?: Prisma.UserUpdateinterestsInput | string[]
+  travelPriority?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   trips?: Prisma.TripUncheckedUpdateManyWithoutUserNestedInput
@@ -1177,6 +1525,9 @@ export type UserUncheckedUpdateWithoutReceivedRequestsInput = {
   blockedUsers?: Prisma.BlockUncheckedUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.BlockUncheckedUpdateManyWithoutBlockedNestedInput
   reports?: Prisma.ReportUncheckedUpdateManyWithoutReporterNestedInput
+  groupMemberships?: Prisma.GroupMemberUncheckedUpdateManyWithoutUserNestedInput
+  emergencyContacts?: Prisma.EmergencyContactUncheckedUpdateManyWithoutUserNestedInput
+  activeTrips?: Prisma.ActiveTripUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutMatchesAsUserAInput = {
@@ -1192,6 +1543,13 @@ export type UserCreateWithoutMatchesAsUserAInput = {
   profilePhotoUrl?: string | null
   isProfileCompleted?: boolean
   isVerified?: boolean
+  schedule?: string | null
+  socialEnergy?: string | null
+  planningStyle?: string | null
+  energyLevel?: string | null
+  values?: Prisma.UserCreatevaluesInput | string[]
+  interests?: Prisma.UserCreateinterestsInput | string[]
+  travelPriority?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   trips?: Prisma.TripCreateNestedManyWithoutUserInput
@@ -1204,6 +1562,9 @@ export type UserCreateWithoutMatchesAsUserAInput = {
   blockedUsers?: Prisma.BlockCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.BlockCreateNestedManyWithoutBlockedInput
   reports?: Prisma.ReportCreateNestedManyWithoutReporterInput
+  groupMemberships?: Prisma.GroupMemberCreateNestedManyWithoutUserInput
+  emergencyContacts?: Prisma.EmergencyContactCreateNestedManyWithoutUserInput
+  activeTrips?: Prisma.ActiveTripCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutMatchesAsUserAInput = {
@@ -1219,6 +1580,13 @@ export type UserUncheckedCreateWithoutMatchesAsUserAInput = {
   profilePhotoUrl?: string | null
   isProfileCompleted?: boolean
   isVerified?: boolean
+  schedule?: string | null
+  socialEnergy?: string | null
+  planningStyle?: string | null
+  energyLevel?: string | null
+  values?: Prisma.UserCreatevaluesInput | string[]
+  interests?: Prisma.UserCreateinterestsInput | string[]
+  travelPriority?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   trips?: Prisma.TripUncheckedCreateNestedManyWithoutUserInput
@@ -1231,6 +1599,9 @@ export type UserUncheckedCreateWithoutMatchesAsUserAInput = {
   blockedUsers?: Prisma.BlockUncheckedCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.BlockUncheckedCreateNestedManyWithoutBlockedInput
   reports?: Prisma.ReportUncheckedCreateNestedManyWithoutReporterInput
+  groupMemberships?: Prisma.GroupMemberUncheckedCreateNestedManyWithoutUserInput
+  emergencyContacts?: Prisma.EmergencyContactUncheckedCreateNestedManyWithoutUserInput
+  activeTrips?: Prisma.ActiveTripUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutMatchesAsUserAInput = {
@@ -1251,6 +1622,13 @@ export type UserCreateWithoutMatchesAsUserBInput = {
   profilePhotoUrl?: string | null
   isProfileCompleted?: boolean
   isVerified?: boolean
+  schedule?: string | null
+  socialEnergy?: string | null
+  planningStyle?: string | null
+  energyLevel?: string | null
+  values?: Prisma.UserCreatevaluesInput | string[]
+  interests?: Prisma.UserCreateinterestsInput | string[]
+  travelPriority?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   trips?: Prisma.TripCreateNestedManyWithoutUserInput
@@ -1263,6 +1641,9 @@ export type UserCreateWithoutMatchesAsUserBInput = {
   blockedUsers?: Prisma.BlockCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.BlockCreateNestedManyWithoutBlockedInput
   reports?: Prisma.ReportCreateNestedManyWithoutReporterInput
+  groupMemberships?: Prisma.GroupMemberCreateNestedManyWithoutUserInput
+  emergencyContacts?: Prisma.EmergencyContactCreateNestedManyWithoutUserInput
+  activeTrips?: Prisma.ActiveTripCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutMatchesAsUserBInput = {
@@ -1278,6 +1659,13 @@ export type UserUncheckedCreateWithoutMatchesAsUserBInput = {
   profilePhotoUrl?: string | null
   isProfileCompleted?: boolean
   isVerified?: boolean
+  schedule?: string | null
+  socialEnergy?: string | null
+  planningStyle?: string | null
+  energyLevel?: string | null
+  values?: Prisma.UserCreatevaluesInput | string[]
+  interests?: Prisma.UserCreateinterestsInput | string[]
+  travelPriority?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   trips?: Prisma.TripUncheckedCreateNestedManyWithoutUserInput
@@ -1290,6 +1678,9 @@ export type UserUncheckedCreateWithoutMatchesAsUserBInput = {
   blockedUsers?: Prisma.BlockUncheckedCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.BlockUncheckedCreateNestedManyWithoutBlockedInput
   reports?: Prisma.ReportUncheckedCreateNestedManyWithoutReporterInput
+  groupMemberships?: Prisma.GroupMemberUncheckedCreateNestedManyWithoutUserInput
+  emergencyContacts?: Prisma.EmergencyContactUncheckedCreateNestedManyWithoutUserInput
+  activeTrips?: Prisma.ActiveTripUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutMatchesAsUserBInput = {
@@ -1321,6 +1712,13 @@ export type UserUpdateWithoutMatchesAsUserAInput = {
   profilePhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isProfileCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  schedule?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  socialEnergy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  planningStyle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  energyLevel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  values?: Prisma.UserUpdatevaluesInput | string[]
+  interests?: Prisma.UserUpdateinterestsInput | string[]
+  travelPriority?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   trips?: Prisma.TripUpdateManyWithoutUserNestedInput
@@ -1333,6 +1731,9 @@ export type UserUpdateWithoutMatchesAsUserAInput = {
   blockedUsers?: Prisma.BlockUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.BlockUpdateManyWithoutBlockedNestedInput
   reports?: Prisma.ReportUpdateManyWithoutReporterNestedInput
+  groupMemberships?: Prisma.GroupMemberUpdateManyWithoutUserNestedInput
+  emergencyContacts?: Prisma.EmergencyContactUpdateManyWithoutUserNestedInput
+  activeTrips?: Prisma.ActiveTripUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutMatchesAsUserAInput = {
@@ -1348,6 +1749,13 @@ export type UserUncheckedUpdateWithoutMatchesAsUserAInput = {
   profilePhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isProfileCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  schedule?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  socialEnergy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  planningStyle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  energyLevel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  values?: Prisma.UserUpdatevaluesInput | string[]
+  interests?: Prisma.UserUpdateinterestsInput | string[]
+  travelPriority?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   trips?: Prisma.TripUncheckedUpdateManyWithoutUserNestedInput
@@ -1360,6 +1768,9 @@ export type UserUncheckedUpdateWithoutMatchesAsUserAInput = {
   blockedUsers?: Prisma.BlockUncheckedUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.BlockUncheckedUpdateManyWithoutBlockedNestedInput
   reports?: Prisma.ReportUncheckedUpdateManyWithoutReporterNestedInput
+  groupMemberships?: Prisma.GroupMemberUncheckedUpdateManyWithoutUserNestedInput
+  emergencyContacts?: Prisma.EmergencyContactUncheckedUpdateManyWithoutUserNestedInput
+  activeTrips?: Prisma.ActiveTripUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserUpsertWithoutMatchesAsUserBInput = {
@@ -1386,6 +1797,13 @@ export type UserUpdateWithoutMatchesAsUserBInput = {
   profilePhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isProfileCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  schedule?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  socialEnergy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  planningStyle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  energyLevel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  values?: Prisma.UserUpdatevaluesInput | string[]
+  interests?: Prisma.UserUpdateinterestsInput | string[]
+  travelPriority?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   trips?: Prisma.TripUpdateManyWithoutUserNestedInput
@@ -1398,6 +1816,9 @@ export type UserUpdateWithoutMatchesAsUserBInput = {
   blockedUsers?: Prisma.BlockUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.BlockUpdateManyWithoutBlockedNestedInput
   reports?: Prisma.ReportUpdateManyWithoutReporterNestedInput
+  groupMemberships?: Prisma.GroupMemberUpdateManyWithoutUserNestedInput
+  emergencyContacts?: Prisma.EmergencyContactUpdateManyWithoutUserNestedInput
+  activeTrips?: Prisma.ActiveTripUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutMatchesAsUserBInput = {
@@ -1413,6 +1834,13 @@ export type UserUncheckedUpdateWithoutMatchesAsUserBInput = {
   profilePhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isProfileCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  schedule?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  socialEnergy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  planningStyle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  energyLevel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  values?: Prisma.UserUpdatevaluesInput | string[]
+  interests?: Prisma.UserUpdateinterestsInput | string[]
+  travelPriority?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   trips?: Prisma.TripUncheckedUpdateManyWithoutUserNestedInput
@@ -1425,6 +1853,9 @@ export type UserUncheckedUpdateWithoutMatchesAsUserBInput = {
   blockedUsers?: Prisma.BlockUncheckedUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.BlockUncheckedUpdateManyWithoutBlockedNestedInput
   reports?: Prisma.ReportUncheckedUpdateManyWithoutReporterNestedInput
+  groupMemberships?: Prisma.GroupMemberUncheckedUpdateManyWithoutUserNestedInput
+  emergencyContacts?: Prisma.EmergencyContactUncheckedUpdateManyWithoutUserNestedInput
+  activeTrips?: Prisma.ActiveTripUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutMessagesInput = {
@@ -1440,6 +1871,13 @@ export type UserCreateWithoutMessagesInput = {
   profilePhotoUrl?: string | null
   isProfileCompleted?: boolean
   isVerified?: boolean
+  schedule?: string | null
+  socialEnergy?: string | null
+  planningStyle?: string | null
+  energyLevel?: string | null
+  values?: Prisma.UserCreatevaluesInput | string[]
+  interests?: Prisma.UserCreateinterestsInput | string[]
+  travelPriority?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   trips?: Prisma.TripCreateNestedManyWithoutUserInput
@@ -1452,6 +1890,9 @@ export type UserCreateWithoutMessagesInput = {
   blockedUsers?: Prisma.BlockCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.BlockCreateNestedManyWithoutBlockedInput
   reports?: Prisma.ReportCreateNestedManyWithoutReporterInput
+  groupMemberships?: Prisma.GroupMemberCreateNestedManyWithoutUserInput
+  emergencyContacts?: Prisma.EmergencyContactCreateNestedManyWithoutUserInput
+  activeTrips?: Prisma.ActiveTripCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutMessagesInput = {
@@ -1467,6 +1908,13 @@ export type UserUncheckedCreateWithoutMessagesInput = {
   profilePhotoUrl?: string | null
   isProfileCompleted?: boolean
   isVerified?: boolean
+  schedule?: string | null
+  socialEnergy?: string | null
+  planningStyle?: string | null
+  energyLevel?: string | null
+  values?: Prisma.UserCreatevaluesInput | string[]
+  interests?: Prisma.UserCreateinterestsInput | string[]
+  travelPriority?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   trips?: Prisma.TripUncheckedCreateNestedManyWithoutUserInput
@@ -1479,6 +1927,9 @@ export type UserUncheckedCreateWithoutMessagesInput = {
   blockedUsers?: Prisma.BlockUncheckedCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.BlockUncheckedCreateNestedManyWithoutBlockedInput
   reports?: Prisma.ReportUncheckedCreateNestedManyWithoutReporterInput
+  groupMemberships?: Prisma.GroupMemberUncheckedCreateNestedManyWithoutUserInput
+  emergencyContacts?: Prisma.EmergencyContactUncheckedCreateNestedManyWithoutUserInput
+  activeTrips?: Prisma.ActiveTripUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutMessagesInput = {
@@ -1510,6 +1961,13 @@ export type UserUpdateWithoutMessagesInput = {
   profilePhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isProfileCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  schedule?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  socialEnergy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  planningStyle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  energyLevel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  values?: Prisma.UserUpdatevaluesInput | string[]
+  interests?: Prisma.UserUpdateinterestsInput | string[]
+  travelPriority?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   trips?: Prisma.TripUpdateManyWithoutUserNestedInput
@@ -1522,6 +1980,9 @@ export type UserUpdateWithoutMessagesInput = {
   blockedUsers?: Prisma.BlockUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.BlockUpdateManyWithoutBlockedNestedInput
   reports?: Prisma.ReportUpdateManyWithoutReporterNestedInput
+  groupMemberships?: Prisma.GroupMemberUpdateManyWithoutUserNestedInput
+  emergencyContacts?: Prisma.EmergencyContactUpdateManyWithoutUserNestedInput
+  activeTrips?: Prisma.ActiveTripUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutMessagesInput = {
@@ -1537,6 +1998,13 @@ export type UserUncheckedUpdateWithoutMessagesInput = {
   profilePhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isProfileCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  schedule?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  socialEnergy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  planningStyle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  energyLevel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  values?: Prisma.UserUpdatevaluesInput | string[]
+  interests?: Prisma.UserUpdateinterestsInput | string[]
+  travelPriority?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   trips?: Prisma.TripUncheckedUpdateManyWithoutUserNestedInput
@@ -1549,6 +2017,9 @@ export type UserUncheckedUpdateWithoutMessagesInput = {
   blockedUsers?: Prisma.BlockUncheckedUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.BlockUncheckedUpdateManyWithoutBlockedNestedInput
   reports?: Prisma.ReportUncheckedUpdateManyWithoutReporterNestedInput
+  groupMemberships?: Prisma.GroupMemberUncheckedUpdateManyWithoutUserNestedInput
+  emergencyContacts?: Prisma.EmergencyContactUncheckedUpdateManyWithoutUserNestedInput
+  activeTrips?: Prisma.ActiveTripUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutRatingsInput = {
@@ -1564,6 +2035,13 @@ export type UserCreateWithoutRatingsInput = {
   profilePhotoUrl?: string | null
   isProfileCompleted?: boolean
   isVerified?: boolean
+  schedule?: string | null
+  socialEnergy?: string | null
+  planningStyle?: string | null
+  energyLevel?: string | null
+  values?: Prisma.UserCreatevaluesInput | string[]
+  interests?: Prisma.UserCreateinterestsInput | string[]
+  travelPriority?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   trips?: Prisma.TripCreateNestedManyWithoutUserInput
@@ -1576,6 +2054,9 @@ export type UserCreateWithoutRatingsInput = {
   blockedUsers?: Prisma.BlockCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.BlockCreateNestedManyWithoutBlockedInput
   reports?: Prisma.ReportCreateNestedManyWithoutReporterInput
+  groupMemberships?: Prisma.GroupMemberCreateNestedManyWithoutUserInput
+  emergencyContacts?: Prisma.EmergencyContactCreateNestedManyWithoutUserInput
+  activeTrips?: Prisma.ActiveTripCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutRatingsInput = {
@@ -1591,6 +2072,13 @@ export type UserUncheckedCreateWithoutRatingsInput = {
   profilePhotoUrl?: string | null
   isProfileCompleted?: boolean
   isVerified?: boolean
+  schedule?: string | null
+  socialEnergy?: string | null
+  planningStyle?: string | null
+  energyLevel?: string | null
+  values?: Prisma.UserCreatevaluesInput | string[]
+  interests?: Prisma.UserCreateinterestsInput | string[]
+  travelPriority?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   trips?: Prisma.TripUncheckedCreateNestedManyWithoutUserInput
@@ -1603,6 +2091,9 @@ export type UserUncheckedCreateWithoutRatingsInput = {
   blockedUsers?: Prisma.BlockUncheckedCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.BlockUncheckedCreateNestedManyWithoutBlockedInput
   reports?: Prisma.ReportUncheckedCreateNestedManyWithoutReporterInput
+  groupMemberships?: Prisma.GroupMemberUncheckedCreateNestedManyWithoutUserInput
+  emergencyContacts?: Prisma.EmergencyContactUncheckedCreateNestedManyWithoutUserInput
+  activeTrips?: Prisma.ActiveTripUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutRatingsInput = {
@@ -1623,6 +2114,13 @@ export type UserCreateWithoutRatingsReceivedInput = {
   profilePhotoUrl?: string | null
   isProfileCompleted?: boolean
   isVerified?: boolean
+  schedule?: string | null
+  socialEnergy?: string | null
+  planningStyle?: string | null
+  energyLevel?: string | null
+  values?: Prisma.UserCreatevaluesInput | string[]
+  interests?: Prisma.UserCreateinterestsInput | string[]
+  travelPriority?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   trips?: Prisma.TripCreateNestedManyWithoutUserInput
@@ -1635,6 +2133,9 @@ export type UserCreateWithoutRatingsReceivedInput = {
   blockedUsers?: Prisma.BlockCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.BlockCreateNestedManyWithoutBlockedInput
   reports?: Prisma.ReportCreateNestedManyWithoutReporterInput
+  groupMemberships?: Prisma.GroupMemberCreateNestedManyWithoutUserInput
+  emergencyContacts?: Prisma.EmergencyContactCreateNestedManyWithoutUserInput
+  activeTrips?: Prisma.ActiveTripCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutRatingsReceivedInput = {
@@ -1650,6 +2151,13 @@ export type UserUncheckedCreateWithoutRatingsReceivedInput = {
   profilePhotoUrl?: string | null
   isProfileCompleted?: boolean
   isVerified?: boolean
+  schedule?: string | null
+  socialEnergy?: string | null
+  planningStyle?: string | null
+  energyLevel?: string | null
+  values?: Prisma.UserCreatevaluesInput | string[]
+  interests?: Prisma.UserCreateinterestsInput | string[]
+  travelPriority?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   trips?: Prisma.TripUncheckedCreateNestedManyWithoutUserInput
@@ -1662,6 +2170,9 @@ export type UserUncheckedCreateWithoutRatingsReceivedInput = {
   blockedUsers?: Prisma.BlockUncheckedCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.BlockUncheckedCreateNestedManyWithoutBlockedInput
   reports?: Prisma.ReportUncheckedCreateNestedManyWithoutReporterInput
+  groupMemberships?: Prisma.GroupMemberUncheckedCreateNestedManyWithoutUserInput
+  emergencyContacts?: Prisma.EmergencyContactUncheckedCreateNestedManyWithoutUserInput
+  activeTrips?: Prisma.ActiveTripUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutRatingsReceivedInput = {
@@ -1693,6 +2204,13 @@ export type UserUpdateWithoutRatingsInput = {
   profilePhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isProfileCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  schedule?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  socialEnergy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  planningStyle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  energyLevel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  values?: Prisma.UserUpdatevaluesInput | string[]
+  interests?: Prisma.UserUpdateinterestsInput | string[]
+  travelPriority?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   trips?: Prisma.TripUpdateManyWithoutUserNestedInput
@@ -1705,6 +2223,9 @@ export type UserUpdateWithoutRatingsInput = {
   blockedUsers?: Prisma.BlockUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.BlockUpdateManyWithoutBlockedNestedInput
   reports?: Prisma.ReportUpdateManyWithoutReporterNestedInput
+  groupMemberships?: Prisma.GroupMemberUpdateManyWithoutUserNestedInput
+  emergencyContacts?: Prisma.EmergencyContactUpdateManyWithoutUserNestedInput
+  activeTrips?: Prisma.ActiveTripUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutRatingsInput = {
@@ -1720,6 +2241,13 @@ export type UserUncheckedUpdateWithoutRatingsInput = {
   profilePhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isProfileCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  schedule?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  socialEnergy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  planningStyle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  energyLevel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  values?: Prisma.UserUpdatevaluesInput | string[]
+  interests?: Prisma.UserUpdateinterestsInput | string[]
+  travelPriority?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   trips?: Prisma.TripUncheckedUpdateManyWithoutUserNestedInput
@@ -1732,6 +2260,9 @@ export type UserUncheckedUpdateWithoutRatingsInput = {
   blockedUsers?: Prisma.BlockUncheckedUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.BlockUncheckedUpdateManyWithoutBlockedNestedInput
   reports?: Prisma.ReportUncheckedUpdateManyWithoutReporterNestedInput
+  groupMemberships?: Prisma.GroupMemberUncheckedUpdateManyWithoutUserNestedInput
+  emergencyContacts?: Prisma.EmergencyContactUncheckedUpdateManyWithoutUserNestedInput
+  activeTrips?: Prisma.ActiveTripUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserUpsertWithoutRatingsReceivedInput = {
@@ -1758,6 +2289,13 @@ export type UserUpdateWithoutRatingsReceivedInput = {
   profilePhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isProfileCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  schedule?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  socialEnergy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  planningStyle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  energyLevel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  values?: Prisma.UserUpdatevaluesInput | string[]
+  interests?: Prisma.UserUpdateinterestsInput | string[]
+  travelPriority?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   trips?: Prisma.TripUpdateManyWithoutUserNestedInput
@@ -1770,6 +2308,9 @@ export type UserUpdateWithoutRatingsReceivedInput = {
   blockedUsers?: Prisma.BlockUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.BlockUpdateManyWithoutBlockedNestedInput
   reports?: Prisma.ReportUpdateManyWithoutReporterNestedInput
+  groupMemberships?: Prisma.GroupMemberUpdateManyWithoutUserNestedInput
+  emergencyContacts?: Prisma.EmergencyContactUpdateManyWithoutUserNestedInput
+  activeTrips?: Prisma.ActiveTripUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutRatingsReceivedInput = {
@@ -1785,6 +2326,13 @@ export type UserUncheckedUpdateWithoutRatingsReceivedInput = {
   profilePhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isProfileCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  schedule?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  socialEnergy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  planningStyle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  energyLevel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  values?: Prisma.UserUpdatevaluesInput | string[]
+  interests?: Prisma.UserUpdateinterestsInput | string[]
+  travelPriority?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   trips?: Prisma.TripUncheckedUpdateManyWithoutUserNestedInput
@@ -1797,6 +2345,9 @@ export type UserUncheckedUpdateWithoutRatingsReceivedInput = {
   blockedUsers?: Prisma.BlockUncheckedUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.BlockUncheckedUpdateManyWithoutBlockedNestedInput
   reports?: Prisma.ReportUncheckedUpdateManyWithoutReporterNestedInput
+  groupMemberships?: Prisma.GroupMemberUncheckedUpdateManyWithoutUserNestedInput
+  emergencyContacts?: Prisma.EmergencyContactUncheckedUpdateManyWithoutUserNestedInput
+  activeTrips?: Prisma.ActiveTripUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutBlockedUsersInput = {
@@ -1812,6 +2363,13 @@ export type UserCreateWithoutBlockedUsersInput = {
   profilePhotoUrl?: string | null
   isProfileCompleted?: boolean
   isVerified?: boolean
+  schedule?: string | null
+  socialEnergy?: string | null
+  planningStyle?: string | null
+  energyLevel?: string | null
+  values?: Prisma.UserCreatevaluesInput | string[]
+  interests?: Prisma.UserCreateinterestsInput | string[]
+  travelPriority?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   trips?: Prisma.TripCreateNestedManyWithoutUserInput
@@ -1824,6 +2382,9 @@ export type UserCreateWithoutBlockedUsersInput = {
   ratingsReceived?: Prisma.RatingCreateNestedManyWithoutRatedInput
   blockedByUsers?: Prisma.BlockCreateNestedManyWithoutBlockedInput
   reports?: Prisma.ReportCreateNestedManyWithoutReporterInput
+  groupMemberships?: Prisma.GroupMemberCreateNestedManyWithoutUserInput
+  emergencyContacts?: Prisma.EmergencyContactCreateNestedManyWithoutUserInput
+  activeTrips?: Prisma.ActiveTripCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutBlockedUsersInput = {
@@ -1839,6 +2400,13 @@ export type UserUncheckedCreateWithoutBlockedUsersInput = {
   profilePhotoUrl?: string | null
   isProfileCompleted?: boolean
   isVerified?: boolean
+  schedule?: string | null
+  socialEnergy?: string | null
+  planningStyle?: string | null
+  energyLevel?: string | null
+  values?: Prisma.UserCreatevaluesInput | string[]
+  interests?: Prisma.UserCreateinterestsInput | string[]
+  travelPriority?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   trips?: Prisma.TripUncheckedCreateNestedManyWithoutUserInput
@@ -1851,6 +2419,9 @@ export type UserUncheckedCreateWithoutBlockedUsersInput = {
   ratingsReceived?: Prisma.RatingUncheckedCreateNestedManyWithoutRatedInput
   blockedByUsers?: Prisma.BlockUncheckedCreateNestedManyWithoutBlockedInput
   reports?: Prisma.ReportUncheckedCreateNestedManyWithoutReporterInput
+  groupMemberships?: Prisma.GroupMemberUncheckedCreateNestedManyWithoutUserInput
+  emergencyContacts?: Prisma.EmergencyContactUncheckedCreateNestedManyWithoutUserInput
+  activeTrips?: Prisma.ActiveTripUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutBlockedUsersInput = {
@@ -1871,6 +2442,13 @@ export type UserCreateWithoutBlockedByUsersInput = {
   profilePhotoUrl?: string | null
   isProfileCompleted?: boolean
   isVerified?: boolean
+  schedule?: string | null
+  socialEnergy?: string | null
+  planningStyle?: string | null
+  energyLevel?: string | null
+  values?: Prisma.UserCreatevaluesInput | string[]
+  interests?: Prisma.UserCreateinterestsInput | string[]
+  travelPriority?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   trips?: Prisma.TripCreateNestedManyWithoutUserInput
@@ -1883,6 +2461,9 @@ export type UserCreateWithoutBlockedByUsersInput = {
   ratingsReceived?: Prisma.RatingCreateNestedManyWithoutRatedInput
   blockedUsers?: Prisma.BlockCreateNestedManyWithoutBlockerInput
   reports?: Prisma.ReportCreateNestedManyWithoutReporterInput
+  groupMemberships?: Prisma.GroupMemberCreateNestedManyWithoutUserInput
+  emergencyContacts?: Prisma.EmergencyContactCreateNestedManyWithoutUserInput
+  activeTrips?: Prisma.ActiveTripCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutBlockedByUsersInput = {
@@ -1898,6 +2479,13 @@ export type UserUncheckedCreateWithoutBlockedByUsersInput = {
   profilePhotoUrl?: string | null
   isProfileCompleted?: boolean
   isVerified?: boolean
+  schedule?: string | null
+  socialEnergy?: string | null
+  planningStyle?: string | null
+  energyLevel?: string | null
+  values?: Prisma.UserCreatevaluesInput | string[]
+  interests?: Prisma.UserCreateinterestsInput | string[]
+  travelPriority?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   trips?: Prisma.TripUncheckedCreateNestedManyWithoutUserInput
@@ -1910,6 +2498,9 @@ export type UserUncheckedCreateWithoutBlockedByUsersInput = {
   ratingsReceived?: Prisma.RatingUncheckedCreateNestedManyWithoutRatedInput
   blockedUsers?: Prisma.BlockUncheckedCreateNestedManyWithoutBlockerInput
   reports?: Prisma.ReportUncheckedCreateNestedManyWithoutReporterInput
+  groupMemberships?: Prisma.GroupMemberUncheckedCreateNestedManyWithoutUserInput
+  emergencyContacts?: Prisma.EmergencyContactUncheckedCreateNestedManyWithoutUserInput
+  activeTrips?: Prisma.ActiveTripUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutBlockedByUsersInput = {
@@ -1941,6 +2532,13 @@ export type UserUpdateWithoutBlockedUsersInput = {
   profilePhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isProfileCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  schedule?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  socialEnergy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  planningStyle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  energyLevel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  values?: Prisma.UserUpdatevaluesInput | string[]
+  interests?: Prisma.UserUpdateinterestsInput | string[]
+  travelPriority?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   trips?: Prisma.TripUpdateManyWithoutUserNestedInput
@@ -1953,6 +2551,9 @@ export type UserUpdateWithoutBlockedUsersInput = {
   ratingsReceived?: Prisma.RatingUpdateManyWithoutRatedNestedInput
   blockedByUsers?: Prisma.BlockUpdateManyWithoutBlockedNestedInput
   reports?: Prisma.ReportUpdateManyWithoutReporterNestedInput
+  groupMemberships?: Prisma.GroupMemberUpdateManyWithoutUserNestedInput
+  emergencyContacts?: Prisma.EmergencyContactUpdateManyWithoutUserNestedInput
+  activeTrips?: Prisma.ActiveTripUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutBlockedUsersInput = {
@@ -1968,6 +2569,13 @@ export type UserUncheckedUpdateWithoutBlockedUsersInput = {
   profilePhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isProfileCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  schedule?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  socialEnergy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  planningStyle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  energyLevel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  values?: Prisma.UserUpdatevaluesInput | string[]
+  interests?: Prisma.UserUpdateinterestsInput | string[]
+  travelPriority?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   trips?: Prisma.TripUncheckedUpdateManyWithoutUserNestedInput
@@ -1980,6 +2588,9 @@ export type UserUncheckedUpdateWithoutBlockedUsersInput = {
   ratingsReceived?: Prisma.RatingUncheckedUpdateManyWithoutRatedNestedInput
   blockedByUsers?: Prisma.BlockUncheckedUpdateManyWithoutBlockedNestedInput
   reports?: Prisma.ReportUncheckedUpdateManyWithoutReporterNestedInput
+  groupMemberships?: Prisma.GroupMemberUncheckedUpdateManyWithoutUserNestedInput
+  emergencyContacts?: Prisma.EmergencyContactUncheckedUpdateManyWithoutUserNestedInput
+  activeTrips?: Prisma.ActiveTripUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserUpsertWithoutBlockedByUsersInput = {
@@ -2006,6 +2617,13 @@ export type UserUpdateWithoutBlockedByUsersInput = {
   profilePhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isProfileCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  schedule?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  socialEnergy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  planningStyle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  energyLevel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  values?: Prisma.UserUpdatevaluesInput | string[]
+  interests?: Prisma.UserUpdateinterestsInput | string[]
+  travelPriority?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   trips?: Prisma.TripUpdateManyWithoutUserNestedInput
@@ -2018,6 +2636,9 @@ export type UserUpdateWithoutBlockedByUsersInput = {
   ratingsReceived?: Prisma.RatingUpdateManyWithoutRatedNestedInput
   blockedUsers?: Prisma.BlockUpdateManyWithoutBlockerNestedInput
   reports?: Prisma.ReportUpdateManyWithoutReporterNestedInput
+  groupMemberships?: Prisma.GroupMemberUpdateManyWithoutUserNestedInput
+  emergencyContacts?: Prisma.EmergencyContactUpdateManyWithoutUserNestedInput
+  activeTrips?: Prisma.ActiveTripUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutBlockedByUsersInput = {
@@ -2033,6 +2654,13 @@ export type UserUncheckedUpdateWithoutBlockedByUsersInput = {
   profilePhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isProfileCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  schedule?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  socialEnergy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  planningStyle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  energyLevel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  values?: Prisma.UserUpdatevaluesInput | string[]
+  interests?: Prisma.UserUpdateinterestsInput | string[]
+  travelPriority?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   trips?: Prisma.TripUncheckedUpdateManyWithoutUserNestedInput
@@ -2045,6 +2673,9 @@ export type UserUncheckedUpdateWithoutBlockedByUsersInput = {
   ratingsReceived?: Prisma.RatingUncheckedUpdateManyWithoutRatedNestedInput
   blockedUsers?: Prisma.BlockUncheckedUpdateManyWithoutBlockerNestedInput
   reports?: Prisma.ReportUncheckedUpdateManyWithoutReporterNestedInput
+  groupMemberships?: Prisma.GroupMemberUncheckedUpdateManyWithoutUserNestedInput
+  emergencyContacts?: Prisma.EmergencyContactUncheckedUpdateManyWithoutUserNestedInput
+  activeTrips?: Prisma.ActiveTripUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutReportsInput = {
@@ -2060,6 +2691,13 @@ export type UserCreateWithoutReportsInput = {
   profilePhotoUrl?: string | null
   isProfileCompleted?: boolean
   isVerified?: boolean
+  schedule?: string | null
+  socialEnergy?: string | null
+  planningStyle?: string | null
+  energyLevel?: string | null
+  values?: Prisma.UserCreatevaluesInput | string[]
+  interests?: Prisma.UserCreateinterestsInput | string[]
+  travelPriority?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   trips?: Prisma.TripCreateNestedManyWithoutUserInput
@@ -2072,6 +2710,9 @@ export type UserCreateWithoutReportsInput = {
   ratingsReceived?: Prisma.RatingCreateNestedManyWithoutRatedInput
   blockedUsers?: Prisma.BlockCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.BlockCreateNestedManyWithoutBlockedInput
+  groupMemberships?: Prisma.GroupMemberCreateNestedManyWithoutUserInput
+  emergencyContacts?: Prisma.EmergencyContactCreateNestedManyWithoutUserInput
+  activeTrips?: Prisma.ActiveTripCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutReportsInput = {
@@ -2087,6 +2728,13 @@ export type UserUncheckedCreateWithoutReportsInput = {
   profilePhotoUrl?: string | null
   isProfileCompleted?: boolean
   isVerified?: boolean
+  schedule?: string | null
+  socialEnergy?: string | null
+  planningStyle?: string | null
+  energyLevel?: string | null
+  values?: Prisma.UserCreatevaluesInput | string[]
+  interests?: Prisma.UserCreateinterestsInput | string[]
+  travelPriority?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   trips?: Prisma.TripUncheckedCreateNestedManyWithoutUserInput
@@ -2099,6 +2747,9 @@ export type UserUncheckedCreateWithoutReportsInput = {
   ratingsReceived?: Prisma.RatingUncheckedCreateNestedManyWithoutRatedInput
   blockedUsers?: Prisma.BlockUncheckedCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.BlockUncheckedCreateNestedManyWithoutBlockedInput
+  groupMemberships?: Prisma.GroupMemberUncheckedCreateNestedManyWithoutUserInput
+  emergencyContacts?: Prisma.EmergencyContactUncheckedCreateNestedManyWithoutUserInput
+  activeTrips?: Prisma.ActiveTripUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutReportsInput = {
@@ -2130,6 +2781,13 @@ export type UserUpdateWithoutReportsInput = {
   profilePhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isProfileCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  schedule?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  socialEnergy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  planningStyle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  energyLevel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  values?: Prisma.UserUpdatevaluesInput | string[]
+  interests?: Prisma.UserUpdateinterestsInput | string[]
+  travelPriority?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   trips?: Prisma.TripUpdateManyWithoutUserNestedInput
@@ -2142,6 +2800,9 @@ export type UserUpdateWithoutReportsInput = {
   ratingsReceived?: Prisma.RatingUpdateManyWithoutRatedNestedInput
   blockedUsers?: Prisma.BlockUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.BlockUpdateManyWithoutBlockedNestedInput
+  groupMemberships?: Prisma.GroupMemberUpdateManyWithoutUserNestedInput
+  emergencyContacts?: Prisma.EmergencyContactUpdateManyWithoutUserNestedInput
+  activeTrips?: Prisma.ActiveTripUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutReportsInput = {
@@ -2157,6 +2818,13 @@ export type UserUncheckedUpdateWithoutReportsInput = {
   profilePhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isProfileCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  schedule?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  socialEnergy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  planningStyle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  energyLevel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  values?: Prisma.UserUpdatevaluesInput | string[]
+  interests?: Prisma.UserUpdateinterestsInput | string[]
+  travelPriority?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   trips?: Prisma.TripUncheckedUpdateManyWithoutUserNestedInput
@@ -2169,6 +2837,501 @@ export type UserUncheckedUpdateWithoutReportsInput = {
   ratingsReceived?: Prisma.RatingUncheckedUpdateManyWithoutRatedNestedInput
   blockedUsers?: Prisma.BlockUncheckedUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.BlockUncheckedUpdateManyWithoutBlockedNestedInput
+  groupMemberships?: Prisma.GroupMemberUncheckedUpdateManyWithoutUserNestedInput
+  emergencyContacts?: Prisma.EmergencyContactUncheckedUpdateManyWithoutUserNestedInput
+  activeTrips?: Prisma.ActiveTripUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutGroupMembershipsInput = {
+  id?: string
+  authUserId: string
+  fullName: string
+  email: string
+  gender?: string | null
+  age?: number | null
+  city?: string | null
+  bio?: string | null
+  travelStyle?: string | null
+  profilePhotoUrl?: string | null
+  isProfileCompleted?: boolean
+  isVerified?: boolean
+  schedule?: string | null
+  socialEnergy?: string | null
+  planningStyle?: string | null
+  energyLevel?: string | null
+  values?: Prisma.UserCreatevaluesInput | string[]
+  interests?: Prisma.UserCreateinterestsInput | string[]
+  travelPriority?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  trips?: Prisma.TripCreateNestedManyWithoutUserInput
+  sentRequests?: Prisma.MatchRequestCreateNestedManyWithoutSenderInput
+  receivedRequests?: Prisma.MatchRequestCreateNestedManyWithoutReceiverInput
+  matchesAsUserA?: Prisma.MatchCreateNestedManyWithoutUserAInput
+  matchesAsUserB?: Prisma.MatchCreateNestedManyWithoutUserBInput
+  messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
+  ratings?: Prisma.RatingCreateNestedManyWithoutRaterInput
+  ratingsReceived?: Prisma.RatingCreateNestedManyWithoutRatedInput
+  blockedUsers?: Prisma.BlockCreateNestedManyWithoutBlockerInput
+  blockedByUsers?: Prisma.BlockCreateNestedManyWithoutBlockedInput
+  reports?: Prisma.ReportCreateNestedManyWithoutReporterInput
+  emergencyContacts?: Prisma.EmergencyContactCreateNestedManyWithoutUserInput
+  activeTrips?: Prisma.ActiveTripCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutGroupMembershipsInput = {
+  id?: string
+  authUserId: string
+  fullName: string
+  email: string
+  gender?: string | null
+  age?: number | null
+  city?: string | null
+  bio?: string | null
+  travelStyle?: string | null
+  profilePhotoUrl?: string | null
+  isProfileCompleted?: boolean
+  isVerified?: boolean
+  schedule?: string | null
+  socialEnergy?: string | null
+  planningStyle?: string | null
+  energyLevel?: string | null
+  values?: Prisma.UserCreatevaluesInput | string[]
+  interests?: Prisma.UserCreateinterestsInput | string[]
+  travelPriority?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  trips?: Prisma.TripUncheckedCreateNestedManyWithoutUserInput
+  sentRequests?: Prisma.MatchRequestUncheckedCreateNestedManyWithoutSenderInput
+  receivedRequests?: Prisma.MatchRequestUncheckedCreateNestedManyWithoutReceiverInput
+  matchesAsUserA?: Prisma.MatchUncheckedCreateNestedManyWithoutUserAInput
+  matchesAsUserB?: Prisma.MatchUncheckedCreateNestedManyWithoutUserBInput
+  messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
+  ratings?: Prisma.RatingUncheckedCreateNestedManyWithoutRaterInput
+  ratingsReceived?: Prisma.RatingUncheckedCreateNestedManyWithoutRatedInput
+  blockedUsers?: Prisma.BlockUncheckedCreateNestedManyWithoutBlockerInput
+  blockedByUsers?: Prisma.BlockUncheckedCreateNestedManyWithoutBlockedInput
+  reports?: Prisma.ReportUncheckedCreateNestedManyWithoutReporterInput
+  emergencyContacts?: Prisma.EmergencyContactUncheckedCreateNestedManyWithoutUserInput
+  activeTrips?: Prisma.ActiveTripUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutGroupMembershipsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutGroupMembershipsInput, Prisma.UserUncheckedCreateWithoutGroupMembershipsInput>
+}
+
+export type UserUpsertWithoutGroupMembershipsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutGroupMembershipsInput, Prisma.UserUncheckedUpdateWithoutGroupMembershipsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutGroupMembershipsInput, Prisma.UserUncheckedCreateWithoutGroupMembershipsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutGroupMembershipsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutGroupMembershipsInput, Prisma.UserUncheckedUpdateWithoutGroupMembershipsInput>
+}
+
+export type UserUpdateWithoutGroupMembershipsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  authUserId?: Prisma.StringFieldUpdateOperationsInput | string
+  fullName?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  age?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  travelStyle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profilePhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isProfileCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  schedule?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  socialEnergy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  planningStyle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  energyLevel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  values?: Prisma.UserUpdatevaluesInput | string[]
+  interests?: Prisma.UserUpdateinterestsInput | string[]
+  travelPriority?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  trips?: Prisma.TripUpdateManyWithoutUserNestedInput
+  sentRequests?: Prisma.MatchRequestUpdateManyWithoutSenderNestedInput
+  receivedRequests?: Prisma.MatchRequestUpdateManyWithoutReceiverNestedInput
+  matchesAsUserA?: Prisma.MatchUpdateManyWithoutUserANestedInput
+  matchesAsUserB?: Prisma.MatchUpdateManyWithoutUserBNestedInput
+  messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
+  ratings?: Prisma.RatingUpdateManyWithoutRaterNestedInput
+  ratingsReceived?: Prisma.RatingUpdateManyWithoutRatedNestedInput
+  blockedUsers?: Prisma.BlockUpdateManyWithoutBlockerNestedInput
+  blockedByUsers?: Prisma.BlockUpdateManyWithoutBlockedNestedInput
+  reports?: Prisma.ReportUpdateManyWithoutReporterNestedInput
+  emergencyContacts?: Prisma.EmergencyContactUpdateManyWithoutUserNestedInput
+  activeTrips?: Prisma.ActiveTripUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutGroupMembershipsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  authUserId?: Prisma.StringFieldUpdateOperationsInput | string
+  fullName?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  age?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  travelStyle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profilePhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isProfileCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  schedule?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  socialEnergy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  planningStyle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  energyLevel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  values?: Prisma.UserUpdatevaluesInput | string[]
+  interests?: Prisma.UserUpdateinterestsInput | string[]
+  travelPriority?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  trips?: Prisma.TripUncheckedUpdateManyWithoutUserNestedInput
+  sentRequests?: Prisma.MatchRequestUncheckedUpdateManyWithoutSenderNestedInput
+  receivedRequests?: Prisma.MatchRequestUncheckedUpdateManyWithoutReceiverNestedInput
+  matchesAsUserA?: Prisma.MatchUncheckedUpdateManyWithoutUserANestedInput
+  matchesAsUserB?: Prisma.MatchUncheckedUpdateManyWithoutUserBNestedInput
+  messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
+  ratings?: Prisma.RatingUncheckedUpdateManyWithoutRaterNestedInput
+  ratingsReceived?: Prisma.RatingUncheckedUpdateManyWithoutRatedNestedInput
+  blockedUsers?: Prisma.BlockUncheckedUpdateManyWithoutBlockerNestedInput
+  blockedByUsers?: Prisma.BlockUncheckedUpdateManyWithoutBlockedNestedInput
+  reports?: Prisma.ReportUncheckedUpdateManyWithoutReporterNestedInput
+  emergencyContacts?: Prisma.EmergencyContactUncheckedUpdateManyWithoutUserNestedInput
+  activeTrips?: Prisma.ActiveTripUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutActiveTripsInput = {
+  id?: string
+  authUserId: string
+  fullName: string
+  email: string
+  gender?: string | null
+  age?: number | null
+  city?: string | null
+  bio?: string | null
+  travelStyle?: string | null
+  profilePhotoUrl?: string | null
+  isProfileCompleted?: boolean
+  isVerified?: boolean
+  schedule?: string | null
+  socialEnergy?: string | null
+  planningStyle?: string | null
+  energyLevel?: string | null
+  values?: Prisma.UserCreatevaluesInput | string[]
+  interests?: Prisma.UserCreateinterestsInput | string[]
+  travelPriority?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  trips?: Prisma.TripCreateNestedManyWithoutUserInput
+  sentRequests?: Prisma.MatchRequestCreateNestedManyWithoutSenderInput
+  receivedRequests?: Prisma.MatchRequestCreateNestedManyWithoutReceiverInput
+  matchesAsUserA?: Prisma.MatchCreateNestedManyWithoutUserAInput
+  matchesAsUserB?: Prisma.MatchCreateNestedManyWithoutUserBInput
+  messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
+  ratings?: Prisma.RatingCreateNestedManyWithoutRaterInput
+  ratingsReceived?: Prisma.RatingCreateNestedManyWithoutRatedInput
+  blockedUsers?: Prisma.BlockCreateNestedManyWithoutBlockerInput
+  blockedByUsers?: Prisma.BlockCreateNestedManyWithoutBlockedInput
+  reports?: Prisma.ReportCreateNestedManyWithoutReporterInput
+  groupMemberships?: Prisma.GroupMemberCreateNestedManyWithoutUserInput
+  emergencyContacts?: Prisma.EmergencyContactCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutActiveTripsInput = {
+  id?: string
+  authUserId: string
+  fullName: string
+  email: string
+  gender?: string | null
+  age?: number | null
+  city?: string | null
+  bio?: string | null
+  travelStyle?: string | null
+  profilePhotoUrl?: string | null
+  isProfileCompleted?: boolean
+  isVerified?: boolean
+  schedule?: string | null
+  socialEnergy?: string | null
+  planningStyle?: string | null
+  energyLevel?: string | null
+  values?: Prisma.UserCreatevaluesInput | string[]
+  interests?: Prisma.UserCreateinterestsInput | string[]
+  travelPriority?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  trips?: Prisma.TripUncheckedCreateNestedManyWithoutUserInput
+  sentRequests?: Prisma.MatchRequestUncheckedCreateNestedManyWithoutSenderInput
+  receivedRequests?: Prisma.MatchRequestUncheckedCreateNestedManyWithoutReceiverInput
+  matchesAsUserA?: Prisma.MatchUncheckedCreateNestedManyWithoutUserAInput
+  matchesAsUserB?: Prisma.MatchUncheckedCreateNestedManyWithoutUserBInput
+  messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
+  ratings?: Prisma.RatingUncheckedCreateNestedManyWithoutRaterInput
+  ratingsReceived?: Prisma.RatingUncheckedCreateNestedManyWithoutRatedInput
+  blockedUsers?: Prisma.BlockUncheckedCreateNestedManyWithoutBlockerInput
+  blockedByUsers?: Prisma.BlockUncheckedCreateNestedManyWithoutBlockedInput
+  reports?: Prisma.ReportUncheckedCreateNestedManyWithoutReporterInput
+  groupMemberships?: Prisma.GroupMemberUncheckedCreateNestedManyWithoutUserInput
+  emergencyContacts?: Prisma.EmergencyContactUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutActiveTripsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutActiveTripsInput, Prisma.UserUncheckedCreateWithoutActiveTripsInput>
+}
+
+export type UserUpsertWithoutActiveTripsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutActiveTripsInput, Prisma.UserUncheckedUpdateWithoutActiveTripsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutActiveTripsInput, Prisma.UserUncheckedCreateWithoutActiveTripsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutActiveTripsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutActiveTripsInput, Prisma.UserUncheckedUpdateWithoutActiveTripsInput>
+}
+
+export type UserUpdateWithoutActiveTripsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  authUserId?: Prisma.StringFieldUpdateOperationsInput | string
+  fullName?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  age?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  travelStyle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profilePhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isProfileCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  schedule?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  socialEnergy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  planningStyle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  energyLevel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  values?: Prisma.UserUpdatevaluesInput | string[]
+  interests?: Prisma.UserUpdateinterestsInput | string[]
+  travelPriority?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  trips?: Prisma.TripUpdateManyWithoutUserNestedInput
+  sentRequests?: Prisma.MatchRequestUpdateManyWithoutSenderNestedInput
+  receivedRequests?: Prisma.MatchRequestUpdateManyWithoutReceiverNestedInput
+  matchesAsUserA?: Prisma.MatchUpdateManyWithoutUserANestedInput
+  matchesAsUserB?: Prisma.MatchUpdateManyWithoutUserBNestedInput
+  messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
+  ratings?: Prisma.RatingUpdateManyWithoutRaterNestedInput
+  ratingsReceived?: Prisma.RatingUpdateManyWithoutRatedNestedInput
+  blockedUsers?: Prisma.BlockUpdateManyWithoutBlockerNestedInput
+  blockedByUsers?: Prisma.BlockUpdateManyWithoutBlockedNestedInput
+  reports?: Prisma.ReportUpdateManyWithoutReporterNestedInput
+  groupMemberships?: Prisma.GroupMemberUpdateManyWithoutUserNestedInput
+  emergencyContacts?: Prisma.EmergencyContactUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutActiveTripsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  authUserId?: Prisma.StringFieldUpdateOperationsInput | string
+  fullName?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  age?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  travelStyle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profilePhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isProfileCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  schedule?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  socialEnergy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  planningStyle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  energyLevel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  values?: Prisma.UserUpdatevaluesInput | string[]
+  interests?: Prisma.UserUpdateinterestsInput | string[]
+  travelPriority?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  trips?: Prisma.TripUncheckedUpdateManyWithoutUserNestedInput
+  sentRequests?: Prisma.MatchRequestUncheckedUpdateManyWithoutSenderNestedInput
+  receivedRequests?: Prisma.MatchRequestUncheckedUpdateManyWithoutReceiverNestedInput
+  matchesAsUserA?: Prisma.MatchUncheckedUpdateManyWithoutUserANestedInput
+  matchesAsUserB?: Prisma.MatchUncheckedUpdateManyWithoutUserBNestedInput
+  messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
+  ratings?: Prisma.RatingUncheckedUpdateManyWithoutRaterNestedInput
+  ratingsReceived?: Prisma.RatingUncheckedUpdateManyWithoutRatedNestedInput
+  blockedUsers?: Prisma.BlockUncheckedUpdateManyWithoutBlockerNestedInput
+  blockedByUsers?: Prisma.BlockUncheckedUpdateManyWithoutBlockedNestedInput
+  reports?: Prisma.ReportUncheckedUpdateManyWithoutReporterNestedInput
+  groupMemberships?: Prisma.GroupMemberUncheckedUpdateManyWithoutUserNestedInput
+  emergencyContacts?: Prisma.EmergencyContactUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutEmergencyContactsInput = {
+  id?: string
+  authUserId: string
+  fullName: string
+  email: string
+  gender?: string | null
+  age?: number | null
+  city?: string | null
+  bio?: string | null
+  travelStyle?: string | null
+  profilePhotoUrl?: string | null
+  isProfileCompleted?: boolean
+  isVerified?: boolean
+  schedule?: string | null
+  socialEnergy?: string | null
+  planningStyle?: string | null
+  energyLevel?: string | null
+  values?: Prisma.UserCreatevaluesInput | string[]
+  interests?: Prisma.UserCreateinterestsInput | string[]
+  travelPriority?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  trips?: Prisma.TripCreateNestedManyWithoutUserInput
+  sentRequests?: Prisma.MatchRequestCreateNestedManyWithoutSenderInput
+  receivedRequests?: Prisma.MatchRequestCreateNestedManyWithoutReceiverInput
+  matchesAsUserA?: Prisma.MatchCreateNestedManyWithoutUserAInput
+  matchesAsUserB?: Prisma.MatchCreateNestedManyWithoutUserBInput
+  messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
+  ratings?: Prisma.RatingCreateNestedManyWithoutRaterInput
+  ratingsReceived?: Prisma.RatingCreateNestedManyWithoutRatedInput
+  blockedUsers?: Prisma.BlockCreateNestedManyWithoutBlockerInput
+  blockedByUsers?: Prisma.BlockCreateNestedManyWithoutBlockedInput
+  reports?: Prisma.ReportCreateNestedManyWithoutReporterInput
+  groupMemberships?: Prisma.GroupMemberCreateNestedManyWithoutUserInput
+  activeTrips?: Prisma.ActiveTripCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutEmergencyContactsInput = {
+  id?: string
+  authUserId: string
+  fullName: string
+  email: string
+  gender?: string | null
+  age?: number | null
+  city?: string | null
+  bio?: string | null
+  travelStyle?: string | null
+  profilePhotoUrl?: string | null
+  isProfileCompleted?: boolean
+  isVerified?: boolean
+  schedule?: string | null
+  socialEnergy?: string | null
+  planningStyle?: string | null
+  energyLevel?: string | null
+  values?: Prisma.UserCreatevaluesInput | string[]
+  interests?: Prisma.UserCreateinterestsInput | string[]
+  travelPriority?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  trips?: Prisma.TripUncheckedCreateNestedManyWithoutUserInput
+  sentRequests?: Prisma.MatchRequestUncheckedCreateNestedManyWithoutSenderInput
+  receivedRequests?: Prisma.MatchRequestUncheckedCreateNestedManyWithoutReceiverInput
+  matchesAsUserA?: Prisma.MatchUncheckedCreateNestedManyWithoutUserAInput
+  matchesAsUserB?: Prisma.MatchUncheckedCreateNestedManyWithoutUserBInput
+  messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
+  ratings?: Prisma.RatingUncheckedCreateNestedManyWithoutRaterInput
+  ratingsReceived?: Prisma.RatingUncheckedCreateNestedManyWithoutRatedInput
+  blockedUsers?: Prisma.BlockUncheckedCreateNestedManyWithoutBlockerInput
+  blockedByUsers?: Prisma.BlockUncheckedCreateNestedManyWithoutBlockedInput
+  reports?: Prisma.ReportUncheckedCreateNestedManyWithoutReporterInput
+  groupMemberships?: Prisma.GroupMemberUncheckedCreateNestedManyWithoutUserInput
+  activeTrips?: Prisma.ActiveTripUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutEmergencyContactsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutEmergencyContactsInput, Prisma.UserUncheckedCreateWithoutEmergencyContactsInput>
+}
+
+export type UserUpsertWithoutEmergencyContactsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutEmergencyContactsInput, Prisma.UserUncheckedUpdateWithoutEmergencyContactsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutEmergencyContactsInput, Prisma.UserUncheckedCreateWithoutEmergencyContactsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutEmergencyContactsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutEmergencyContactsInput, Prisma.UserUncheckedUpdateWithoutEmergencyContactsInput>
+}
+
+export type UserUpdateWithoutEmergencyContactsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  authUserId?: Prisma.StringFieldUpdateOperationsInput | string
+  fullName?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  age?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  travelStyle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profilePhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isProfileCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  schedule?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  socialEnergy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  planningStyle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  energyLevel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  values?: Prisma.UserUpdatevaluesInput | string[]
+  interests?: Prisma.UserUpdateinterestsInput | string[]
+  travelPriority?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  trips?: Prisma.TripUpdateManyWithoutUserNestedInput
+  sentRequests?: Prisma.MatchRequestUpdateManyWithoutSenderNestedInput
+  receivedRequests?: Prisma.MatchRequestUpdateManyWithoutReceiverNestedInput
+  matchesAsUserA?: Prisma.MatchUpdateManyWithoutUserANestedInput
+  matchesAsUserB?: Prisma.MatchUpdateManyWithoutUserBNestedInput
+  messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
+  ratings?: Prisma.RatingUpdateManyWithoutRaterNestedInput
+  ratingsReceived?: Prisma.RatingUpdateManyWithoutRatedNestedInput
+  blockedUsers?: Prisma.BlockUpdateManyWithoutBlockerNestedInput
+  blockedByUsers?: Prisma.BlockUpdateManyWithoutBlockedNestedInput
+  reports?: Prisma.ReportUpdateManyWithoutReporterNestedInput
+  groupMemberships?: Prisma.GroupMemberUpdateManyWithoutUserNestedInput
+  activeTrips?: Prisma.ActiveTripUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutEmergencyContactsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  authUserId?: Prisma.StringFieldUpdateOperationsInput | string
+  fullName?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  age?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  travelStyle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profilePhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isProfileCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  schedule?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  socialEnergy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  planningStyle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  energyLevel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  values?: Prisma.UserUpdatevaluesInput | string[]
+  interests?: Prisma.UserUpdateinterestsInput | string[]
+  travelPriority?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  trips?: Prisma.TripUncheckedUpdateManyWithoutUserNestedInput
+  sentRequests?: Prisma.MatchRequestUncheckedUpdateManyWithoutSenderNestedInput
+  receivedRequests?: Prisma.MatchRequestUncheckedUpdateManyWithoutReceiverNestedInput
+  matchesAsUserA?: Prisma.MatchUncheckedUpdateManyWithoutUserANestedInput
+  matchesAsUserB?: Prisma.MatchUncheckedUpdateManyWithoutUserBNestedInput
+  messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
+  ratings?: Prisma.RatingUncheckedUpdateManyWithoutRaterNestedInput
+  ratingsReceived?: Prisma.RatingUncheckedUpdateManyWithoutRatedNestedInput
+  blockedUsers?: Prisma.BlockUncheckedUpdateManyWithoutBlockerNestedInput
+  blockedByUsers?: Prisma.BlockUncheckedUpdateManyWithoutBlockedNestedInput
+  reports?: Prisma.ReportUncheckedUpdateManyWithoutReporterNestedInput
+  groupMemberships?: Prisma.GroupMemberUncheckedUpdateManyWithoutUserNestedInput
+  activeTrips?: Prisma.ActiveTripUncheckedUpdateManyWithoutUserNestedInput
 }
 
 
@@ -2188,6 +3351,9 @@ export type UserCountOutputType = {
   blockedUsers: number
   blockedByUsers: number
   reports: number
+  groupMemberships: number
+  emergencyContacts: number
+  activeTrips: number
 }
 
 export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -2202,6 +3368,9 @@ export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.I
   blockedUsers?: boolean | UserCountOutputTypeCountBlockedUsersArgs
   blockedByUsers?: boolean | UserCountOutputTypeCountBlockedByUsersArgs
   reports?: boolean | UserCountOutputTypeCountReportsArgs
+  groupMemberships?: boolean | UserCountOutputTypeCountGroupMembershipsArgs
+  emergencyContacts?: boolean | UserCountOutputTypeCountEmergencyContactsArgs
+  activeTrips?: boolean | UserCountOutputTypeCountActiveTripsArgs
 }
 
 /**
@@ -2291,6 +3460,27 @@ export type UserCountOutputTypeCountReportsArgs<ExtArgs extends runtime.Types.Ex
   where?: Prisma.ReportWhereInput
 }
 
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountGroupMembershipsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.GroupMemberWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountEmergencyContactsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.EmergencyContactWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountActiveTripsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ActiveTripWhereInput
+}
+
 
 export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -2305,6 +3495,13 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   profilePhotoUrl?: boolean
   isProfileCompleted?: boolean
   isVerified?: boolean
+  schedule?: boolean
+  socialEnergy?: boolean
+  planningStyle?: boolean
+  energyLevel?: boolean
+  values?: boolean
+  interests?: boolean
+  travelPriority?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   trips?: boolean | Prisma.User$tripsArgs<ExtArgs>
@@ -2318,6 +3515,9 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   blockedUsers?: boolean | Prisma.User$blockedUsersArgs<ExtArgs>
   blockedByUsers?: boolean | Prisma.User$blockedByUsersArgs<ExtArgs>
   reports?: boolean | Prisma.User$reportsArgs<ExtArgs>
+  groupMemberships?: boolean | Prisma.User$groupMembershipsArgs<ExtArgs>
+  emergencyContacts?: boolean | Prisma.User$emergencyContactsArgs<ExtArgs>
+  activeTrips?: boolean | Prisma.User$activeTripsArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
@@ -2334,6 +3534,13 @@ export type UserSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   profilePhotoUrl?: boolean
   isProfileCompleted?: boolean
   isVerified?: boolean
+  schedule?: boolean
+  socialEnergy?: boolean
+  planningStyle?: boolean
+  energyLevel?: boolean
+  values?: boolean
+  interests?: boolean
+  travelPriority?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }, ExtArgs["result"]["user"]>
@@ -2351,6 +3558,13 @@ export type UserSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   profilePhotoUrl?: boolean
   isProfileCompleted?: boolean
   isVerified?: boolean
+  schedule?: boolean
+  socialEnergy?: boolean
+  planningStyle?: boolean
+  energyLevel?: boolean
+  values?: boolean
+  interests?: boolean
+  travelPriority?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }, ExtArgs["result"]["user"]>
@@ -2368,11 +3582,18 @@ export type UserSelectScalar = {
   profilePhotoUrl?: boolean
   isProfileCompleted?: boolean
   isVerified?: boolean
+  schedule?: boolean
+  socialEnergy?: boolean
+  planningStyle?: boolean
+  energyLevel?: boolean
+  values?: boolean
+  interests?: boolean
+  travelPriority?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "authUserId" | "fullName" | "email" | "gender" | "age" | "city" | "bio" | "travelStyle" | "profilePhotoUrl" | "isProfileCompleted" | "isVerified" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
+export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "authUserId" | "fullName" | "email" | "gender" | "age" | "city" | "bio" | "travelStyle" | "profilePhotoUrl" | "isProfileCompleted" | "isVerified" | "schedule" | "socialEnergy" | "planningStyle" | "energyLevel" | "values" | "interests" | "travelPriority" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
 export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   trips?: boolean | Prisma.User$tripsArgs<ExtArgs>
   sentRequests?: boolean | Prisma.User$sentRequestsArgs<ExtArgs>
@@ -2385,6 +3606,9 @@ export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   blockedUsers?: boolean | Prisma.User$blockedUsersArgs<ExtArgs>
   blockedByUsers?: boolean | Prisma.User$blockedByUsersArgs<ExtArgs>
   reports?: boolean | Prisma.User$reportsArgs<ExtArgs>
+  groupMemberships?: boolean | Prisma.User$groupMembershipsArgs<ExtArgs>
+  emergencyContacts?: boolean | Prisma.User$emergencyContactsArgs<ExtArgs>
+  activeTrips?: boolean | Prisma.User$activeTripsArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type UserIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -2404,6 +3628,9 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     blockedUsers: Prisma.$BlockPayload<ExtArgs>[]
     blockedByUsers: Prisma.$BlockPayload<ExtArgs>[]
     reports: Prisma.$ReportPayload<ExtArgs>[]
+    groupMemberships: Prisma.$GroupMemberPayload<ExtArgs>[]
+    emergencyContacts: Prisma.$EmergencyContactPayload<ExtArgs>[]
+    activeTrips: Prisma.$ActiveTripPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -2418,6 +3645,13 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     profilePhotoUrl: string | null
     isProfileCompleted: boolean
     isVerified: boolean
+    schedule: string | null
+    socialEnergy: string | null
+    planningStyle: string | null
+    energyLevel: string | null
+    values: string[]
+    interests: string[]
+    travelPriority: string | null
     createdAt: Date
     updatedAt: Date
   }, ExtArgs["result"]["user"]>
@@ -2825,6 +4059,9 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
   blockedUsers<T extends Prisma.User$blockedUsersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$blockedUsersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BlockPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   blockedByUsers<T extends Prisma.User$blockedByUsersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$blockedByUsersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BlockPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   reports<T extends Prisma.User$reportsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$reportsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ReportPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  groupMemberships<T extends Prisma.User$groupMembershipsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$groupMembershipsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$GroupMemberPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  emergencyContacts<T extends Prisma.User$emergencyContactsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$emergencyContactsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$EmergencyContactPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  activeTrips<T extends Prisma.User$activeTripsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$activeTripsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ActiveTripPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2866,6 +4103,13 @@ export interface UserFieldRefs {
   readonly profilePhotoUrl: Prisma.FieldRef<"User", 'String'>
   readonly isProfileCompleted: Prisma.FieldRef<"User", 'Boolean'>
   readonly isVerified: Prisma.FieldRef<"User", 'Boolean'>
+  readonly schedule: Prisma.FieldRef<"User", 'String'>
+  readonly socialEnergy: Prisma.FieldRef<"User", 'String'>
+  readonly planningStyle: Prisma.FieldRef<"User", 'String'>
+  readonly energyLevel: Prisma.FieldRef<"User", 'String'>
+  readonly values: Prisma.FieldRef<"User", 'String[]'>
+  readonly interests: Prisma.FieldRef<"User", 'String[]'>
+  readonly travelPriority: Prisma.FieldRef<"User", 'String'>
   readonly createdAt: Prisma.FieldRef<"User", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"User", 'DateTime'>
 }
@@ -3522,6 +4766,78 @@ export type User$reportsArgs<ExtArgs extends runtime.Types.Extensions.InternalAr
   take?: number
   skip?: number
   distinct?: Prisma.ReportScalarFieldEnum | Prisma.ReportScalarFieldEnum[]
+}
+
+/**
+ * User.groupMemberships
+ */
+export type User$groupMembershipsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the GroupMember
+   */
+  select?: Prisma.GroupMemberSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the GroupMember
+   */
+  omit?: Prisma.GroupMemberOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.GroupMemberInclude<ExtArgs> | null
+  where?: Prisma.GroupMemberWhereInput
+  orderBy?: Prisma.GroupMemberOrderByWithRelationInput | Prisma.GroupMemberOrderByWithRelationInput[]
+  cursor?: Prisma.GroupMemberWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.GroupMemberScalarFieldEnum | Prisma.GroupMemberScalarFieldEnum[]
+}
+
+/**
+ * User.emergencyContacts
+ */
+export type User$emergencyContactsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the EmergencyContact
+   */
+  select?: Prisma.EmergencyContactSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the EmergencyContact
+   */
+  omit?: Prisma.EmergencyContactOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.EmergencyContactInclude<ExtArgs> | null
+  where?: Prisma.EmergencyContactWhereInput
+  orderBy?: Prisma.EmergencyContactOrderByWithRelationInput | Prisma.EmergencyContactOrderByWithRelationInput[]
+  cursor?: Prisma.EmergencyContactWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.EmergencyContactScalarFieldEnum | Prisma.EmergencyContactScalarFieldEnum[]
+}
+
+/**
+ * User.activeTrips
+ */
+export type User$activeTripsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the ActiveTrip
+   */
+  select?: Prisma.ActiveTripSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the ActiveTrip
+   */
+  omit?: Prisma.ActiveTripOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ActiveTripInclude<ExtArgs> | null
+  where?: Prisma.ActiveTripWhereInput
+  orderBy?: Prisma.ActiveTripOrderByWithRelationInput | Prisma.ActiveTripOrderByWithRelationInput[]
+  cursor?: Prisma.ActiveTripWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ActiveTripScalarFieldEnum | Prisma.ActiveTripScalarFieldEnum[]
 }
 
 /**

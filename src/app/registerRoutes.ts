@@ -10,6 +10,10 @@ import { messageRouter } from "../modules/messages/index.ts";
 import { ratingRouter } from "../modules/ratings/index.ts";
 import { blockRouter } from "../modules/blocks/index.ts";
 import { reportRouter } from "../modules/reports/index.ts";
+import { groupRouter } from "../modules/groups/index.ts";
+import { safetyRouter } from "../modules/safety/index.ts";
+import eventRouter from "../modules/events/routes/event.route.ts";
+import { matchingRouter } from "../modules/matching/index.ts";
 
 export function registerRoutes(app: Hono) {
   app.route("/health", healthRouter);
@@ -23,4 +27,8 @@ export function registerRoutes(app: Hono) {
   app.route("/ratings", ratingRouter);
   app.route("/blocks", blockRouter);
   app.route("/reports", reportRouter);
+  app.route("/groups", groupRouter);
+  app.route("/safety", safetyRouter);
+  app.route("/events", eventRouter);
+  app.route("/matching", matchingRouter);
 }

@@ -91,3 +91,28 @@ export type Block = Prisma.BlockModel
  * 
  */
 export type Report = Prisma.ReportModel
+/**
+ * Model GroupTrip
+ * 
+ */
+export type GroupTrip = Prisma.GroupTripModel
+/**
+ * Model GroupMember
+ * 
+ */
+export type GroupMember = Prisma.GroupMemberModel
+/**
+ * Model ActiveTrip
+ * 
+ */
+export type ActiveTrip = Prisma.ActiveTripModel
+/**
+ * Model EmergencyContact
+ * 
+ */
+export type EmergencyContact = Prisma.EmergencyContactModel
+/**
+ * Model Event
+ * 
+ */
+export type Event = Prisma.EventModel

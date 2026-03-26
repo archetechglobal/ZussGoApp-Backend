@@ -423,9 +423,9 @@ export type MatchSumOrderByAggregateInput = {
   matchScore?: Prisma.SortOrder
 }
 
-export type MatchScalarRelationFilter = {
-  is?: Prisma.MatchWhereInput
-  isNot?: Prisma.MatchWhereInput
+export type MatchNullableScalarRelationFilter = {
+  is?: Prisma.MatchWhereInput | null
+  isNot?: Prisma.MatchWhereInput | null
 }
 
 export type MatchCreateNestedManyWithoutUserAInput = {
@@ -560,10 +560,12 @@ export type MatchCreateNestedOneWithoutConversationInput = {
   connect?: Prisma.MatchWhereUniqueInput
 }
 
-export type MatchUpdateOneRequiredWithoutConversationNestedInput = {
+export type MatchUpdateOneWithoutConversationNestedInput = {
   create?: Prisma.XOR<Prisma.MatchCreateWithoutConversationInput, Prisma.MatchUncheckedCreateWithoutConversationInput>
   connectOrCreate?: Prisma.MatchCreateOrConnectWithoutConversationInput
   upsert?: Prisma.MatchUpsertWithoutConversationInput
+  disconnect?: Prisma.MatchWhereInput | boolean
+  delete?: Prisma.MatchWhereInput | boolean
   connect?: Prisma.MatchWhereUniqueInput
   update?: Prisma.XOR<Prisma.XOR<Prisma.MatchUpdateToOneWithWhereWithoutConversationInput, Prisma.MatchUpdateWithoutConversationInput>, Prisma.MatchUncheckedUpdateWithoutConversationInput>
 }

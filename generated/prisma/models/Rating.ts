@@ -39,6 +39,7 @@ export type RatingMinAggregateOutputType = {
   raterId: string | null
   ratedId: string | null
   tripId: string | null
+  groupId: string | null
   score: number | null
   review: string | null
   createdAt: Date | null
@@ -49,6 +50,7 @@ export type RatingMaxAggregateOutputType = {
   raterId: string | null
   ratedId: string | null
   tripId: string | null
+  groupId: string | null
   score: number | null
   review: string | null
   createdAt: Date | null
@@ -59,6 +61,7 @@ export type RatingCountAggregateOutputType = {
   raterId: number
   ratedId: number
   tripId: number
+  groupId: number
   score: number
   review: number
   moodTags: number
@@ -80,6 +83,7 @@ export type RatingMinAggregateInputType = {
   raterId?: true
   ratedId?: true
   tripId?: true
+  groupId?: true
   score?: true
   review?: true
   createdAt?: true
@@ -90,6 +94,7 @@ export type RatingMaxAggregateInputType = {
   raterId?: true
   ratedId?: true
   tripId?: true
+  groupId?: true
   score?: true
   review?: true
   createdAt?: true
@@ -100,6 +105,7 @@ export type RatingCountAggregateInputType = {
   raterId?: true
   ratedId?: true
   tripId?: true
+  groupId?: true
   score?: true
   review?: true
   moodTags?: true
@@ -197,7 +203,8 @@ export type RatingGroupByOutputType = {
   id: string
   raterId: string
   ratedId: string
-  tripId: string
+  tripId: string | null
+  groupId: string | null
   score: number
   review: string | null
   moodTags: string[]
@@ -231,7 +238,8 @@ export type RatingWhereInput = {
   id?: Prisma.StringFilter<"Rating"> | string
   raterId?: Prisma.StringFilter<"Rating"> | string
   ratedId?: Prisma.StringFilter<"Rating"> | string
-  tripId?: Prisma.StringFilter<"Rating"> | string
+  tripId?: Prisma.StringNullableFilter<"Rating"> | string | null
+  groupId?: Prisma.StringNullableFilter<"Rating"> | string | null
   score?: Prisma.IntFilter<"Rating"> | number
   review?: Prisma.StringNullableFilter<"Rating"> | string | null
   moodTags?: Prisma.StringNullableListFilter<"Rating">
@@ -244,7 +252,8 @@ export type RatingOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   raterId?: Prisma.SortOrder
   ratedId?: Prisma.SortOrder
-  tripId?: Prisma.SortOrder
+  tripId?: Prisma.SortOrderInput | Prisma.SortOrder
+  groupId?: Prisma.SortOrderInput | Prisma.SortOrder
   score?: Prisma.SortOrder
   review?: Prisma.SortOrderInput | Prisma.SortOrder
   moodTags?: Prisma.SortOrder
@@ -261,7 +270,8 @@ export type RatingWhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.RatingWhereInput | Prisma.RatingWhereInput[]
   raterId?: Prisma.StringFilter<"Rating"> | string
   ratedId?: Prisma.StringFilter<"Rating"> | string
-  tripId?: Prisma.StringFilter<"Rating"> | string
+  tripId?: Prisma.StringNullableFilter<"Rating"> | string | null
+  groupId?: Prisma.StringNullableFilter<"Rating"> | string | null
   score?: Prisma.IntFilter<"Rating"> | number
   review?: Prisma.StringNullableFilter<"Rating"> | string | null
   moodTags?: Prisma.StringNullableListFilter<"Rating">
@@ -274,7 +284,8 @@ export type RatingOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   raterId?: Prisma.SortOrder
   ratedId?: Prisma.SortOrder
-  tripId?: Prisma.SortOrder
+  tripId?: Prisma.SortOrderInput | Prisma.SortOrder
+  groupId?: Prisma.SortOrderInput | Prisma.SortOrder
   score?: Prisma.SortOrder
   review?: Prisma.SortOrderInput | Prisma.SortOrder
   moodTags?: Prisma.SortOrder
@@ -293,7 +304,8 @@ export type RatingScalarWhereWithAggregatesInput = {
   id?: Prisma.StringWithAggregatesFilter<"Rating"> | string
   raterId?: Prisma.StringWithAggregatesFilter<"Rating"> | string
   ratedId?: Prisma.StringWithAggregatesFilter<"Rating"> | string
-  tripId?: Prisma.StringWithAggregatesFilter<"Rating"> | string
+  tripId?: Prisma.StringNullableWithAggregatesFilter<"Rating"> | string | null
+  groupId?: Prisma.StringNullableWithAggregatesFilter<"Rating"> | string | null
   score?: Prisma.IntWithAggregatesFilter<"Rating"> | number
   review?: Prisma.StringNullableWithAggregatesFilter<"Rating"> | string | null
   moodTags?: Prisma.StringNullableListFilter<"Rating">
@@ -302,7 +314,8 @@ export type RatingScalarWhereWithAggregatesInput = {
 
 export type RatingCreateInput = {
   id?: string
-  tripId: string
+  tripId?: string | null
+  groupId?: string | null
   score: number
   review?: string | null
   moodTags?: Prisma.RatingCreatemoodTagsInput | string[]
@@ -315,7 +328,8 @@ export type RatingUncheckedCreateInput = {
   id?: string
   raterId: string
   ratedId: string
-  tripId: string
+  tripId?: string | null
+  groupId?: string | null
   score: number
   review?: string | null
   moodTags?: Prisma.RatingCreatemoodTagsInput | string[]
@@ -324,7 +338,8 @@ export type RatingUncheckedCreateInput = {
 
 export type RatingUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  tripId?: Prisma.StringFieldUpdateOperationsInput | string
+  tripId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  groupId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   score?: Prisma.IntFieldUpdateOperationsInput | number
   review?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   moodTags?: Prisma.RatingUpdatemoodTagsInput | string[]
@@ -337,7 +352,8 @@ export type RatingUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   raterId?: Prisma.StringFieldUpdateOperationsInput | string
   ratedId?: Prisma.StringFieldUpdateOperationsInput | string
-  tripId?: Prisma.StringFieldUpdateOperationsInput | string
+  tripId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  groupId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   score?: Prisma.IntFieldUpdateOperationsInput | number
   review?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   moodTags?: Prisma.RatingUpdatemoodTagsInput | string[]
@@ -348,7 +364,8 @@ export type RatingCreateManyInput = {
   id?: string
   raterId: string
   ratedId: string
-  tripId: string
+  tripId?: string | null
+  groupId?: string | null
   score: number
   review?: string | null
   moodTags?: Prisma.RatingCreatemoodTagsInput | string[]
@@ -357,7 +374,8 @@ export type RatingCreateManyInput = {
 
 export type RatingUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  tripId?: Prisma.StringFieldUpdateOperationsInput | string
+  tripId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  groupId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   score?: Prisma.IntFieldUpdateOperationsInput | number
   review?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   moodTags?: Prisma.RatingUpdatemoodTagsInput | string[]
@@ -368,7 +386,8 @@ export type RatingUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   raterId?: Prisma.StringFieldUpdateOperationsInput | string
   ratedId?: Prisma.StringFieldUpdateOperationsInput | string
-  tripId?: Prisma.StringFieldUpdateOperationsInput | string
+  tripId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  groupId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   score?: Prisma.IntFieldUpdateOperationsInput | number
   review?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   moodTags?: Prisma.RatingUpdatemoodTagsInput | string[]
@@ -385,14 +404,6 @@ export type RatingOrderByRelationAggregateInput = {
   _count?: Prisma.SortOrder
 }
 
-export type StringNullableListFilter<$PrismaModel = never> = {
-  equals?: string[] | Prisma.ListStringFieldRefInput<$PrismaModel> | null
-  has?: string | Prisma.StringFieldRefInput<$PrismaModel> | null
-  hasEvery?: string[] | Prisma.ListStringFieldRefInput<$PrismaModel>
-  hasSome?: string[] | Prisma.ListStringFieldRefInput<$PrismaModel>
-  isEmpty?: boolean
-}
-
 export type RatingRaterIdRatedIdTripIdCompoundUniqueInput = {
   raterId: string
   ratedId: string
@@ -404,6 +415,7 @@ export type RatingCountOrderByAggregateInput = {
   raterId?: Prisma.SortOrder
   ratedId?: Prisma.SortOrder
   tripId?: Prisma.SortOrder
+  groupId?: Prisma.SortOrder
   score?: Prisma.SortOrder
   review?: Prisma.SortOrder
   moodTags?: Prisma.SortOrder
@@ -419,6 +431,7 @@ export type RatingMaxOrderByAggregateInput = {
   raterId?: Prisma.SortOrder
   ratedId?: Prisma.SortOrder
   tripId?: Prisma.SortOrder
+  groupId?: Prisma.SortOrder
   score?: Prisma.SortOrder
   review?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -429,6 +442,7 @@ export type RatingMinOrderByAggregateInput = {
   raterId?: Prisma.SortOrder
   ratedId?: Prisma.SortOrder
   tripId?: Prisma.SortOrder
+  groupId?: Prisma.SortOrder
   score?: Prisma.SortOrder
   review?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -541,7 +555,8 @@ export type RatingUpdatemoodTagsInput = {
 
 export type RatingCreateWithoutRaterInput = {
   id?: string
-  tripId: string
+  tripId?: string | null
+  groupId?: string | null
   score: number
   review?: string | null
   moodTags?: Prisma.RatingCreatemoodTagsInput | string[]
@@ -552,7 +567,8 @@ export type RatingCreateWithoutRaterInput = {
 export type RatingUncheckedCreateWithoutRaterInput = {
   id?: string
   ratedId: string
-  tripId: string
+  tripId?: string | null
+  groupId?: string | null
   score: number
   review?: string | null
   moodTags?: Prisma.RatingCreatemoodTagsInput | string[]
@@ -571,7 +587,8 @@ export type RatingCreateManyRaterInputEnvelope = {
 
 export type RatingCreateWithoutRatedInput = {
   id?: string
-  tripId: string
+  tripId?: string | null
+  groupId?: string | null
   score: number
   review?: string | null
   moodTags?: Prisma.RatingCreatemoodTagsInput | string[]
@@ -582,7 +599,8 @@ export type RatingCreateWithoutRatedInput = {
 export type RatingUncheckedCreateWithoutRatedInput = {
   id?: string
   raterId: string
-  tripId: string
+  tripId?: string | null
+  groupId?: string | null
   score: number
   review?: string | null
   moodTags?: Prisma.RatingCreatemoodTagsInput | string[]
@@ -622,7 +640,8 @@ export type RatingScalarWhereInput = {
   id?: Prisma.StringFilter<"Rating"> | string
   raterId?: Prisma.StringFilter<"Rating"> | string
   ratedId?: Prisma.StringFilter<"Rating"> | string
-  tripId?: Prisma.StringFilter<"Rating"> | string
+  tripId?: Prisma.StringNullableFilter<"Rating"> | string | null
+  groupId?: Prisma.StringNullableFilter<"Rating"> | string | null
   score?: Prisma.IntFilter<"Rating"> | number
   review?: Prisma.StringNullableFilter<"Rating"> | string | null
   moodTags?: Prisma.StringNullableListFilter<"Rating">
@@ -648,7 +667,8 @@ export type RatingUpdateManyWithWhereWithoutRatedInput = {
 export type RatingCreateManyRaterInput = {
   id?: string
   ratedId: string
-  tripId: string
+  tripId?: string | null
+  groupId?: string | null
   score: number
   review?: string | null
   moodTags?: Prisma.RatingCreatemoodTagsInput | string[]
@@ -658,7 +678,8 @@ export type RatingCreateManyRaterInput = {
 export type RatingCreateManyRatedInput = {
   id?: string
   raterId: string
-  tripId: string
+  tripId?: string | null
+  groupId?: string | null
   score: number
   review?: string | null
   moodTags?: Prisma.RatingCreatemoodTagsInput | string[]
@@ -667,7 +688,8 @@ export type RatingCreateManyRatedInput = {
 
 export type RatingUpdateWithoutRaterInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  tripId?: Prisma.StringFieldUpdateOperationsInput | string
+  tripId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  groupId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   score?: Prisma.IntFieldUpdateOperationsInput | number
   review?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   moodTags?: Prisma.RatingUpdatemoodTagsInput | string[]
@@ -678,7 +700,8 @@ export type RatingUpdateWithoutRaterInput = {
 export type RatingUncheckedUpdateWithoutRaterInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   ratedId?: Prisma.StringFieldUpdateOperationsInput | string
-  tripId?: Prisma.StringFieldUpdateOperationsInput | string
+  tripId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  groupId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   score?: Prisma.IntFieldUpdateOperationsInput | number
   review?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   moodTags?: Prisma.RatingUpdatemoodTagsInput | string[]
@@ -688,7 +711,8 @@ export type RatingUncheckedUpdateWithoutRaterInput = {
 export type RatingUncheckedUpdateManyWithoutRaterInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   ratedId?: Prisma.StringFieldUpdateOperationsInput | string
-  tripId?: Prisma.StringFieldUpdateOperationsInput | string
+  tripId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  groupId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   score?: Prisma.IntFieldUpdateOperationsInput | number
   review?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   moodTags?: Prisma.RatingUpdatemoodTagsInput | string[]
@@ -697,7 +721,8 @@ export type RatingUncheckedUpdateManyWithoutRaterInput = {
 
 export type RatingUpdateWithoutRatedInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  tripId?: Prisma.StringFieldUpdateOperationsInput | string
+  tripId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  groupId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   score?: Prisma.IntFieldUpdateOperationsInput | number
   review?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   moodTags?: Prisma.RatingUpdatemoodTagsInput | string[]
@@ -708,7 +733,8 @@ export type RatingUpdateWithoutRatedInput = {
 export type RatingUncheckedUpdateWithoutRatedInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   raterId?: Prisma.StringFieldUpdateOperationsInput | string
-  tripId?: Prisma.StringFieldUpdateOperationsInput | string
+  tripId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  groupId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   score?: Prisma.IntFieldUpdateOperationsInput | number
   review?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   moodTags?: Prisma.RatingUpdatemoodTagsInput | string[]
@@ -718,7 +744,8 @@ export type RatingUncheckedUpdateWithoutRatedInput = {
 export type RatingUncheckedUpdateManyWithoutRatedInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   raterId?: Prisma.StringFieldUpdateOperationsInput | string
-  tripId?: Prisma.StringFieldUpdateOperationsInput | string
+  tripId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  groupId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   score?: Prisma.IntFieldUpdateOperationsInput | number
   review?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   moodTags?: Prisma.RatingUpdatemoodTagsInput | string[]
@@ -732,6 +759,7 @@ export type RatingSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   raterId?: boolean
   ratedId?: boolean
   tripId?: boolean
+  groupId?: boolean
   score?: boolean
   review?: boolean
   moodTags?: boolean
@@ -745,6 +773,7 @@ export type RatingSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extens
   raterId?: boolean
   ratedId?: boolean
   tripId?: boolean
+  groupId?: boolean
   score?: boolean
   review?: boolean
   moodTags?: boolean
@@ -758,6 +787,7 @@ export type RatingSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extens
   raterId?: boolean
   ratedId?: boolean
   tripId?: boolean
+  groupId?: boolean
   score?: boolean
   review?: boolean
   moodTags?: boolean
@@ -771,13 +801,14 @@ export type RatingSelectScalar = {
   raterId?: boolean
   ratedId?: boolean
   tripId?: boolean
+  groupId?: boolean
   score?: boolean
   review?: boolean
   moodTags?: boolean
   createdAt?: boolean
 }
 
-export type RatingOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "raterId" | "ratedId" | "tripId" | "score" | "review" | "moodTags" | "createdAt", ExtArgs["result"]["rating"]>
+export type RatingOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "raterId" | "ratedId" | "tripId" | "groupId" | "score" | "review" | "moodTags" | "createdAt", ExtArgs["result"]["rating"]>
 export type RatingInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   rater?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   rated?: boolean | Prisma.UserDefaultArgs<ExtArgs>
@@ -801,7 +832,8 @@ export type $RatingPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs
     id: string
     raterId: string
     ratedId: string
-    tripId: string
+    tripId: string | null
+    groupId: string | null
     score: number
     review: string | null
     moodTags: string[]
@@ -1235,6 +1267,7 @@ export interface RatingFieldRefs {
   readonly raterId: Prisma.FieldRef<"Rating", 'String'>
   readonly ratedId: Prisma.FieldRef<"Rating", 'String'>
   readonly tripId: Prisma.FieldRef<"Rating", 'String'>
+  readonly groupId: Prisma.FieldRef<"Rating", 'String'>
   readonly score: Prisma.FieldRef<"Rating", 'Int'>
   readonly review: Prisma.FieldRef<"Rating", 'String'>
   readonly moodTags: Prisma.FieldRef<"Rating", 'String[]'>

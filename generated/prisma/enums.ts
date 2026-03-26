@@ -49,3 +49,41 @@ export const ReportStatus = {
 } as const
 
 export type ReportStatus = (typeof ReportStatus)[keyof typeof ReportStatus]
+
+
+export const GroupStatus = {
+  OPEN: 'OPEN',
+  FULL: 'FULL',
+  ONGOING: 'ONGOING',
+  COMPLETED: 'COMPLETED',
+  CANCELLED: 'CANCELLED'
+} as const
+
+export type GroupStatus = (typeof GroupStatus)[keyof typeof GroupStatus]
+
+
+export const GroupRole = {
+  CREATOR: 'CREATOR',
+  ADMIN: 'ADMIN',
+  MEMBER: 'MEMBER'
+} as const
+
+export type GroupRole = (typeof GroupRole)[keyof typeof GroupRole]
+
+
+export const GroupMemberStatus = {
+  PENDING: 'PENDING',
+  ACCEPTED: 'ACCEPTED',
+  REJECTED: 'REJECTED'
+} as const
+
+export type GroupMemberStatus = (typeof GroupMemberStatus)[keyof typeof GroupMemberStatus]
+
+
+export const ActiveTripStatus = {
+  ACTIVE: 'ACTIVE',
+  COMPLETED: 'COMPLETED',
+  SOS: 'SOS'
+} as const
+
+export type ActiveTripStatus = (typeof ActiveTripStatus)[keyof typeof ActiveTripStatus]

@@ -223,6 +223,7 @@ export type DestinationWhereInput = {
   isActive?: Prisma.BoolFilter<"Destination"> | boolean
   createdAt?: Prisma.DateTimeFilter<"Destination"> | Date | string
   trips?: Prisma.TripListRelationFilter
+  groups?: Prisma.GroupTripListRelationFilter
 }
 
 export type DestinationOrderByWithRelationInput = {
@@ -237,6 +238,7 @@ export type DestinationOrderByWithRelationInput = {
   isActive?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   trips?: Prisma.TripOrderByRelationAggregateInput
+  groups?: Prisma.GroupTripOrderByRelationAggregateInput
 }
 
 export type DestinationWhereUniqueInput = Prisma.AtLeast<{
@@ -254,6 +256,7 @@ export type DestinationWhereUniqueInput = Prisma.AtLeast<{
   isActive?: Prisma.BoolFilter<"Destination"> | boolean
   createdAt?: Prisma.DateTimeFilter<"Destination"> | Date | string
   trips?: Prisma.TripListRelationFilter
+  groups?: Prisma.GroupTripListRelationFilter
 }, "id" | "name" | "slug">
 
 export type DestinationOrderByWithAggregationInput = {
@@ -300,6 +303,7 @@ export type DestinationCreateInput = {
   isActive?: boolean
   createdAt?: Date | string
   trips?: Prisma.TripCreateNestedManyWithoutDestinationInput
+  groups?: Prisma.GroupTripCreateNestedManyWithoutDestinationInput
 }
 
 export type DestinationUncheckedCreateInput = {
@@ -314,6 +318,7 @@ export type DestinationUncheckedCreateInput = {
   isActive?: boolean
   createdAt?: Date | string
   trips?: Prisma.TripUncheckedCreateNestedManyWithoutDestinationInput
+  groups?: Prisma.GroupTripUncheckedCreateNestedManyWithoutDestinationInput
 }
 
 export type DestinationUpdateInput = {
@@ -328,6 +333,7 @@ export type DestinationUpdateInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   trips?: Prisma.TripUpdateManyWithoutDestinationNestedInput
+  groups?: Prisma.GroupTripUpdateManyWithoutDestinationNestedInput
 }
 
 export type DestinationUncheckedUpdateInput = {
@@ -342,6 +348,7 @@ export type DestinationUncheckedUpdateInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   trips?: Prisma.TripUncheckedUpdateManyWithoutDestinationNestedInput
+  groups?: Prisma.GroupTripUncheckedUpdateManyWithoutDestinationNestedInput
 }
 
 export type DestinationCreateManyInput = {
@@ -441,6 +448,20 @@ export type DestinationUpdateOneRequiredWithoutTripsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.DestinationUpdateToOneWithWhereWithoutTripsInput, Prisma.DestinationUpdateWithoutTripsInput>, Prisma.DestinationUncheckedUpdateWithoutTripsInput>
 }
 
+export type DestinationCreateNestedOneWithoutGroupsInput = {
+  create?: Prisma.XOR<Prisma.DestinationCreateWithoutGroupsInput, Prisma.DestinationUncheckedCreateWithoutGroupsInput>
+  connectOrCreate?: Prisma.DestinationCreateOrConnectWithoutGroupsInput
+  connect?: Prisma.DestinationWhereUniqueInput
+}
+
+export type DestinationUpdateOneRequiredWithoutGroupsNestedInput = {
+  create?: Prisma.XOR<Prisma.DestinationCreateWithoutGroupsInput, Prisma.DestinationUncheckedCreateWithoutGroupsInput>
+  connectOrCreate?: Prisma.DestinationCreateOrConnectWithoutGroupsInput
+  upsert?: Prisma.DestinationUpsertWithoutGroupsInput
+  connect?: Prisma.DestinationWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.DestinationUpdateToOneWithWhereWithoutGroupsInput, Prisma.DestinationUpdateWithoutGroupsInput>, Prisma.DestinationUncheckedUpdateWithoutGroupsInput>
+}
+
 export type DestinationCreateWithoutTripsInput = {
   id?: string
   name: string
@@ -452,6 +473,7 @@ export type DestinationCreateWithoutTripsInput = {
   imageUrl?: string | null
   isActive?: boolean
   createdAt?: Date | string
+  groups?: Prisma.GroupTripCreateNestedManyWithoutDestinationInput
 }
 
 export type DestinationUncheckedCreateWithoutTripsInput = {
@@ -465,6 +487,7 @@ export type DestinationUncheckedCreateWithoutTripsInput = {
   imageUrl?: string | null
   isActive?: boolean
   createdAt?: Date | string
+  groups?: Prisma.GroupTripUncheckedCreateNestedManyWithoutDestinationInput
 }
 
 export type DestinationCreateOrConnectWithoutTripsInput = {
@@ -494,6 +517,7 @@ export type DestinationUpdateWithoutTripsInput = {
   imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  groups?: Prisma.GroupTripUpdateManyWithoutDestinationNestedInput
 }
 
 export type DestinationUncheckedUpdateWithoutTripsInput = {
@@ -507,6 +531,79 @@ export type DestinationUncheckedUpdateWithoutTripsInput = {
   imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  groups?: Prisma.GroupTripUncheckedUpdateManyWithoutDestinationNestedInput
+}
+
+export type DestinationCreateWithoutGroupsInput = {
+  id?: string
+  name: string
+  slug: string
+  emoji: string
+  description?: string | null
+  state?: string | null
+  country?: string
+  imageUrl?: string | null
+  isActive?: boolean
+  createdAt?: Date | string
+  trips?: Prisma.TripCreateNestedManyWithoutDestinationInput
+}
+
+export type DestinationUncheckedCreateWithoutGroupsInput = {
+  id?: string
+  name: string
+  slug: string
+  emoji: string
+  description?: string | null
+  state?: string | null
+  country?: string
+  imageUrl?: string | null
+  isActive?: boolean
+  createdAt?: Date | string
+  trips?: Prisma.TripUncheckedCreateNestedManyWithoutDestinationInput
+}
+
+export type DestinationCreateOrConnectWithoutGroupsInput = {
+  where: Prisma.DestinationWhereUniqueInput
+  create: Prisma.XOR<Prisma.DestinationCreateWithoutGroupsInput, Prisma.DestinationUncheckedCreateWithoutGroupsInput>
+}
+
+export type DestinationUpsertWithoutGroupsInput = {
+  update: Prisma.XOR<Prisma.DestinationUpdateWithoutGroupsInput, Prisma.DestinationUncheckedUpdateWithoutGroupsInput>
+  create: Prisma.XOR<Prisma.DestinationCreateWithoutGroupsInput, Prisma.DestinationUncheckedCreateWithoutGroupsInput>
+  where?: Prisma.DestinationWhereInput
+}
+
+export type DestinationUpdateToOneWithWhereWithoutGroupsInput = {
+  where?: Prisma.DestinationWhereInput
+  data: Prisma.XOR<Prisma.DestinationUpdateWithoutGroupsInput, Prisma.DestinationUncheckedUpdateWithoutGroupsInput>
+}
+
+export type DestinationUpdateWithoutGroupsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  emoji?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  state?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  country?: Prisma.StringFieldUpdateOperationsInput | string
+  imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  trips?: Prisma.TripUpdateManyWithoutDestinationNestedInput
+}
+
+export type DestinationUncheckedUpdateWithoutGroupsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  emoji?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  state?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  country?: Prisma.StringFieldUpdateOperationsInput | string
+  imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  trips?: Prisma.TripUncheckedUpdateManyWithoutDestinationNestedInput
 }
 
 
@@ -516,10 +613,12 @@ export type DestinationUncheckedUpdateWithoutTripsInput = {
 
 export type DestinationCountOutputType = {
   trips: number
+  groups: number
 }
 
 export type DestinationCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   trips?: boolean | DestinationCountOutputTypeCountTripsArgs
+  groups?: boolean | DestinationCountOutputTypeCountGroupsArgs
 }
 
 /**
@@ -539,6 +638,13 @@ export type DestinationCountOutputTypeCountTripsArgs<ExtArgs extends runtime.Typ
   where?: Prisma.TripWhereInput
 }
 
+/**
+ * DestinationCountOutputType without action
+ */
+export type DestinationCountOutputTypeCountGroupsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.GroupTripWhereInput
+}
+
 
 export type DestinationSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -552,6 +658,7 @@ export type DestinationSelect<ExtArgs extends runtime.Types.Extensions.InternalA
   isActive?: boolean
   createdAt?: boolean
   trips?: boolean | Prisma.Destination$tripsArgs<ExtArgs>
+  groups?: boolean | Prisma.Destination$groupsArgs<ExtArgs>
   _count?: boolean | Prisma.DestinationCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["destination"]>
 
@@ -597,6 +704,7 @@ export type DestinationSelectScalar = {
 export type DestinationOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "slug" | "emoji" | "description" | "state" | "country" | "imageUrl" | "isActive" | "createdAt", ExtArgs["result"]["destination"]>
 export type DestinationInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   trips?: boolean | Prisma.Destination$tripsArgs<ExtArgs>
+  groups?: boolean | Prisma.Destination$groupsArgs<ExtArgs>
   _count?: boolean | Prisma.DestinationCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type DestinationIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -606,6 +714,7 @@ export type $DestinationPayload<ExtArgs extends runtime.Types.Extensions.Interna
   name: "Destination"
   objects: {
     trips: Prisma.$TripPayload<ExtArgs>[]
+    groups: Prisma.$GroupTripPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1013,6 +1122,7 @@ readonly fields: DestinationFieldRefs;
 export interface Prisma__DestinationClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   trips<T extends Prisma.Destination$tripsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Destination$tripsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TripPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  groups<T extends Prisma.Destination$groupsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Destination$groupsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$GroupTripPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1466,6 +1576,30 @@ export type Destination$tripsArgs<ExtArgs extends runtime.Types.Extensions.Inter
   take?: number
   skip?: number
   distinct?: Prisma.TripScalarFieldEnum | Prisma.TripScalarFieldEnum[]
+}
+
+/**
+ * Destination.groups
+ */
+export type Destination$groupsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the GroupTrip
+   */
+  select?: Prisma.GroupTripSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the GroupTrip
+   */
+  omit?: Prisma.GroupTripOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.GroupTripInclude<ExtArgs> | null
+  where?: Prisma.GroupTripWhereInput
+  orderBy?: Prisma.GroupTripOrderByWithRelationInput | Prisma.GroupTripOrderByWithRelationInput[]
+  cursor?: Prisma.GroupTripWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.GroupTripScalarFieldEnum | Prisma.GroupTripScalarFieldEnum[]
 }
 
 /**

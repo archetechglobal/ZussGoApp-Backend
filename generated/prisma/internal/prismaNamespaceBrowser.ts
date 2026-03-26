@@ -60,7 +60,12 @@ export const ModelName = {
   Message: 'Message',
   Rating: 'Rating',
   Block: 'Block',
-  Report: 'Report'
+  Report: 'Report',
+  GroupTrip: 'GroupTrip',
+  GroupMember: 'GroupMember',
+  ActiveTrip: 'ActiveTrip',
+  EmergencyContact: 'EmergencyContact',
+  Event: 'Event'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -92,6 +97,13 @@ export const UserScalarFieldEnum = {
   profilePhotoUrl: 'profilePhotoUrl',
   isProfileCompleted: 'isProfileCompleted',
   isVerified: 'isVerified',
+  schedule: 'schedule',
+  socialEnergy: 'socialEnergy',
+  planningStyle: 'planningStyle',
+  energyLevel: 'energyLevel',
+  values: 'values',
+  interests: 'interests',
+  travelPriority: 'travelPriority',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
@@ -161,6 +173,7 @@ export type MatchScalarFieldEnum = (typeof MatchScalarFieldEnum)[keyof typeof Ma
 export const ConversationScalarFieldEnum = {
   id: 'id',
   matchId: 'matchId',
+  groupId: 'groupId',
   lastMessage: 'lastMessage',
   lastMessageAt: 'lastMessageAt',
   createdAt: 'createdAt'
@@ -186,6 +199,7 @@ export const RatingScalarFieldEnum = {
   raterId: 'raterId',
   ratedId: 'ratedId',
   tripId: 'tripId',
+  groupId: 'groupId',
   score: 'score',
   review: 'review',
   moodTags: 'moodTags',
@@ -217,6 +231,87 @@ export const ReportScalarFieldEnum = {
 } as const
 
 export type ReportScalarFieldEnum = (typeof ReportScalarFieldEnum)[keyof typeof ReportScalarFieldEnum]
+
+
+export const GroupTripScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  destinationId: 'destinationId',
+  startDate: 'startDate',
+  endDate: 'endDate',
+  budget: 'budget',
+  maxMembers: 'maxMembers',
+  description: 'description',
+  creatorId: 'creatorId',
+  tags: 'tags',
+  genderFilter: 'genderFilter',
+  ageMin: 'ageMin',
+  ageMax: 'ageMax',
+  status: 'status',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type GroupTripScalarFieldEnum = (typeof GroupTripScalarFieldEnum)[keyof typeof GroupTripScalarFieldEnum]
+
+
+export const GroupMemberScalarFieldEnum = {
+  id: 'id',
+  groupId: 'groupId',
+  userId: 'userId',
+  role: 'role',
+  status: 'status',
+  joinedAt: 'joinedAt'
+} as const
+
+export type GroupMemberScalarFieldEnum = (typeof GroupMemberScalarFieldEnum)[keyof typeof GroupMemberScalarFieldEnum]
+
+
+export const ActiveTripScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  tripId: 'tripId',
+  groupId: 'groupId',
+  destination: 'destination',
+  startDate: 'startDate',
+  endDate: 'endDate',
+  status: 'status',
+  lastLatitude: 'lastLatitude',
+  lastLongitude: 'lastLongitude',
+  lastSeenAt: 'lastSeenAt',
+  createdAt: 'createdAt'
+} as const
+
+export type ActiveTripScalarFieldEnum = (typeof ActiveTripScalarFieldEnum)[keyof typeof ActiveTripScalarFieldEnum]
+
+
+export const EmergencyContactScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  name: 'name',
+  phone: 'phone',
+  relation: 'relation'
+} as const
+
+export type EmergencyContactScalarFieldEnum = (typeof EmergencyContactScalarFieldEnum)[keyof typeof EmergencyContactScalarFieldEnum]
+
+
+export const EventScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  emoji: 'emoji',
+  destination: 'destination',
+  destinationSlug: 'destinationSlug',
+  dates: 'dates',
+  month: 'month',
+  year: 'year',
+  tag: 'tag',
+  description: 'description',
+  isActive: 'isActive',
+  createdAt: 'createdAt'
+} as const
+
+export type EventScalarFieldEnum = (typeof EventScalarFieldEnum)[keyof typeof EventScalarFieldEnum]
 
 
 export const SortOrder = {
