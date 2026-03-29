@@ -232,4 +232,27 @@ export class AuthenticationController {
       return c.json({ success: false, message: "Something went wrong" }, 500);
     }
   };
+
+  // GET /auth/users/:id
+  getUser = async (c: Context) => {
+    try {
+      const id = c.req.param("id");
+      const currentUserId = c.req.query("userId");
+
+      if (!id) {
+        return c.json({ success: false, message: "User ID parameter is required" }, 400);
+      }
+
+      const user = await this.usersService.getUserById(id, currentUserId);
+
+      if (!user) {
+         return c.json({ success: false, message: "User not found" }, 404);
+      }
+
+      return c.json({ success: true, data: user }, 200);
+
+    } catch (error) {
+      return c.json({ success: false, message: "Something went wrong" }, 500);
+    }
+  };
 }

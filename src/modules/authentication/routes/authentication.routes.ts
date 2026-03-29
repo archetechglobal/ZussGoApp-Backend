@@ -12,5 +12,6 @@ authenticationRouter.post("/reset-password", authenticationController.resetPassw
 authenticationRouter.post("/resend-otp", authenticationController.resendOtp);
 authenticationRouter.post("/profile-setup", authenticationController.profileSetup);
 authenticationRouter.get("/users", authenticationController.getUsers);
+authenticationRouter.get("/users/:id", authenticationController.getUser);
 
 export default authenticationRouter;

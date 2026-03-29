@@ -34,7 +34,8 @@ export class DestinationController {
   getBySlug = async (c: Context) => {
     try {
       const slug = c.req.param("slug") || "";
-      const destination = await this.service.getBySlug(slug);
+      const userId = c.req.query("userId");
+      const destination = await this.service.getBySlug(slug, userId);
       return c.json({ success: true, data: destination }, 200);
     } catch (error) {
       if (error instanceof Error && error.message.includes("not found")) {

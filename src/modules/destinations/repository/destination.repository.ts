@@ -13,12 +13,15 @@ export class DestinationRepository {
     });
   };
 
-  findBySlug = async (slug: string) => {
+  findBySlug = async (slug: string, excludeUserId?: string) => {
     return await prisma.destination.findUnique({
       where: { slug },
       include: {
         trips: {
-          where: { status: "PLANNED" },
+          where: { 
+            status: "PLANNED",
+            ...(excludeUserId && { userId: { not: excludeUserId } }),
+          },
           include: {
             user: {
               select: {
