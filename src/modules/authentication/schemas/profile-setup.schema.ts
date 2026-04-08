@@ -1,6 +1,7 @@
 import { z } from "zod";
 
 export const profileSetupSchema = z.object({
+  fullName: z.string().min(1, "Name is required").optional(),
   gender: z.string().min(1, "Gender is required"),
   age: z.number().min(18, "Must be at least 18").max(99, "Must be 99 or under"),
   city: z.string().optional(),

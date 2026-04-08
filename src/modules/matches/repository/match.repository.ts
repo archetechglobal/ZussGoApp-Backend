@@ -15,7 +15,20 @@ export class MatchRepository {
         userA: { select: { id: true, fullName: true, age: true, city: true, travelStyle: true, profilePhotoUrl: true } },
         userB: { select: { id: true, fullName: true, age: true, city: true, travelStyle: true, profilePhotoUrl: true } },
         trip: { include: { destination: { select: { name: true, emoji: true, slug: true } } } },
-        conversation: { select: { id: true, lastMessage: true, lastMessageAt: true } },
+        conversation: { 
+          select: { 
+            id: true, 
+            lastMessage: true, 
+            lastMessageAt: true,
+            _count: {
+              select: {
+                messages: {
+                  where: { isRead: false, senderId: { not: userId } }
+                }
+              }
+            }
+          } 
+        },
       },
       orderBy: { createdAt: "desc" },
     });

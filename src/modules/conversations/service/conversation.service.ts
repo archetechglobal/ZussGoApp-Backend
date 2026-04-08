@@ -15,6 +15,7 @@ export class ConversationService {
         trip: c.match.trip,
         lastMessage: c.lastMessage,
         lastMessageAt: c.lastMessageAt,
+        unreadCount: c._count?.messages || 0,
       };
     });
   };
@@ -22,6 +23,7 @@ export class ConversationService {
   getById = async (conversationId: string, userId: string) => {
     const conversation = await this.repository.findById(conversationId);
     if (!conversation) throw new Error("Conversation not found");
+    if (!conversation.match) throw new Error("Match not found");
 
     if (conversation.match.userAId !== userId && conversation.match.userBId !== userId) {
       throw new Error("Not authorized");

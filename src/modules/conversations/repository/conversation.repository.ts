@@ -14,6 +14,16 @@ export class ConversationRepository {
         },
       },
       include: {
+        _count: {
+          select: {
+            messages: {
+              where: {
+                isRead: false,
+                senderId: { not: userId },
+              },
+            },
+          },
+        },
         match: {
           include: {
             userA: { select: { id: true, fullName: true, profilePhotoUrl: true } },

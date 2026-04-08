@@ -8,6 +8,7 @@ export class ProfileSetupService {
     const updatedUser = await prisma.user.update({
       where: { id: userId },
       data: {
+        fullName: input.fullName || undefined,
         gender: input.gender,
         age: input.age,
         city: input.city || null,
