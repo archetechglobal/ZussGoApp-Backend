@@ -398,7 +398,9 @@ export const ModelName = {
   GroupMember: 'GroupMember',
   ActiveTrip: 'ActiveTrip',
   EmergencyContact: 'EmergencyContact',
-  Event: 'Event'
+  Event: 'Event',
+  TrekPoints: 'TrekPoints',
+  PointLedger: 'PointLedger'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -414,7 +416,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "destination" | "trip" | "matchRequest" | "match" | "conversation" | "message" | "rating" | "block" | "report" | "groupTrip" | "groupMember" | "activeTrip" | "emergencyContact" | "event"
+    modelProps: "user" | "destination" | "trip" | "matchRequest" | "match" | "conversation" | "message" | "rating" | "block" | "report" | "groupTrip" | "groupMember" | "activeTrip" | "emergencyContact" | "event" | "trekPoints" | "pointLedger"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -1528,6 +1530,154 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    TrekPoints: {
+      payload: Prisma.$TrekPointsPayload<ExtArgs>
+      fields: Prisma.TrekPointsFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.TrekPointsFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TrekPointsPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.TrekPointsFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TrekPointsPayload>
+        }
+        findFirst: {
+          args: Prisma.TrekPointsFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TrekPointsPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.TrekPointsFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TrekPointsPayload>
+        }
+        findMany: {
+          args: Prisma.TrekPointsFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TrekPointsPayload>[]
+        }
+        create: {
+          args: Prisma.TrekPointsCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TrekPointsPayload>
+        }
+        createMany: {
+          args: Prisma.TrekPointsCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.TrekPointsCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TrekPointsPayload>[]
+        }
+        delete: {
+          args: Prisma.TrekPointsDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TrekPointsPayload>
+        }
+        update: {
+          args: Prisma.TrekPointsUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TrekPointsPayload>
+        }
+        deleteMany: {
+          args: Prisma.TrekPointsDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.TrekPointsUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.TrekPointsUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TrekPointsPayload>[]
+        }
+        upsert: {
+          args: Prisma.TrekPointsUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TrekPointsPayload>
+        }
+        aggregate: {
+          args: Prisma.TrekPointsAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateTrekPoints>
+        }
+        groupBy: {
+          args: Prisma.TrekPointsGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.TrekPointsGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.TrekPointsCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.TrekPointsCountAggregateOutputType> | number
+        }
+      }
+    }
+    PointLedger: {
+      payload: Prisma.$PointLedgerPayload<ExtArgs>
+      fields: Prisma.PointLedgerFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.PointLedgerFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PointLedgerPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.PointLedgerFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PointLedgerPayload>
+        }
+        findFirst: {
+          args: Prisma.PointLedgerFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PointLedgerPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.PointLedgerFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PointLedgerPayload>
+        }
+        findMany: {
+          args: Prisma.PointLedgerFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PointLedgerPayload>[]
+        }
+        create: {
+          args: Prisma.PointLedgerCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PointLedgerPayload>
+        }
+        createMany: {
+          args: Prisma.PointLedgerCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.PointLedgerCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PointLedgerPayload>[]
+        }
+        delete: {
+          args: Prisma.PointLedgerDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PointLedgerPayload>
+        }
+        update: {
+          args: Prisma.PointLedgerUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PointLedgerPayload>
+        }
+        deleteMany: {
+          args: Prisma.PointLedgerDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.PointLedgerUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.PointLedgerUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PointLedgerPayload>[]
+        }
+        upsert: {
+          args: Prisma.PointLedgerUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PointLedgerPayload>
+        }
+        aggregate: {
+          args: Prisma.PointLedgerAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregatePointLedger>
+        }
+        groupBy: {
+          args: Prisma.PointLedgerGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.PointLedgerGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.PointLedgerCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.PointLedgerCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -1795,6 +1945,31 @@ export const EventScalarFieldEnum = {
 } as const
 
 export type EventScalarFieldEnum = (typeof EventScalarFieldEnum)[keyof typeof EventScalarFieldEnum]
+
+
+export const TrekPointsScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  balance: 'balance',
+  tier: 'tier',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type TrekPointsScalarFieldEnum = (typeof TrekPointsScalarFieldEnum)[keyof typeof TrekPointsScalarFieldEnum]
+
+
+export const PointLedgerScalarFieldEnum = {
+  id: 'id',
+  trekPointsId: 'trekPointsId',
+  amount: 'amount',
+  type: 'type',
+  description: 'description',
+  referenceId: 'referenceId',
+  createdAt: 'createdAt'
+} as const
+
+export type PointLedgerScalarFieldEnum = (typeof PointLedgerScalarFieldEnum)[keyof typeof PointLedgerScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -2111,6 +2286,8 @@ export type GlobalOmitConfig = {
   activeTrip?: Prisma.ActiveTripOmit
   emergencyContact?: Prisma.EmergencyContactOmit
   event?: Prisma.EventOmit
+  trekPoints?: Prisma.TrekPointsOmit
+  pointLedger?: Prisma.PointLedgerOmit
 }
 
 /* Types for Logging */

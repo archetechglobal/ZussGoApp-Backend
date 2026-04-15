@@ -92,3 +92,13 @@ export type EmergencyContact = Prisma.EmergencyContactModel
  * 
  */
 export type Event = Prisma.EventModel
+/**
+ * Model TrekPoints
+ * 
+ */
+export type TrekPoints = Prisma.TrekPointsModel
+/**
+ * Model PointLedger
+ * 
+ */
+export type PointLedger = Prisma.PointLedgerModel

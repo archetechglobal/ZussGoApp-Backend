@@ -2,9 +2,14 @@ import { prisma } from "../../../config/prisma_client.ts";
 
 export class MatchRequestRepository {
 
-  create = async (senderId: string, receiverId: string, tripId: string, message?: string) => {
+  create = async (senderId: string, receiverId: string, tripId?: string, message?: string) => {
     return await prisma.matchRequest.create({
-      data: { senderId, receiverId, tripId, message },
+      data: {
+        senderId,
+        receiverId,
+        ...(tripId && { tripId }),
+        ...(message && { message }),
+      },
       include: {
         sender: { select: { id: true, fullName: true, profilePhotoUrl: true } },
         receiver: { select: { id: true, fullName: true, profilePhotoUrl: true } },
@@ -46,9 +51,9 @@ export class MatchRequestRepository {
     });
   };
 
-  findExisting = async (senderId: string, receiverId: string, tripId: string) => {
+  findExisting = async (senderId: string, receiverId: string) => {
     return await prisma.matchRequest.findUnique({
-      where: { senderId_receiverId_tripId: { senderId, receiverId, tripId } },
+      where: { senderId_receiverId: { senderId, receiverId } },
     });
   };
 }

@@ -169,7 +169,7 @@ export type MatchRequestGroupByOutputType = {
   id: string
   senderId: string
   receiverId: string
-  tripId: string
+  tripId: string | null
   status: $Enums.MatchRequestStatus
   message: string | null
   createdAt: Date
@@ -201,21 +201,21 @@ export type MatchRequestWhereInput = {
   id?: Prisma.StringFilter<"MatchRequest"> | string
   senderId?: Prisma.StringFilter<"MatchRequest"> | string
   receiverId?: Prisma.StringFilter<"MatchRequest"> | string
-  tripId?: Prisma.StringFilter<"MatchRequest"> | string
+  tripId?: Prisma.StringNullableFilter<"MatchRequest"> | string | null
   status?: Prisma.EnumMatchRequestStatusFilter<"MatchRequest"> | $Enums.MatchRequestStatus
   message?: Prisma.StringNullableFilter<"MatchRequest"> | string | null
   createdAt?: Prisma.DateTimeFilter<"MatchRequest"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"MatchRequest"> | Date | string
   sender?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
   receiver?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
-  trip?: Prisma.XOR<Prisma.TripScalarRelationFilter, Prisma.TripWhereInput>
+  trip?: Prisma.XOR<Prisma.TripNullableScalarRelationFilter, Prisma.TripWhereInput> | null
 }
 
 export type MatchRequestOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   senderId?: Prisma.SortOrder
   receiverId?: Prisma.SortOrder
-  tripId?: Prisma.SortOrder
+  tripId?: Prisma.SortOrderInput | Prisma.SortOrder
   status?: Prisma.SortOrder
   message?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -227,27 +227,27 @@ export type MatchRequestOrderByWithRelationInput = {
 
 export type MatchRequestWhereUniqueInput = Prisma.AtLeast<{
   id?: string
-  senderId_receiverId_tripId?: Prisma.MatchRequestSenderIdReceiverIdTripIdCompoundUniqueInput
+  senderId_receiverId?: Prisma.MatchRequestSenderIdReceiverIdCompoundUniqueInput
   AND?: Prisma.MatchRequestWhereInput | Prisma.MatchRequestWhereInput[]
   OR?: Prisma.MatchRequestWhereInput[]
   NOT?: Prisma.MatchRequestWhereInput | Prisma.MatchRequestWhereInput[]
   senderId?: Prisma.StringFilter<"MatchRequest"> | string
   receiverId?: Prisma.StringFilter<"MatchRequest"> | string
-  tripId?: Prisma.StringFilter<"MatchRequest"> | string
+  tripId?: Prisma.StringNullableFilter<"MatchRequest"> | string | null
   status?: Prisma.EnumMatchRequestStatusFilter<"MatchRequest"> | $Enums.MatchRequestStatus
   message?: Prisma.StringNullableFilter<"MatchRequest"> | string | null
   createdAt?: Prisma.DateTimeFilter<"MatchRequest"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"MatchRequest"> | Date | string
   sender?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
   receiver?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
-  trip?: Prisma.XOR<Prisma.TripScalarRelationFilter, Prisma.TripWhereInput>
-}, "id" | "senderId_receiverId_tripId">
+  trip?: Prisma.XOR<Prisma.TripNullableScalarRelationFilter, Prisma.TripWhereInput> | null
+}, "id" | "senderId_receiverId">
 
 export type MatchRequestOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   senderId?: Prisma.SortOrder
   receiverId?: Prisma.SortOrder
-  tripId?: Prisma.SortOrder
+  tripId?: Prisma.SortOrderInput | Prisma.SortOrder
   status?: Prisma.SortOrder
   message?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -264,7 +264,7 @@ export type MatchRequestScalarWhereWithAggregatesInput = {
   id?: Prisma.StringWithAggregatesFilter<"MatchRequest"> | string
   senderId?: Prisma.StringWithAggregatesFilter<"MatchRequest"> | string
   receiverId?: Prisma.StringWithAggregatesFilter<"MatchRequest"> | string
-  tripId?: Prisma.StringWithAggregatesFilter<"MatchRequest"> | string
+  tripId?: Prisma.StringNullableWithAggregatesFilter<"MatchRequest"> | string | null
   status?: Prisma.EnumMatchRequestStatusWithAggregatesFilter<"MatchRequest"> | $Enums.MatchRequestStatus
   message?: Prisma.StringNullableWithAggregatesFilter<"MatchRequest"> | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"MatchRequest"> | Date | string
@@ -279,14 +279,14 @@ export type MatchRequestCreateInput = {
   updatedAt?: Date | string
   sender: Prisma.UserCreateNestedOneWithoutSentRequestsInput
   receiver: Prisma.UserCreateNestedOneWithoutReceivedRequestsInput
-  trip: Prisma.TripCreateNestedOneWithoutMatchRequestsInput
+  trip?: Prisma.TripCreateNestedOneWithoutMatchRequestsInput
 }
 
 export type MatchRequestUncheckedCreateInput = {
   id?: string
   senderId: string
   receiverId: string
-  tripId: string
+  tripId?: string | null
   status?: $Enums.MatchRequestStatus
   message?: string | null
   createdAt?: Date | string
@@ -301,14 +301,14 @@ export type MatchRequestUpdateInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   sender?: Prisma.UserUpdateOneRequiredWithoutSentRequestsNestedInput
   receiver?: Prisma.UserUpdateOneRequiredWithoutReceivedRequestsNestedInput
-  trip?: Prisma.TripUpdateOneRequiredWithoutMatchRequestsNestedInput
+  trip?: Prisma.TripUpdateOneWithoutMatchRequestsNestedInput
 }
 
 export type MatchRequestUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   senderId?: Prisma.StringFieldUpdateOperationsInput | string
   receiverId?: Prisma.StringFieldUpdateOperationsInput | string
-  tripId?: Prisma.StringFieldUpdateOperationsInput | string
+  tripId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumMatchRequestStatusFieldUpdateOperationsInput | $Enums.MatchRequestStatus
   message?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -319,7 +319,7 @@ export type MatchRequestCreateManyInput = {
   id?: string
   senderId: string
   receiverId: string
-  tripId: string
+  tripId?: string | null
   status?: $Enums.MatchRequestStatus
   message?: string | null
   createdAt?: Date | string
@@ -338,7 +338,7 @@ export type MatchRequestUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   senderId?: Prisma.StringFieldUpdateOperationsInput | string
   receiverId?: Prisma.StringFieldUpdateOperationsInput | string
-  tripId?: Prisma.StringFieldUpdateOperationsInput | string
+  tripId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumMatchRequestStatusFieldUpdateOperationsInput | $Enums.MatchRequestStatus
   message?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -355,10 +355,9 @@ export type MatchRequestOrderByRelationAggregateInput = {
   _count?: Prisma.SortOrder
 }
 
-export type MatchRequestSenderIdReceiverIdTripIdCompoundUniqueInput = {
+export type MatchRequestSenderIdReceiverIdCompoundUniqueInput = {
   senderId: string
   receiverId: string
-  tripId: string
 }
 
 export type MatchRequestCountOrderByAggregateInput = {
@@ -531,13 +530,13 @@ export type MatchRequestCreateWithoutSenderInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   receiver: Prisma.UserCreateNestedOneWithoutReceivedRequestsInput
-  trip: Prisma.TripCreateNestedOneWithoutMatchRequestsInput
+  trip?: Prisma.TripCreateNestedOneWithoutMatchRequestsInput
 }
 
 export type MatchRequestUncheckedCreateWithoutSenderInput = {
   id?: string
   receiverId: string
-  tripId: string
+  tripId?: string | null
   status?: $Enums.MatchRequestStatus
   message?: string | null
   createdAt?: Date | string
@@ -561,13 +560,13 @@ export type MatchRequestCreateWithoutReceiverInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   sender: Prisma.UserCreateNestedOneWithoutSentRequestsInput
-  trip: Prisma.TripCreateNestedOneWithoutMatchRequestsInput
+  trip?: Prisma.TripCreateNestedOneWithoutMatchRequestsInput
 }
 
 export type MatchRequestUncheckedCreateWithoutReceiverInput = {
   id?: string
   senderId: string
-  tripId: string
+  tripId?: string | null
   status?: $Enums.MatchRequestStatus
   message?: string | null
   createdAt?: Date | string
@@ -607,7 +606,7 @@ export type MatchRequestScalarWhereInput = {
   id?: Prisma.StringFilter<"MatchRequest"> | string
   senderId?: Prisma.StringFilter<"MatchRequest"> | string
   receiverId?: Prisma.StringFilter<"MatchRequest"> | string
-  tripId?: Prisma.StringFilter<"MatchRequest"> | string
+  tripId?: Prisma.StringNullableFilter<"MatchRequest"> | string | null
   status?: Prisma.EnumMatchRequestStatusFilter<"MatchRequest"> | $Enums.MatchRequestStatus
   message?: Prisma.StringNullableFilter<"MatchRequest"> | string | null
   createdAt?: Prisma.DateTimeFilter<"MatchRequest"> | Date | string
@@ -679,7 +678,7 @@ export type MatchRequestUpdateManyWithWhereWithoutTripInput = {
 export type MatchRequestCreateManySenderInput = {
   id?: string
   receiverId: string
-  tripId: string
+  tripId?: string | null
   status?: $Enums.MatchRequestStatus
   message?: string | null
   createdAt?: Date | string
@@ -689,7 +688,7 @@ export type MatchRequestCreateManySenderInput = {
 export type MatchRequestCreateManyReceiverInput = {
   id?: string
   senderId: string
-  tripId: string
+  tripId?: string | null
   status?: $Enums.MatchRequestStatus
   message?: string | null
   createdAt?: Date | string
@@ -703,13 +702,13 @@ export type MatchRequestUpdateWithoutSenderInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   receiver?: Prisma.UserUpdateOneRequiredWithoutReceivedRequestsNestedInput
-  trip?: Prisma.TripUpdateOneRequiredWithoutMatchRequestsNestedInput
+  trip?: Prisma.TripUpdateOneWithoutMatchRequestsNestedInput
 }
 
 export type MatchRequestUncheckedUpdateWithoutSenderInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   receiverId?: Prisma.StringFieldUpdateOperationsInput | string
-  tripId?: Prisma.StringFieldUpdateOperationsInput | string
+  tripId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumMatchRequestStatusFieldUpdateOperationsInput | $Enums.MatchRequestStatus
   message?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -719,7 +718,7 @@ export type MatchRequestUncheckedUpdateWithoutSenderInput = {
 export type MatchRequestUncheckedUpdateManyWithoutSenderInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   receiverId?: Prisma.StringFieldUpdateOperationsInput | string
-  tripId?: Prisma.StringFieldUpdateOperationsInput | string
+  tripId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumMatchRequestStatusFieldUpdateOperationsInput | $Enums.MatchRequestStatus
   message?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -733,13 +732,13 @@ export type MatchRequestUpdateWithoutReceiverInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   sender?: Prisma.UserUpdateOneRequiredWithoutSentRequestsNestedInput
-  trip?: Prisma.TripUpdateOneRequiredWithoutMatchRequestsNestedInput
+  trip?: Prisma.TripUpdateOneWithoutMatchRequestsNestedInput
 }
 
 export type MatchRequestUncheckedUpdateWithoutReceiverInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   senderId?: Prisma.StringFieldUpdateOperationsInput | string
-  tripId?: Prisma.StringFieldUpdateOperationsInput | string
+  tripId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumMatchRequestStatusFieldUpdateOperationsInput | $Enums.MatchRequestStatus
   message?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -749,7 +748,7 @@ export type MatchRequestUncheckedUpdateWithoutReceiverInput = {
 export type MatchRequestUncheckedUpdateManyWithoutReceiverInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   senderId?: Prisma.StringFieldUpdateOperationsInput | string
-  tripId?: Prisma.StringFieldUpdateOperationsInput | string
+  tripId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumMatchRequestStatusFieldUpdateOperationsInput | $Enums.MatchRequestStatus
   message?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -809,7 +808,7 @@ export type MatchRequestSelect<ExtArgs extends runtime.Types.Extensions.Internal
   updatedAt?: boolean
   sender?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   receiver?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  trip?: boolean | Prisma.TripDefaultArgs<ExtArgs>
+  trip?: boolean | Prisma.MatchRequest$tripArgs<ExtArgs>
 }, ExtArgs["result"]["matchRequest"]>
 
 export type MatchRequestSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -823,7 +822,7 @@ export type MatchRequestSelectCreateManyAndReturn<ExtArgs extends runtime.Types.
   updatedAt?: boolean
   sender?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   receiver?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  trip?: boolean | Prisma.TripDefaultArgs<ExtArgs>
+  trip?: boolean | Prisma.MatchRequest$tripArgs<ExtArgs>
 }, ExtArgs["result"]["matchRequest"]>
 
 export type MatchRequestSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -837,7 +836,7 @@ export type MatchRequestSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.
   updatedAt?: boolean
   sender?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   receiver?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  trip?: boolean | Prisma.TripDefaultArgs<ExtArgs>
+  trip?: boolean | Prisma.MatchRequest$tripArgs<ExtArgs>
 }, ExtArgs["result"]["matchRequest"]>
 
 export type MatchRequestSelectScalar = {
@@ -855,17 +854,17 @@ export type MatchRequestOmit<ExtArgs extends runtime.Types.Extensions.InternalAr
 export type MatchRequestInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   sender?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   receiver?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  trip?: boolean | Prisma.TripDefaultArgs<ExtArgs>
+  trip?: boolean | Prisma.MatchRequest$tripArgs<ExtArgs>
 }
 export type MatchRequestIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   sender?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   receiver?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  trip?: boolean | Prisma.TripDefaultArgs<ExtArgs>
+  trip?: boolean | Prisma.MatchRequest$tripArgs<ExtArgs>
 }
 export type MatchRequestIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   sender?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   receiver?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  trip?: boolean | Prisma.TripDefaultArgs<ExtArgs>
+  trip?: boolean | Prisma.MatchRequest$tripArgs<ExtArgs>
 }
 
 export type $MatchRequestPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -873,13 +872,13 @@ export type $MatchRequestPayload<ExtArgs extends runtime.Types.Extensions.Intern
   objects: {
     sender: Prisma.$UserPayload<ExtArgs>
     receiver: Prisma.$UserPayload<ExtArgs>
-    trip: Prisma.$TripPayload<ExtArgs>
+    trip: Prisma.$TripPayload<ExtArgs> | null
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     senderId: string
     receiverId: string
-    tripId: string
+    tripId: string | null
     status: $Enums.MatchRequestStatus
     message: string | null
     createdAt: Date
@@ -1280,7 +1279,7 @@ export interface Prisma__MatchRequestClient<T, Null = never, ExtArgs extends run
   readonly [Symbol.toStringTag]: "PrismaPromise"
   sender<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   receiver<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-  trip<T extends Prisma.TripDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.TripDefaultArgs<ExtArgs>>): Prisma.Prisma__TripClient<runtime.Types.Result.GetResult<Prisma.$TripPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  trip<T extends Prisma.MatchRequest$tripArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.MatchRequest$tripArgs<ExtArgs>>): Prisma.Prisma__TripClient<runtime.Types.Result.GetResult<Prisma.$TripPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1716,6 +1715,25 @@ export type MatchRequestDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.
    * Limit how many MatchRequests to delete.
    */
   limit?: number
+}
+
+/**
+ * MatchRequest.trip
+ */
+export type MatchRequest$tripArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Trip
+   */
+  select?: Prisma.TripSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Trip
+   */
+  omit?: Prisma.TripOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.TripInclude<ExtArgs> | null
+  where?: Prisma.TripWhereInput
 }
 
 /**

@@ -14,6 +14,7 @@ import { groupRouter } from "../modules/groups/index.ts";
 import { safetyRouter } from "../modules/safety/index.ts";
 import eventRouter from "../modules/events/routes/event.route.ts";
 import { matchingRouter } from "../modules/matching/index.ts";
+import { rewardsRouter } from "../modules/rewards/index.ts";
 
 export function registerRoutes(app: Hono) {
   app.route("/health", healthRouter);
@@ -31,4 +32,5 @@ export function registerRoutes(app: Hono) {
   app.route("/safety", safetyRouter);
   app.route("/events", eventRouter);
   app.route("/matching", matchingRouter);
+  app.route("/rewards", rewardsRouter);
 }

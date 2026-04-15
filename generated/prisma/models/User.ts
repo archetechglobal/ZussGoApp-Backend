@@ -350,6 +350,7 @@ export type UserWhereInput = {
   groupMemberships?: Prisma.GroupMemberListRelationFilter
   emergencyContacts?: Prisma.EmergencyContactListRelationFilter
   activeTrips?: Prisma.ActiveTripListRelationFilter
+  trekPoints?: Prisma.XOR<Prisma.TrekPointsNullableScalarRelationFilter, Prisma.TrekPointsWhereInput> | null
 }
 
 export type UserOrderByWithRelationInput = {
@@ -388,6 +389,7 @@ export type UserOrderByWithRelationInput = {
   groupMemberships?: Prisma.GroupMemberOrderByRelationAggregateInput
   emergencyContacts?: Prisma.EmergencyContactOrderByRelationAggregateInput
   activeTrips?: Prisma.ActiveTripOrderByRelationAggregateInput
+  trekPoints?: Prisma.TrekPointsOrderByWithRelationInput
 }
 
 export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -429,6 +431,7 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   groupMemberships?: Prisma.GroupMemberListRelationFilter
   emergencyContacts?: Prisma.EmergencyContactListRelationFilter
   activeTrips?: Prisma.ActiveTripListRelationFilter
+  trekPoints?: Prisma.XOR<Prisma.TrekPointsNullableScalarRelationFilter, Prisma.TrekPointsWhereInput> | null
 }, "id" | "authUserId" | "email">
 
 export type UserOrderByWithAggregationInput = {
@@ -523,6 +526,7 @@ export type UserCreateInput = {
   groupMemberships?: Prisma.GroupMemberCreateNestedManyWithoutUserInput
   emergencyContacts?: Prisma.EmergencyContactCreateNestedManyWithoutUserInput
   activeTrips?: Prisma.ActiveTripCreateNestedManyWithoutUserInput
+  trekPoints?: Prisma.TrekPointsCreateNestedOneWithoutUserInput
 }
 
 export type UserUncheckedCreateInput = {
@@ -561,6 +565,7 @@ export type UserUncheckedCreateInput = {
   groupMemberships?: Prisma.GroupMemberUncheckedCreateNestedManyWithoutUserInput
   emergencyContacts?: Prisma.EmergencyContactUncheckedCreateNestedManyWithoutUserInput
   activeTrips?: Prisma.ActiveTripUncheckedCreateNestedManyWithoutUserInput
+  trekPoints?: Prisma.TrekPointsUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type UserUpdateInput = {
@@ -599,6 +604,7 @@ export type UserUpdateInput = {
   groupMemberships?: Prisma.GroupMemberUpdateManyWithoutUserNestedInput
   emergencyContacts?: Prisma.EmergencyContactUpdateManyWithoutUserNestedInput
   activeTrips?: Prisma.ActiveTripUpdateManyWithoutUserNestedInput
+  trekPoints?: Prisma.TrekPointsUpdateOneWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateInput = {
@@ -637,6 +643,7 @@ export type UserUncheckedUpdateInput = {
   groupMemberships?: Prisma.GroupMemberUncheckedUpdateManyWithoutUserNestedInput
   emergencyContacts?: Prisma.EmergencyContactUncheckedUpdateManyWithoutUserNestedInput
   activeTrips?: Prisma.ActiveTripUncheckedUpdateManyWithoutUserNestedInput
+  trekPoints?: Prisma.TrekPointsUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type UserCreateManyInput = {
@@ -1038,6 +1045,20 @@ export type UserUpdateOneRequiredWithoutEmergencyContactsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutEmergencyContactsInput, Prisma.UserUpdateWithoutEmergencyContactsInput>, Prisma.UserUncheckedUpdateWithoutEmergencyContactsInput>
 }
 
+export type UserCreateNestedOneWithoutTrekPointsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutTrekPointsInput, Prisma.UserUncheckedCreateWithoutTrekPointsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutTrekPointsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutTrekPointsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutTrekPointsInput, Prisma.UserUncheckedCreateWithoutTrekPointsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutTrekPointsInput
+  upsert?: Prisma.UserUpsertWithoutTrekPointsInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutTrekPointsInput, Prisma.UserUpdateWithoutTrekPointsInput>, Prisma.UserUncheckedUpdateWithoutTrekPointsInput>
+}
+
 export type UserCreateWithoutTripsInput = {
   id?: string
   authUserId: string
@@ -1073,6 +1094,7 @@ export type UserCreateWithoutTripsInput = {
   groupMemberships?: Prisma.GroupMemberCreateNestedManyWithoutUserInput
   emergencyContacts?: Prisma.EmergencyContactCreateNestedManyWithoutUserInput
   activeTrips?: Prisma.ActiveTripCreateNestedManyWithoutUserInput
+  trekPoints?: Prisma.TrekPointsCreateNestedOneWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutTripsInput = {
@@ -1110,6 +1132,7 @@ export type UserUncheckedCreateWithoutTripsInput = {
   groupMemberships?: Prisma.GroupMemberUncheckedCreateNestedManyWithoutUserInput
   emergencyContacts?: Prisma.EmergencyContactUncheckedCreateNestedManyWithoutUserInput
   activeTrips?: Prisma.ActiveTripUncheckedCreateNestedManyWithoutUserInput
+  trekPoints?: Prisma.TrekPointsUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutTripsInput = {
@@ -1163,6 +1186,7 @@ export type UserUpdateWithoutTripsInput = {
   groupMemberships?: Prisma.GroupMemberUpdateManyWithoutUserNestedInput
   emergencyContacts?: Prisma.EmergencyContactUpdateManyWithoutUserNestedInput
   activeTrips?: Prisma.ActiveTripUpdateManyWithoutUserNestedInput
+  trekPoints?: Prisma.TrekPointsUpdateOneWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutTripsInput = {
@@ -1200,6 +1224,7 @@ export type UserUncheckedUpdateWithoutTripsInput = {
   groupMemberships?: Prisma.GroupMemberUncheckedUpdateManyWithoutUserNestedInput
   emergencyContacts?: Prisma.EmergencyContactUncheckedUpdateManyWithoutUserNestedInput
   activeTrips?: Prisma.ActiveTripUncheckedUpdateManyWithoutUserNestedInput
+  trekPoints?: Prisma.TrekPointsUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type UserCreateWithoutSentRequestsInput = {
@@ -1237,6 +1262,7 @@ export type UserCreateWithoutSentRequestsInput = {
   groupMemberships?: Prisma.GroupMemberCreateNestedManyWithoutUserInput
   emergencyContacts?: Prisma.EmergencyContactCreateNestedManyWithoutUserInput
   activeTrips?: Prisma.ActiveTripCreateNestedManyWithoutUserInput
+  trekPoints?: Prisma.TrekPointsCreateNestedOneWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutSentRequestsInput = {
@@ -1274,6 +1300,7 @@ export type UserUncheckedCreateWithoutSentRequestsInput = {
   groupMemberships?: Prisma.GroupMemberUncheckedCreateNestedManyWithoutUserInput
   emergencyContacts?: Prisma.EmergencyContactUncheckedCreateNestedManyWithoutUserInput
   activeTrips?: Prisma.ActiveTripUncheckedCreateNestedManyWithoutUserInput
+  trekPoints?: Prisma.TrekPointsUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutSentRequestsInput = {
@@ -1316,6 +1343,7 @@ export type UserCreateWithoutReceivedRequestsInput = {
   groupMemberships?: Prisma.GroupMemberCreateNestedManyWithoutUserInput
   emergencyContacts?: Prisma.EmergencyContactCreateNestedManyWithoutUserInput
   activeTrips?: Prisma.ActiveTripCreateNestedManyWithoutUserInput
+  trekPoints?: Prisma.TrekPointsCreateNestedOneWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutReceivedRequestsInput = {
@@ -1353,6 +1381,7 @@ export type UserUncheckedCreateWithoutReceivedRequestsInput = {
   groupMemberships?: Prisma.GroupMemberUncheckedCreateNestedManyWithoutUserInput
   emergencyContacts?: Prisma.EmergencyContactUncheckedCreateNestedManyWithoutUserInput
   activeTrips?: Prisma.ActiveTripUncheckedCreateNestedManyWithoutUserInput
+  trekPoints?: Prisma.TrekPointsUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutReceivedRequestsInput = {
@@ -1406,6 +1435,7 @@ export type UserUpdateWithoutSentRequestsInput = {
   groupMemberships?: Prisma.GroupMemberUpdateManyWithoutUserNestedInput
   emergencyContacts?: Prisma.EmergencyContactUpdateManyWithoutUserNestedInput
   activeTrips?: Prisma.ActiveTripUpdateManyWithoutUserNestedInput
+  trekPoints?: Prisma.TrekPointsUpdateOneWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutSentRequestsInput = {
@@ -1443,6 +1473,7 @@ export type UserUncheckedUpdateWithoutSentRequestsInput = {
   groupMemberships?: Prisma.GroupMemberUncheckedUpdateManyWithoutUserNestedInput
   emergencyContacts?: Prisma.EmergencyContactUncheckedUpdateManyWithoutUserNestedInput
   activeTrips?: Prisma.ActiveTripUncheckedUpdateManyWithoutUserNestedInput
+  trekPoints?: Prisma.TrekPointsUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type UserUpsertWithoutReceivedRequestsInput = {
@@ -1491,6 +1522,7 @@ export type UserUpdateWithoutReceivedRequestsInput = {
   groupMemberships?: Prisma.GroupMemberUpdateManyWithoutUserNestedInput
   emergencyContacts?: Prisma.EmergencyContactUpdateManyWithoutUserNestedInput
   activeTrips?: Prisma.ActiveTripUpdateManyWithoutUserNestedInput
+  trekPoints?: Prisma.TrekPointsUpdateOneWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutReceivedRequestsInput = {
@@ -1528,6 +1560,7 @@ export type UserUncheckedUpdateWithoutReceivedRequestsInput = {
   groupMemberships?: Prisma.GroupMemberUncheckedUpdateManyWithoutUserNestedInput
   emergencyContacts?: Prisma.EmergencyContactUncheckedUpdateManyWithoutUserNestedInput
   activeTrips?: Prisma.ActiveTripUncheckedUpdateManyWithoutUserNestedInput
+  trekPoints?: Prisma.TrekPointsUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type UserCreateWithoutMatchesAsUserAInput = {
@@ -1565,6 +1598,7 @@ export type UserCreateWithoutMatchesAsUserAInput = {
   groupMemberships?: Prisma.GroupMemberCreateNestedManyWithoutUserInput
   emergencyContacts?: Prisma.EmergencyContactCreateNestedManyWithoutUserInput
   activeTrips?: Prisma.ActiveTripCreateNestedManyWithoutUserInput
+  trekPoints?: Prisma.TrekPointsCreateNestedOneWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutMatchesAsUserAInput = {
@@ -1602,6 +1636,7 @@ export type UserUncheckedCreateWithoutMatchesAsUserAInput = {
   groupMemberships?: Prisma.GroupMemberUncheckedCreateNestedManyWithoutUserInput
   emergencyContacts?: Prisma.EmergencyContactUncheckedCreateNestedManyWithoutUserInput
   activeTrips?: Prisma.ActiveTripUncheckedCreateNestedManyWithoutUserInput
+  trekPoints?: Prisma.TrekPointsUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutMatchesAsUserAInput = {
@@ -1644,6 +1679,7 @@ export type UserCreateWithoutMatchesAsUserBInput = {
   groupMemberships?: Prisma.GroupMemberCreateNestedManyWithoutUserInput
   emergencyContacts?: Prisma.EmergencyContactCreateNestedManyWithoutUserInput
   activeTrips?: Prisma.ActiveTripCreateNestedManyWithoutUserInput
+  trekPoints?: Prisma.TrekPointsCreateNestedOneWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutMatchesAsUserBInput = {
@@ -1681,6 +1717,7 @@ export type UserUncheckedCreateWithoutMatchesAsUserBInput = {
   groupMemberships?: Prisma.GroupMemberUncheckedCreateNestedManyWithoutUserInput
   emergencyContacts?: Prisma.EmergencyContactUncheckedCreateNestedManyWithoutUserInput
   activeTrips?: Prisma.ActiveTripUncheckedCreateNestedManyWithoutUserInput
+  trekPoints?: Prisma.TrekPointsUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutMatchesAsUserBInput = {
@@ -1734,6 +1771,7 @@ export type UserUpdateWithoutMatchesAsUserAInput = {
   groupMemberships?: Prisma.GroupMemberUpdateManyWithoutUserNestedInput
   emergencyContacts?: Prisma.EmergencyContactUpdateManyWithoutUserNestedInput
   activeTrips?: Prisma.ActiveTripUpdateManyWithoutUserNestedInput
+  trekPoints?: Prisma.TrekPointsUpdateOneWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutMatchesAsUserAInput = {
@@ -1771,6 +1809,7 @@ export type UserUncheckedUpdateWithoutMatchesAsUserAInput = {
   groupMemberships?: Prisma.GroupMemberUncheckedUpdateManyWithoutUserNestedInput
   emergencyContacts?: Prisma.EmergencyContactUncheckedUpdateManyWithoutUserNestedInput
   activeTrips?: Prisma.ActiveTripUncheckedUpdateManyWithoutUserNestedInput
+  trekPoints?: Prisma.TrekPointsUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type UserUpsertWithoutMatchesAsUserBInput = {
@@ -1819,6 +1858,7 @@ export type UserUpdateWithoutMatchesAsUserBInput = {
   groupMemberships?: Prisma.GroupMemberUpdateManyWithoutUserNestedInput
   emergencyContacts?: Prisma.EmergencyContactUpdateManyWithoutUserNestedInput
   activeTrips?: Prisma.ActiveTripUpdateManyWithoutUserNestedInput
+  trekPoints?: Prisma.TrekPointsUpdateOneWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutMatchesAsUserBInput = {
@@ -1856,6 +1896,7 @@ export type UserUncheckedUpdateWithoutMatchesAsUserBInput = {
   groupMemberships?: Prisma.GroupMemberUncheckedUpdateManyWithoutUserNestedInput
   emergencyContacts?: Prisma.EmergencyContactUncheckedUpdateManyWithoutUserNestedInput
   activeTrips?: Prisma.ActiveTripUncheckedUpdateManyWithoutUserNestedInput
+  trekPoints?: Prisma.TrekPointsUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type UserCreateWithoutMessagesInput = {
@@ -1893,6 +1934,7 @@ export type UserCreateWithoutMessagesInput = {
   groupMemberships?: Prisma.GroupMemberCreateNestedManyWithoutUserInput
   emergencyContacts?: Prisma.EmergencyContactCreateNestedManyWithoutUserInput
   activeTrips?: Prisma.ActiveTripCreateNestedManyWithoutUserInput
+  trekPoints?: Prisma.TrekPointsCreateNestedOneWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutMessagesInput = {
@@ -1930,6 +1972,7 @@ export type UserUncheckedCreateWithoutMessagesInput = {
   groupMemberships?: Prisma.GroupMemberUncheckedCreateNestedManyWithoutUserInput
   emergencyContacts?: Prisma.EmergencyContactUncheckedCreateNestedManyWithoutUserInput
   activeTrips?: Prisma.ActiveTripUncheckedCreateNestedManyWithoutUserInput
+  trekPoints?: Prisma.TrekPointsUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutMessagesInput = {
@@ -1983,6 +2026,7 @@ export type UserUpdateWithoutMessagesInput = {
   groupMemberships?: Prisma.GroupMemberUpdateManyWithoutUserNestedInput
   emergencyContacts?: Prisma.EmergencyContactUpdateManyWithoutUserNestedInput
   activeTrips?: Prisma.ActiveTripUpdateManyWithoutUserNestedInput
+  trekPoints?: Prisma.TrekPointsUpdateOneWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutMessagesInput = {
@@ -2020,6 +2064,7 @@ export type UserUncheckedUpdateWithoutMessagesInput = {
   groupMemberships?: Prisma.GroupMemberUncheckedUpdateManyWithoutUserNestedInput
   emergencyContacts?: Prisma.EmergencyContactUncheckedUpdateManyWithoutUserNestedInput
   activeTrips?: Prisma.ActiveTripUncheckedUpdateManyWithoutUserNestedInput
+  trekPoints?: Prisma.TrekPointsUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type UserCreateWithoutRatingsInput = {
@@ -2057,6 +2102,7 @@ export type UserCreateWithoutRatingsInput = {
   groupMemberships?: Prisma.GroupMemberCreateNestedManyWithoutUserInput
   emergencyContacts?: Prisma.EmergencyContactCreateNestedManyWithoutUserInput
   activeTrips?: Prisma.ActiveTripCreateNestedManyWithoutUserInput
+  trekPoints?: Prisma.TrekPointsCreateNestedOneWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutRatingsInput = {
@@ -2094,6 +2140,7 @@ export type UserUncheckedCreateWithoutRatingsInput = {
   groupMemberships?: Prisma.GroupMemberUncheckedCreateNestedManyWithoutUserInput
   emergencyContacts?: Prisma.EmergencyContactUncheckedCreateNestedManyWithoutUserInput
   activeTrips?: Prisma.ActiveTripUncheckedCreateNestedManyWithoutUserInput
+  trekPoints?: Prisma.TrekPointsUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutRatingsInput = {
@@ -2136,6 +2183,7 @@ export type UserCreateWithoutRatingsReceivedInput = {
   groupMemberships?: Prisma.GroupMemberCreateNestedManyWithoutUserInput
   emergencyContacts?: Prisma.EmergencyContactCreateNestedManyWithoutUserInput
   activeTrips?: Prisma.ActiveTripCreateNestedManyWithoutUserInput
+  trekPoints?: Prisma.TrekPointsCreateNestedOneWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutRatingsReceivedInput = {
@@ -2173,6 +2221,7 @@ export type UserUncheckedCreateWithoutRatingsReceivedInput = {
   groupMemberships?: Prisma.GroupMemberUncheckedCreateNestedManyWithoutUserInput
   emergencyContacts?: Prisma.EmergencyContactUncheckedCreateNestedManyWithoutUserInput
   activeTrips?: Prisma.ActiveTripUncheckedCreateNestedManyWithoutUserInput
+  trekPoints?: Prisma.TrekPointsUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutRatingsReceivedInput = {
@@ -2226,6 +2275,7 @@ export type UserUpdateWithoutRatingsInput = {
   groupMemberships?: Prisma.GroupMemberUpdateManyWithoutUserNestedInput
   emergencyContacts?: Prisma.EmergencyContactUpdateManyWithoutUserNestedInput
   activeTrips?: Prisma.ActiveTripUpdateManyWithoutUserNestedInput
+  trekPoints?: Prisma.TrekPointsUpdateOneWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutRatingsInput = {
@@ -2263,6 +2313,7 @@ export type UserUncheckedUpdateWithoutRatingsInput = {
   groupMemberships?: Prisma.GroupMemberUncheckedUpdateManyWithoutUserNestedInput
   emergencyContacts?: Prisma.EmergencyContactUncheckedUpdateManyWithoutUserNestedInput
   activeTrips?: Prisma.ActiveTripUncheckedUpdateManyWithoutUserNestedInput
+  trekPoints?: Prisma.TrekPointsUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type UserUpsertWithoutRatingsReceivedInput = {
@@ -2311,6 +2362,7 @@ export type UserUpdateWithoutRatingsReceivedInput = {
   groupMemberships?: Prisma.GroupMemberUpdateManyWithoutUserNestedInput
   emergencyContacts?: Prisma.EmergencyContactUpdateManyWithoutUserNestedInput
   activeTrips?: Prisma.ActiveTripUpdateManyWithoutUserNestedInput
+  trekPoints?: Prisma.TrekPointsUpdateOneWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutRatingsReceivedInput = {
@@ -2348,6 +2400,7 @@ export type UserUncheckedUpdateWithoutRatingsReceivedInput = {
   groupMemberships?: Prisma.GroupMemberUncheckedUpdateManyWithoutUserNestedInput
   emergencyContacts?: Prisma.EmergencyContactUncheckedUpdateManyWithoutUserNestedInput
   activeTrips?: Prisma.ActiveTripUncheckedUpdateManyWithoutUserNestedInput
+  trekPoints?: Prisma.TrekPointsUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type UserCreateWithoutBlockedUsersInput = {
@@ -2385,6 +2438,7 @@ export type UserCreateWithoutBlockedUsersInput = {
   groupMemberships?: Prisma.GroupMemberCreateNestedManyWithoutUserInput
   emergencyContacts?: Prisma.EmergencyContactCreateNestedManyWithoutUserInput
   activeTrips?: Prisma.ActiveTripCreateNestedManyWithoutUserInput
+  trekPoints?: Prisma.TrekPointsCreateNestedOneWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutBlockedUsersInput = {
@@ -2422,6 +2476,7 @@ export type UserUncheckedCreateWithoutBlockedUsersInput = {
   groupMemberships?: Prisma.GroupMemberUncheckedCreateNestedManyWithoutUserInput
   emergencyContacts?: Prisma.EmergencyContactUncheckedCreateNestedManyWithoutUserInput
   activeTrips?: Prisma.ActiveTripUncheckedCreateNestedManyWithoutUserInput
+  trekPoints?: Prisma.TrekPointsUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutBlockedUsersInput = {
@@ -2464,6 +2519,7 @@ export type UserCreateWithoutBlockedByUsersInput = {
   groupMemberships?: Prisma.GroupMemberCreateNestedManyWithoutUserInput
   emergencyContacts?: Prisma.EmergencyContactCreateNestedManyWithoutUserInput
   activeTrips?: Prisma.ActiveTripCreateNestedManyWithoutUserInput
+  trekPoints?: Prisma.TrekPointsCreateNestedOneWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutBlockedByUsersInput = {
@@ -2501,6 +2557,7 @@ export type UserUncheckedCreateWithoutBlockedByUsersInput = {
   groupMemberships?: Prisma.GroupMemberUncheckedCreateNestedManyWithoutUserInput
   emergencyContacts?: Prisma.EmergencyContactUncheckedCreateNestedManyWithoutUserInput
   activeTrips?: Prisma.ActiveTripUncheckedCreateNestedManyWithoutUserInput
+  trekPoints?: Prisma.TrekPointsUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutBlockedByUsersInput = {
@@ -2554,6 +2611,7 @@ export type UserUpdateWithoutBlockedUsersInput = {
   groupMemberships?: Prisma.GroupMemberUpdateManyWithoutUserNestedInput
   emergencyContacts?: Prisma.EmergencyContactUpdateManyWithoutUserNestedInput
   activeTrips?: Prisma.ActiveTripUpdateManyWithoutUserNestedInput
+  trekPoints?: Prisma.TrekPointsUpdateOneWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutBlockedUsersInput = {
@@ -2591,6 +2649,7 @@ export type UserUncheckedUpdateWithoutBlockedUsersInput = {
   groupMemberships?: Prisma.GroupMemberUncheckedUpdateManyWithoutUserNestedInput
   emergencyContacts?: Prisma.EmergencyContactUncheckedUpdateManyWithoutUserNestedInput
   activeTrips?: Prisma.ActiveTripUncheckedUpdateManyWithoutUserNestedInput
+  trekPoints?: Prisma.TrekPointsUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type UserUpsertWithoutBlockedByUsersInput = {
@@ -2639,6 +2698,7 @@ export type UserUpdateWithoutBlockedByUsersInput = {
   groupMemberships?: Prisma.GroupMemberUpdateManyWithoutUserNestedInput
   emergencyContacts?: Prisma.EmergencyContactUpdateManyWithoutUserNestedInput
   activeTrips?: Prisma.ActiveTripUpdateManyWithoutUserNestedInput
+  trekPoints?: Prisma.TrekPointsUpdateOneWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutBlockedByUsersInput = {
@@ -2676,6 +2736,7 @@ export type UserUncheckedUpdateWithoutBlockedByUsersInput = {
   groupMemberships?: Prisma.GroupMemberUncheckedUpdateManyWithoutUserNestedInput
   emergencyContacts?: Prisma.EmergencyContactUncheckedUpdateManyWithoutUserNestedInput
   activeTrips?: Prisma.ActiveTripUncheckedUpdateManyWithoutUserNestedInput
+  trekPoints?: Prisma.TrekPointsUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type UserCreateWithoutReportsInput = {
@@ -2713,6 +2774,7 @@ export type UserCreateWithoutReportsInput = {
   groupMemberships?: Prisma.GroupMemberCreateNestedManyWithoutUserInput
   emergencyContacts?: Prisma.EmergencyContactCreateNestedManyWithoutUserInput
   activeTrips?: Prisma.ActiveTripCreateNestedManyWithoutUserInput
+  trekPoints?: Prisma.TrekPointsCreateNestedOneWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutReportsInput = {
@@ -2750,6 +2812,7 @@ export type UserUncheckedCreateWithoutReportsInput = {
   groupMemberships?: Prisma.GroupMemberUncheckedCreateNestedManyWithoutUserInput
   emergencyContacts?: Prisma.EmergencyContactUncheckedCreateNestedManyWithoutUserInput
   activeTrips?: Prisma.ActiveTripUncheckedCreateNestedManyWithoutUserInput
+  trekPoints?: Prisma.TrekPointsUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutReportsInput = {
@@ -2803,6 +2866,7 @@ export type UserUpdateWithoutReportsInput = {
   groupMemberships?: Prisma.GroupMemberUpdateManyWithoutUserNestedInput
   emergencyContacts?: Prisma.EmergencyContactUpdateManyWithoutUserNestedInput
   activeTrips?: Prisma.ActiveTripUpdateManyWithoutUserNestedInput
+  trekPoints?: Prisma.TrekPointsUpdateOneWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutReportsInput = {
@@ -2840,6 +2904,7 @@ export type UserUncheckedUpdateWithoutReportsInput = {
   groupMemberships?: Prisma.GroupMemberUncheckedUpdateManyWithoutUserNestedInput
   emergencyContacts?: Prisma.EmergencyContactUncheckedUpdateManyWithoutUserNestedInput
   activeTrips?: Prisma.ActiveTripUncheckedUpdateManyWithoutUserNestedInput
+  trekPoints?: Prisma.TrekPointsUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type UserCreateWithoutGroupMembershipsInput = {
@@ -2877,6 +2942,7 @@ export type UserCreateWithoutGroupMembershipsInput = {
   reports?: Prisma.ReportCreateNestedManyWithoutReporterInput
   emergencyContacts?: Prisma.EmergencyContactCreateNestedManyWithoutUserInput
   activeTrips?: Prisma.ActiveTripCreateNestedManyWithoutUserInput
+  trekPoints?: Prisma.TrekPointsCreateNestedOneWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutGroupMembershipsInput = {
@@ -2914,6 +2980,7 @@ export type UserUncheckedCreateWithoutGroupMembershipsInput = {
   reports?: Prisma.ReportUncheckedCreateNestedManyWithoutReporterInput
   emergencyContacts?: Prisma.EmergencyContactUncheckedCreateNestedManyWithoutUserInput
   activeTrips?: Prisma.ActiveTripUncheckedCreateNestedManyWithoutUserInput
+  trekPoints?: Prisma.TrekPointsUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutGroupMembershipsInput = {
@@ -2967,6 +3034,7 @@ export type UserUpdateWithoutGroupMembershipsInput = {
   reports?: Prisma.ReportUpdateManyWithoutReporterNestedInput
   emergencyContacts?: Prisma.EmergencyContactUpdateManyWithoutUserNestedInput
   activeTrips?: Prisma.ActiveTripUpdateManyWithoutUserNestedInput
+  trekPoints?: Prisma.TrekPointsUpdateOneWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutGroupMembershipsInput = {
@@ -3004,6 +3072,7 @@ export type UserUncheckedUpdateWithoutGroupMembershipsInput = {
   reports?: Prisma.ReportUncheckedUpdateManyWithoutReporterNestedInput
   emergencyContacts?: Prisma.EmergencyContactUncheckedUpdateManyWithoutUserNestedInput
   activeTrips?: Prisma.ActiveTripUncheckedUpdateManyWithoutUserNestedInput
+  trekPoints?: Prisma.TrekPointsUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type UserCreateWithoutActiveTripsInput = {
@@ -3041,6 +3110,7 @@ export type UserCreateWithoutActiveTripsInput = {
   reports?: Prisma.ReportCreateNestedManyWithoutReporterInput
   groupMemberships?: Prisma.GroupMemberCreateNestedManyWithoutUserInput
   emergencyContacts?: Prisma.EmergencyContactCreateNestedManyWithoutUserInput
+  trekPoints?: Prisma.TrekPointsCreateNestedOneWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutActiveTripsInput = {
@@ -3078,6 +3148,7 @@ export type UserUncheckedCreateWithoutActiveTripsInput = {
   reports?: Prisma.ReportUncheckedCreateNestedManyWithoutReporterInput
   groupMemberships?: Prisma.GroupMemberUncheckedCreateNestedManyWithoutUserInput
   emergencyContacts?: Prisma.EmergencyContactUncheckedCreateNestedManyWithoutUserInput
+  trekPoints?: Prisma.TrekPointsUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutActiveTripsInput = {
@@ -3131,6 +3202,7 @@ export type UserUpdateWithoutActiveTripsInput = {
   reports?: Prisma.ReportUpdateManyWithoutReporterNestedInput
   groupMemberships?: Prisma.GroupMemberUpdateManyWithoutUserNestedInput
   emergencyContacts?: Prisma.EmergencyContactUpdateManyWithoutUserNestedInput
+  trekPoints?: Prisma.TrekPointsUpdateOneWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutActiveTripsInput = {
@@ -3168,6 +3240,7 @@ export type UserUncheckedUpdateWithoutActiveTripsInput = {
   reports?: Prisma.ReportUncheckedUpdateManyWithoutReporterNestedInput
   groupMemberships?: Prisma.GroupMemberUncheckedUpdateManyWithoutUserNestedInput
   emergencyContacts?: Prisma.EmergencyContactUncheckedUpdateManyWithoutUserNestedInput
+  trekPoints?: Prisma.TrekPointsUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type UserCreateWithoutEmergencyContactsInput = {
@@ -3205,6 +3278,7 @@ export type UserCreateWithoutEmergencyContactsInput = {
   reports?: Prisma.ReportCreateNestedManyWithoutReporterInput
   groupMemberships?: Prisma.GroupMemberCreateNestedManyWithoutUserInput
   activeTrips?: Prisma.ActiveTripCreateNestedManyWithoutUserInput
+  trekPoints?: Prisma.TrekPointsCreateNestedOneWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutEmergencyContactsInput = {
@@ -3242,6 +3316,7 @@ export type UserUncheckedCreateWithoutEmergencyContactsInput = {
   reports?: Prisma.ReportUncheckedCreateNestedManyWithoutReporterInput
   groupMemberships?: Prisma.GroupMemberUncheckedCreateNestedManyWithoutUserInput
   activeTrips?: Prisma.ActiveTripUncheckedCreateNestedManyWithoutUserInput
+  trekPoints?: Prisma.TrekPointsUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutEmergencyContactsInput = {
@@ -3295,6 +3370,7 @@ export type UserUpdateWithoutEmergencyContactsInput = {
   reports?: Prisma.ReportUpdateManyWithoutReporterNestedInput
   groupMemberships?: Prisma.GroupMemberUpdateManyWithoutUserNestedInput
   activeTrips?: Prisma.ActiveTripUpdateManyWithoutUserNestedInput
+  trekPoints?: Prisma.TrekPointsUpdateOneWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutEmergencyContactsInput = {
@@ -3331,6 +3407,175 @@ export type UserUncheckedUpdateWithoutEmergencyContactsInput = {
   blockedByUsers?: Prisma.BlockUncheckedUpdateManyWithoutBlockedNestedInput
   reports?: Prisma.ReportUncheckedUpdateManyWithoutReporterNestedInput
   groupMemberships?: Prisma.GroupMemberUncheckedUpdateManyWithoutUserNestedInput
+  activeTrips?: Prisma.ActiveTripUncheckedUpdateManyWithoutUserNestedInput
+  trekPoints?: Prisma.TrekPointsUncheckedUpdateOneWithoutUserNestedInput
+}
+
+export type UserCreateWithoutTrekPointsInput = {
+  id?: string
+  authUserId: string
+  fullName: string
+  email: string
+  gender?: string | null
+  age?: number | null
+  city?: string | null
+  bio?: string | null
+  travelStyle?: string | null
+  profilePhotoUrl?: string | null
+  isProfileCompleted?: boolean
+  isVerified?: boolean
+  schedule?: string | null
+  socialEnergy?: string | null
+  planningStyle?: string | null
+  energyLevel?: string | null
+  values?: Prisma.UserCreatevaluesInput | string[]
+  interests?: Prisma.UserCreateinterestsInput | string[]
+  travelPriority?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  trips?: Prisma.TripCreateNestedManyWithoutUserInput
+  sentRequests?: Prisma.MatchRequestCreateNestedManyWithoutSenderInput
+  receivedRequests?: Prisma.MatchRequestCreateNestedManyWithoutReceiverInput
+  matchesAsUserA?: Prisma.MatchCreateNestedManyWithoutUserAInput
+  matchesAsUserB?: Prisma.MatchCreateNestedManyWithoutUserBInput
+  messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
+  ratings?: Prisma.RatingCreateNestedManyWithoutRaterInput
+  ratingsReceived?: Prisma.RatingCreateNestedManyWithoutRatedInput
+  blockedUsers?: Prisma.BlockCreateNestedManyWithoutBlockerInput
+  blockedByUsers?: Prisma.BlockCreateNestedManyWithoutBlockedInput
+  reports?: Prisma.ReportCreateNestedManyWithoutReporterInput
+  groupMemberships?: Prisma.GroupMemberCreateNestedManyWithoutUserInput
+  emergencyContacts?: Prisma.EmergencyContactCreateNestedManyWithoutUserInput
+  activeTrips?: Prisma.ActiveTripCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutTrekPointsInput = {
+  id?: string
+  authUserId: string
+  fullName: string
+  email: string
+  gender?: string | null
+  age?: number | null
+  city?: string | null
+  bio?: string | null
+  travelStyle?: string | null
+  profilePhotoUrl?: string | null
+  isProfileCompleted?: boolean
+  isVerified?: boolean
+  schedule?: string | null
+  socialEnergy?: string | null
+  planningStyle?: string | null
+  energyLevel?: string | null
+  values?: Prisma.UserCreatevaluesInput | string[]
+  interests?: Prisma.UserCreateinterestsInput | string[]
+  travelPriority?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  trips?: Prisma.TripUncheckedCreateNestedManyWithoutUserInput
+  sentRequests?: Prisma.MatchRequestUncheckedCreateNestedManyWithoutSenderInput
+  receivedRequests?: Prisma.MatchRequestUncheckedCreateNestedManyWithoutReceiverInput
+  matchesAsUserA?: Prisma.MatchUncheckedCreateNestedManyWithoutUserAInput
+  matchesAsUserB?: Prisma.MatchUncheckedCreateNestedManyWithoutUserBInput
+  messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
+  ratings?: Prisma.RatingUncheckedCreateNestedManyWithoutRaterInput
+  ratingsReceived?: Prisma.RatingUncheckedCreateNestedManyWithoutRatedInput
+  blockedUsers?: Prisma.BlockUncheckedCreateNestedManyWithoutBlockerInput
+  blockedByUsers?: Prisma.BlockUncheckedCreateNestedManyWithoutBlockedInput
+  reports?: Prisma.ReportUncheckedCreateNestedManyWithoutReporterInput
+  groupMemberships?: Prisma.GroupMemberUncheckedCreateNestedManyWithoutUserInput
+  emergencyContacts?: Prisma.EmergencyContactUncheckedCreateNestedManyWithoutUserInput
+  activeTrips?: Prisma.ActiveTripUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutTrekPointsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutTrekPointsInput, Prisma.UserUncheckedCreateWithoutTrekPointsInput>
+}
+
+export type UserUpsertWithoutTrekPointsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutTrekPointsInput, Prisma.UserUncheckedUpdateWithoutTrekPointsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutTrekPointsInput, Prisma.UserUncheckedCreateWithoutTrekPointsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutTrekPointsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutTrekPointsInput, Prisma.UserUncheckedUpdateWithoutTrekPointsInput>
+}
+
+export type UserUpdateWithoutTrekPointsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  authUserId?: Prisma.StringFieldUpdateOperationsInput | string
+  fullName?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  age?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  travelStyle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profilePhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isProfileCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  schedule?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  socialEnergy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  planningStyle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  energyLevel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  values?: Prisma.UserUpdatevaluesInput | string[]
+  interests?: Prisma.UserUpdateinterestsInput | string[]
+  travelPriority?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  trips?: Prisma.TripUpdateManyWithoutUserNestedInput
+  sentRequests?: Prisma.MatchRequestUpdateManyWithoutSenderNestedInput
+  receivedRequests?: Prisma.MatchRequestUpdateManyWithoutReceiverNestedInput
+  matchesAsUserA?: Prisma.MatchUpdateManyWithoutUserANestedInput
+  matchesAsUserB?: Prisma.MatchUpdateManyWithoutUserBNestedInput
+  messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
+  ratings?: Prisma.RatingUpdateManyWithoutRaterNestedInput
+  ratingsReceived?: Prisma.RatingUpdateManyWithoutRatedNestedInput
+  blockedUsers?: Prisma.BlockUpdateManyWithoutBlockerNestedInput
+  blockedByUsers?: Prisma.BlockUpdateManyWithoutBlockedNestedInput
+  reports?: Prisma.ReportUpdateManyWithoutReporterNestedInput
+  groupMemberships?: Prisma.GroupMemberUpdateManyWithoutUserNestedInput
+  emergencyContacts?: Prisma.EmergencyContactUpdateManyWithoutUserNestedInput
+  activeTrips?: Prisma.ActiveTripUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutTrekPointsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  authUserId?: Prisma.StringFieldUpdateOperationsInput | string
+  fullName?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  age?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  travelStyle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profilePhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isProfileCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  schedule?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  socialEnergy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  planningStyle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  energyLevel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  values?: Prisma.UserUpdatevaluesInput | string[]
+  interests?: Prisma.UserUpdateinterestsInput | string[]
+  travelPriority?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  trips?: Prisma.TripUncheckedUpdateManyWithoutUserNestedInput
+  sentRequests?: Prisma.MatchRequestUncheckedUpdateManyWithoutSenderNestedInput
+  receivedRequests?: Prisma.MatchRequestUncheckedUpdateManyWithoutReceiverNestedInput
+  matchesAsUserA?: Prisma.MatchUncheckedUpdateManyWithoutUserANestedInput
+  matchesAsUserB?: Prisma.MatchUncheckedUpdateManyWithoutUserBNestedInput
+  messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
+  ratings?: Prisma.RatingUncheckedUpdateManyWithoutRaterNestedInput
+  ratingsReceived?: Prisma.RatingUncheckedUpdateManyWithoutRatedNestedInput
+  blockedUsers?: Prisma.BlockUncheckedUpdateManyWithoutBlockerNestedInput
+  blockedByUsers?: Prisma.BlockUncheckedUpdateManyWithoutBlockedNestedInput
+  reports?: Prisma.ReportUncheckedUpdateManyWithoutReporterNestedInput
+  groupMemberships?: Prisma.GroupMemberUncheckedUpdateManyWithoutUserNestedInput
+  emergencyContacts?: Prisma.EmergencyContactUncheckedUpdateManyWithoutUserNestedInput
   activeTrips?: Prisma.ActiveTripUncheckedUpdateManyWithoutUserNestedInput
 }
 
@@ -3518,6 +3763,7 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   groupMemberships?: boolean | Prisma.User$groupMembershipsArgs<ExtArgs>
   emergencyContacts?: boolean | Prisma.User$emergencyContactsArgs<ExtArgs>
   activeTrips?: boolean | Prisma.User$activeTripsArgs<ExtArgs>
+  trekPoints?: boolean | Prisma.User$trekPointsArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
@@ -3609,6 +3855,7 @@ export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   groupMemberships?: boolean | Prisma.User$groupMembershipsArgs<ExtArgs>
   emergencyContacts?: boolean | Prisma.User$emergencyContactsArgs<ExtArgs>
   activeTrips?: boolean | Prisma.User$activeTripsArgs<ExtArgs>
+  trekPoints?: boolean | Prisma.User$trekPointsArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type UserIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -3631,6 +3878,7 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     groupMemberships: Prisma.$GroupMemberPayload<ExtArgs>[]
     emergencyContacts: Prisma.$EmergencyContactPayload<ExtArgs>[]
     activeTrips: Prisma.$ActiveTripPayload<ExtArgs>[]
+    trekPoints: Prisma.$TrekPointsPayload<ExtArgs> | null
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -4062,6 +4310,7 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
   groupMemberships<T extends Prisma.User$groupMembershipsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$groupMembershipsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$GroupMemberPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   emergencyContacts<T extends Prisma.User$emergencyContactsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$emergencyContactsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$EmergencyContactPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   activeTrips<T extends Prisma.User$activeTripsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$activeTripsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ActiveTripPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  trekPoints<T extends Prisma.User$trekPointsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$trekPointsArgs<ExtArgs>>): Prisma.Prisma__TrekPointsClient<runtime.Types.Result.GetResult<Prisma.$TrekPointsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -4838,6 +5087,25 @@ export type User$activeTripsArgs<ExtArgs extends runtime.Types.Extensions.Intern
   take?: number
   skip?: number
   distinct?: Prisma.ActiveTripScalarFieldEnum | Prisma.ActiveTripScalarFieldEnum[]
+}
+
+/**
+ * User.trekPoints
+ */
+export type User$trekPointsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the TrekPoints
+   */
+  select?: Prisma.TrekPointsSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the TrekPoints
+   */
+  omit?: Prisma.TrekPointsOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.TrekPointsInclude<ExtArgs> | null
+  where?: Prisma.TrekPointsWhereInput
 }
 
 /**

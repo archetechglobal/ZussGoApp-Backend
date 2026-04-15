@@ -195,7 +195,7 @@ export type MatchGroupByOutputType = {
   id: string
   userAId: string
   userBId: string
-  tripId: string
+  tripId: string | null
   matchScore: number | null
   isActive: boolean
   createdAt: Date
@@ -228,13 +228,13 @@ export type MatchWhereInput = {
   id?: Prisma.StringFilter<"Match"> | string
   userAId?: Prisma.StringFilter<"Match"> | string
   userBId?: Prisma.StringFilter<"Match"> | string
-  tripId?: Prisma.StringFilter<"Match"> | string
+  tripId?: Prisma.StringNullableFilter<"Match"> | string | null
   matchScore?: Prisma.IntNullableFilter<"Match"> | number | null
   isActive?: Prisma.BoolFilter<"Match"> | boolean
   createdAt?: Prisma.DateTimeFilter<"Match"> | Date | string
   userA?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
   userB?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
-  trip?: Prisma.XOR<Prisma.TripScalarRelationFilter, Prisma.TripWhereInput>
+  trip?: Prisma.XOR<Prisma.TripNullableScalarRelationFilter, Prisma.TripWhereInput> | null
   conversation?: Prisma.XOR<Prisma.ConversationNullableScalarRelationFilter, Prisma.ConversationWhereInput> | null
 }
 
@@ -242,7 +242,7 @@ export type MatchOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   userAId?: Prisma.SortOrder
   userBId?: Prisma.SortOrder
-  tripId?: Prisma.SortOrder
+  tripId?: Prisma.SortOrderInput | Prisma.SortOrder
   matchScore?: Prisma.SortOrderInput | Prisma.SortOrder
   isActive?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -254,27 +254,27 @@ export type MatchOrderByWithRelationInput = {
 
 export type MatchWhereUniqueInput = Prisma.AtLeast<{
   id?: string
-  userAId_userBId_tripId?: Prisma.MatchUserAIdUserBIdTripIdCompoundUniqueInput
+  userAId_userBId?: Prisma.MatchUserAIdUserBIdCompoundUniqueInput
   AND?: Prisma.MatchWhereInput | Prisma.MatchWhereInput[]
   OR?: Prisma.MatchWhereInput[]
   NOT?: Prisma.MatchWhereInput | Prisma.MatchWhereInput[]
   userAId?: Prisma.StringFilter<"Match"> | string
   userBId?: Prisma.StringFilter<"Match"> | string
-  tripId?: Prisma.StringFilter<"Match"> | string
+  tripId?: Prisma.StringNullableFilter<"Match"> | string | null
   matchScore?: Prisma.IntNullableFilter<"Match"> | number | null
   isActive?: Prisma.BoolFilter<"Match"> | boolean
   createdAt?: Prisma.DateTimeFilter<"Match"> | Date | string
   userA?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
   userB?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
-  trip?: Prisma.XOR<Prisma.TripScalarRelationFilter, Prisma.TripWhereInput>
+  trip?: Prisma.XOR<Prisma.TripNullableScalarRelationFilter, Prisma.TripWhereInput> | null
   conversation?: Prisma.XOR<Prisma.ConversationNullableScalarRelationFilter, Prisma.ConversationWhereInput> | null
-}, "id" | "userAId_userBId_tripId">
+}, "id" | "userAId_userBId">
 
 export type MatchOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   userAId?: Prisma.SortOrder
   userBId?: Prisma.SortOrder
-  tripId?: Prisma.SortOrder
+  tripId?: Prisma.SortOrderInput | Prisma.SortOrder
   matchScore?: Prisma.SortOrderInput | Prisma.SortOrder
   isActive?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -292,7 +292,7 @@ export type MatchScalarWhereWithAggregatesInput = {
   id?: Prisma.StringWithAggregatesFilter<"Match"> | string
   userAId?: Prisma.StringWithAggregatesFilter<"Match"> | string
   userBId?: Prisma.StringWithAggregatesFilter<"Match"> | string
-  tripId?: Prisma.StringWithAggregatesFilter<"Match"> | string
+  tripId?: Prisma.StringNullableWithAggregatesFilter<"Match"> | string | null
   matchScore?: Prisma.IntNullableWithAggregatesFilter<"Match"> | number | null
   isActive?: Prisma.BoolWithAggregatesFilter<"Match"> | boolean
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Match"> | Date | string
@@ -305,7 +305,7 @@ export type MatchCreateInput = {
   createdAt?: Date | string
   userA: Prisma.UserCreateNestedOneWithoutMatchesAsUserAInput
   userB: Prisma.UserCreateNestedOneWithoutMatchesAsUserBInput
-  trip: Prisma.TripCreateNestedOneWithoutMatchesInput
+  trip?: Prisma.TripCreateNestedOneWithoutMatchesInput
   conversation?: Prisma.ConversationCreateNestedOneWithoutMatchInput
 }
 
@@ -313,7 +313,7 @@ export type MatchUncheckedCreateInput = {
   id?: string
   userAId: string
   userBId: string
-  tripId: string
+  tripId?: string | null
   matchScore?: number | null
   isActive?: boolean
   createdAt?: Date | string
@@ -327,7 +327,7 @@ export type MatchUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   userA?: Prisma.UserUpdateOneRequiredWithoutMatchesAsUserANestedInput
   userB?: Prisma.UserUpdateOneRequiredWithoutMatchesAsUserBNestedInput
-  trip?: Prisma.TripUpdateOneRequiredWithoutMatchesNestedInput
+  trip?: Prisma.TripUpdateOneWithoutMatchesNestedInput
   conversation?: Prisma.ConversationUpdateOneWithoutMatchNestedInput
 }
 
@@ -335,7 +335,7 @@ export type MatchUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   userAId?: Prisma.StringFieldUpdateOperationsInput | string
   userBId?: Prisma.StringFieldUpdateOperationsInput | string
-  tripId?: Prisma.StringFieldUpdateOperationsInput | string
+  tripId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   matchScore?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -346,7 +346,7 @@ export type MatchCreateManyInput = {
   id?: string
   userAId: string
   userBId: string
-  tripId: string
+  tripId?: string | null
   matchScore?: number | null
   isActive?: boolean
   createdAt?: Date | string
@@ -363,7 +363,7 @@ export type MatchUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   userAId?: Prisma.StringFieldUpdateOperationsInput | string
   userBId?: Prisma.StringFieldUpdateOperationsInput | string
-  tripId?: Prisma.StringFieldUpdateOperationsInput | string
+  tripId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   matchScore?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -379,10 +379,9 @@ export type MatchOrderByRelationAggregateInput = {
   _count?: Prisma.SortOrder
 }
 
-export type MatchUserAIdUserBIdTripIdCompoundUniqueInput = {
+export type MatchUserAIdUserBIdCompoundUniqueInput = {
   userAId: string
   userBId: string
-  tripId: string
 }
 
 export type MatchCountOrderByAggregateInput = {
@@ -576,14 +575,14 @@ export type MatchCreateWithoutUserAInput = {
   isActive?: boolean
   createdAt?: Date | string
   userB: Prisma.UserCreateNestedOneWithoutMatchesAsUserBInput
-  trip: Prisma.TripCreateNestedOneWithoutMatchesInput
+  trip?: Prisma.TripCreateNestedOneWithoutMatchesInput
   conversation?: Prisma.ConversationCreateNestedOneWithoutMatchInput
 }
 
 export type MatchUncheckedCreateWithoutUserAInput = {
   id?: string
   userBId: string
-  tripId: string
+  tripId?: string | null
   matchScore?: number | null
   isActive?: boolean
   createdAt?: Date | string
@@ -606,14 +605,14 @@ export type MatchCreateWithoutUserBInput = {
   isActive?: boolean
   createdAt?: Date | string
   userA: Prisma.UserCreateNestedOneWithoutMatchesAsUserAInput
-  trip: Prisma.TripCreateNestedOneWithoutMatchesInput
+  trip?: Prisma.TripCreateNestedOneWithoutMatchesInput
   conversation?: Prisma.ConversationCreateNestedOneWithoutMatchInput
 }
 
 export type MatchUncheckedCreateWithoutUserBInput = {
   id?: string
   userAId: string
-  tripId: string
+  tripId?: string | null
   matchScore?: number | null
   isActive?: boolean
   createdAt?: Date | string
@@ -653,7 +652,7 @@ export type MatchScalarWhereInput = {
   id?: Prisma.StringFilter<"Match"> | string
   userAId?: Prisma.StringFilter<"Match"> | string
   userBId?: Prisma.StringFilter<"Match"> | string
-  tripId?: Prisma.StringFilter<"Match"> | string
+  tripId?: Prisma.StringNullableFilter<"Match"> | string | null
   matchScore?: Prisma.IntNullableFilter<"Match"> | number | null
   isActive?: Prisma.BoolFilter<"Match"> | boolean
   createdAt?: Prisma.DateTimeFilter<"Match"> | Date | string
@@ -728,14 +727,14 @@ export type MatchCreateWithoutConversationInput = {
   createdAt?: Date | string
   userA: Prisma.UserCreateNestedOneWithoutMatchesAsUserAInput
   userB: Prisma.UserCreateNestedOneWithoutMatchesAsUserBInput
-  trip: Prisma.TripCreateNestedOneWithoutMatchesInput
+  trip?: Prisma.TripCreateNestedOneWithoutMatchesInput
 }
 
 export type MatchUncheckedCreateWithoutConversationInput = {
   id?: string
   userAId: string
   userBId: string
-  tripId: string
+  tripId?: string | null
   matchScore?: number | null
   isActive?: boolean
   createdAt?: Date | string
@@ -764,14 +763,14 @@ export type MatchUpdateWithoutConversationInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   userA?: Prisma.UserUpdateOneRequiredWithoutMatchesAsUserANestedInput
   userB?: Prisma.UserUpdateOneRequiredWithoutMatchesAsUserBNestedInput
-  trip?: Prisma.TripUpdateOneRequiredWithoutMatchesNestedInput
+  trip?: Prisma.TripUpdateOneWithoutMatchesNestedInput
 }
 
 export type MatchUncheckedUpdateWithoutConversationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   userAId?: Prisma.StringFieldUpdateOperationsInput | string
   userBId?: Prisma.StringFieldUpdateOperationsInput | string
-  tripId?: Prisma.StringFieldUpdateOperationsInput | string
+  tripId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   matchScore?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -780,7 +779,7 @@ export type MatchUncheckedUpdateWithoutConversationInput = {
 export type MatchCreateManyUserAInput = {
   id?: string
   userBId: string
-  tripId: string
+  tripId?: string | null
   matchScore?: number | null
   isActive?: boolean
   createdAt?: Date | string
@@ -789,7 +788,7 @@ export type MatchCreateManyUserAInput = {
 export type MatchCreateManyUserBInput = {
   id?: string
   userAId: string
-  tripId: string
+  tripId?: string | null
   matchScore?: number | null
   isActive?: boolean
   createdAt?: Date | string
@@ -801,14 +800,14 @@ export type MatchUpdateWithoutUserAInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   userB?: Prisma.UserUpdateOneRequiredWithoutMatchesAsUserBNestedInput
-  trip?: Prisma.TripUpdateOneRequiredWithoutMatchesNestedInput
+  trip?: Prisma.TripUpdateOneWithoutMatchesNestedInput
   conversation?: Prisma.ConversationUpdateOneWithoutMatchNestedInput
 }
 
 export type MatchUncheckedUpdateWithoutUserAInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   userBId?: Prisma.StringFieldUpdateOperationsInput | string
-  tripId?: Prisma.StringFieldUpdateOperationsInput | string
+  tripId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   matchScore?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -818,7 +817,7 @@ export type MatchUncheckedUpdateWithoutUserAInput = {
 export type MatchUncheckedUpdateManyWithoutUserAInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   userBId?: Prisma.StringFieldUpdateOperationsInput | string
-  tripId?: Prisma.StringFieldUpdateOperationsInput | string
+  tripId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   matchScore?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -830,14 +829,14 @@ export type MatchUpdateWithoutUserBInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   userA?: Prisma.UserUpdateOneRequiredWithoutMatchesAsUserANestedInput
-  trip?: Prisma.TripUpdateOneRequiredWithoutMatchesNestedInput
+  trip?: Prisma.TripUpdateOneWithoutMatchesNestedInput
   conversation?: Prisma.ConversationUpdateOneWithoutMatchNestedInput
 }
 
 export type MatchUncheckedUpdateWithoutUserBInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   userAId?: Prisma.StringFieldUpdateOperationsInput | string
-  tripId?: Prisma.StringFieldUpdateOperationsInput | string
+  tripId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   matchScore?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -847,7 +846,7 @@ export type MatchUncheckedUpdateWithoutUserBInput = {
 export type MatchUncheckedUpdateManyWithoutUserBInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   userAId?: Prisma.StringFieldUpdateOperationsInput | string
-  tripId?: Prisma.StringFieldUpdateOperationsInput | string
+  tripId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   matchScore?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -903,7 +902,7 @@ export type MatchSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   createdAt?: boolean
   userA?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   userB?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  trip?: boolean | Prisma.TripDefaultArgs<ExtArgs>
+  trip?: boolean | Prisma.Match$tripArgs<ExtArgs>
   conversation?: boolean | Prisma.Match$conversationArgs<ExtArgs>
 }, ExtArgs["result"]["match"]>
 
@@ -917,7 +916,7 @@ export type MatchSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensi
   createdAt?: boolean
   userA?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   userB?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  trip?: boolean | Prisma.TripDefaultArgs<ExtArgs>
+  trip?: boolean | Prisma.Match$tripArgs<ExtArgs>
 }, ExtArgs["result"]["match"]>
 
 export type MatchSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -930,7 +929,7 @@ export type MatchSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensi
   createdAt?: boolean
   userA?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   userB?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  trip?: boolean | Prisma.TripDefaultArgs<ExtArgs>
+  trip?: boolean | Prisma.Match$tripArgs<ExtArgs>
 }, ExtArgs["result"]["match"]>
 
 export type MatchSelectScalar = {
@@ -947,18 +946,18 @@ export type MatchOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = ru
 export type MatchInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   userA?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   userB?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  trip?: boolean | Prisma.TripDefaultArgs<ExtArgs>
+  trip?: boolean | Prisma.Match$tripArgs<ExtArgs>
   conversation?: boolean | Prisma.Match$conversationArgs<ExtArgs>
 }
 export type MatchIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   userA?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   userB?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  trip?: boolean | Prisma.TripDefaultArgs<ExtArgs>
+  trip?: boolean | Prisma.Match$tripArgs<ExtArgs>
 }
 export type MatchIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   userA?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   userB?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  trip?: boolean | Prisma.TripDefaultArgs<ExtArgs>
+  trip?: boolean | Prisma.Match$tripArgs<ExtArgs>
 }
 
 export type $MatchPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -966,14 +965,14 @@ export type $MatchPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   objects: {
     userA: Prisma.$UserPayload<ExtArgs>
     userB: Prisma.$UserPayload<ExtArgs>
-    trip: Prisma.$TripPayload<ExtArgs>
+    trip: Prisma.$TripPayload<ExtArgs> | null
     conversation: Prisma.$ConversationPayload<ExtArgs> | null
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     userAId: string
     userBId: string
-    tripId: string
+    tripId: string | null
     matchScore: number | null
     isActive: boolean
     createdAt: Date
@@ -1373,7 +1372,7 @@ export interface Prisma__MatchClient<T, Null = never, ExtArgs extends runtime.Ty
   readonly [Symbol.toStringTag]: "PrismaPromise"
   userA<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   userB<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-  trip<T extends Prisma.TripDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.TripDefaultArgs<ExtArgs>>): Prisma.Prisma__TripClient<runtime.Types.Result.GetResult<Prisma.$TripPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  trip<T extends Prisma.Match$tripArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Match$tripArgs<ExtArgs>>): Prisma.Prisma__TripClient<runtime.Types.Result.GetResult<Prisma.$TripPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   conversation<T extends Prisma.Match$conversationArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Match$conversationArgs<ExtArgs>>): Prisma.Prisma__ConversationClient<runtime.Types.Result.GetResult<Prisma.$ConversationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -1809,6 +1808,25 @@ export type MatchDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Interna
    * Limit how many Matches to delete.
    */
   limit?: number
+}
+
+/**
+ * Match.trip
+ */
+export type Match$tripArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Trip
+   */
+  select?: Prisma.TripSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Trip
+   */
+  omit?: Prisma.TripOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.TripInclude<ExtArgs> | null
+  where?: Prisma.TripWhereInput
 }
 
 /**

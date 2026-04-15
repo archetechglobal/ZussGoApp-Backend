@@ -1,8 +1,10 @@
 import { TripRepository } from "../repository/trip.repository.ts";
 import type { CreateTripInput, UpdateTripInput } from "../schemas/trip.schema.ts";
+import { RewardsService } from "../../rewards/service/rewards.service.ts";
 
 export class TripService {
   private repository = new TripRepository();
+  private rewardsService = new RewardsService();
 
   create = async (userId: string, input: CreateTripInput) => {
     // Validate dates
@@ -42,7 +44,19 @@ export class TripService {
     const trip = await this.repository.findById(tripId);
     if (!trip) throw new Error("Trip not found");
     if (trip.userId !== userId) throw new Error("Not authorized");
-    return await this.repository.update(tripId, input);
+
+    const result = await this.repository.update(tripId, input);
+
+    // Award Trek Points when trip is marked as COMPLETED
+    if (input.status === "COMPLETED" && trip.status !== "COMPLETED") {
+      try {
+        await this.rewardsService.earnForAction(userId, "TRIP_COMPLETED", tripId);
+      } catch (e) {
+        console.error("Failed to award trip completion points:", e);
+      }
+    }
+
+    return result;
   };
 
   delete = async (tripId: string, userId: string) => {

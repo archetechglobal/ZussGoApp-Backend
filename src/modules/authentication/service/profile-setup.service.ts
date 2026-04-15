@@ -1,9 +1,15 @@
 import type { ProfileSetupInput } from "../schemas/profile-setup.schema.ts";
 import { prisma } from "../../../config/prisma_client.ts";
+import { RewardsService } from "../../rewards/service/rewards.service.ts";
 
 export class ProfileSetupService {
+  private rewardsService = new RewardsService();
 
   execute = async (userId: string, input: ProfileSetupInput) => {
+
+    // Check if profile was already completed (to avoid double bonus)
+    const existingUser = await prisma.user.findUnique({ where: { id: userId }, select: { isProfileCompleted: true } });
+    const wasAlreadyCompleted = existingUser?.isProfileCompleted === true;
 
     const updatedUser = await prisma.user.update({
       where: { id: userId },
@@ -24,6 +30,16 @@ export class ProfileSetupService {
         travelPriority: input.travelPriority || undefined,
       },
     });
+
+    // Initialize Trek Points with signup bonus (only on first profile completion)
+    if (!wasAlreadyCompleted) {
+      try {
+        await this.rewardsService.initialize(userId);
+      } catch (e) {
+        console.error("Failed to initialize rewards for user:", userId, e);
+        // Non-blocking — profile setup should succeed even if rewards fails
+      }
+    }
 
     return {
       userId: updatedUser.id,

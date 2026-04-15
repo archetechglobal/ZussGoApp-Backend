@@ -65,7 +65,9 @@ export const ModelName = {
   GroupMember: 'GroupMember',
   ActiveTrip: 'ActiveTrip',
   EmergencyContact: 'EmergencyContact',
-  Event: 'Event'
+  Event: 'Event',
+  TrekPoints: 'TrekPoints',
+  PointLedger: 'PointLedger'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -312,6 +314,31 @@ export const EventScalarFieldEnum = {
 } as const
 
 export type EventScalarFieldEnum = (typeof EventScalarFieldEnum)[keyof typeof EventScalarFieldEnum]
+
+
+export const TrekPointsScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  balance: 'balance',
+  tier: 'tier',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type TrekPointsScalarFieldEnum = (typeof TrekPointsScalarFieldEnum)[keyof typeof TrekPointsScalarFieldEnum]
+
+
+export const PointLedgerScalarFieldEnum = {
+  id: 'id',
+  trekPointsId: 'trekPointsId',
+  amount: 'amount',
+  type: 'type',
+  description: 'description',
+  referenceId: 'referenceId',
+  createdAt: 'createdAt'
+} as const
+
+export type PointLedgerScalarFieldEnum = (typeof PointLedgerScalarFieldEnum)[keyof typeof PointLedgerScalarFieldEnum]
 
 
 export const SortOrder = {

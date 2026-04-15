@@ -443,9 +443,9 @@ export type TripMinOrderByAggregateInput = {
   updatedAt?: Prisma.SortOrder
 }
 
-export type TripScalarRelationFilter = {
-  is?: Prisma.TripWhereInput
-  isNot?: Prisma.TripWhereInput
+export type TripNullableScalarRelationFilter = {
+  is?: Prisma.TripWhereInput | null
+  isNot?: Prisma.TripWhereInput | null
 }
 
 export type TripCreateNestedManyWithoutUserInput = {
@@ -542,10 +542,12 @@ export type TripCreateNestedOneWithoutMatchRequestsInput = {
   connect?: Prisma.TripWhereUniqueInput
 }
 
-export type TripUpdateOneRequiredWithoutMatchRequestsNestedInput = {
+export type TripUpdateOneWithoutMatchRequestsNestedInput = {
   create?: Prisma.XOR<Prisma.TripCreateWithoutMatchRequestsInput, Prisma.TripUncheckedCreateWithoutMatchRequestsInput>
   connectOrCreate?: Prisma.TripCreateOrConnectWithoutMatchRequestsInput
   upsert?: Prisma.TripUpsertWithoutMatchRequestsInput
+  disconnect?: Prisma.TripWhereInput | boolean
+  delete?: Prisma.TripWhereInput | boolean
   connect?: Prisma.TripWhereUniqueInput
   update?: Prisma.XOR<Prisma.XOR<Prisma.TripUpdateToOneWithWhereWithoutMatchRequestsInput, Prisma.TripUpdateWithoutMatchRequestsInput>, Prisma.TripUncheckedUpdateWithoutMatchRequestsInput>
 }
@@ -556,10 +558,12 @@ export type TripCreateNestedOneWithoutMatchesInput = {
   connect?: Prisma.TripWhereUniqueInput
 }
 
-export type TripUpdateOneRequiredWithoutMatchesNestedInput = {
+export type TripUpdateOneWithoutMatchesNestedInput = {
   create?: Prisma.XOR<Prisma.TripCreateWithoutMatchesInput, Prisma.TripUncheckedCreateWithoutMatchesInput>
   connectOrCreate?: Prisma.TripCreateOrConnectWithoutMatchesInput
   upsert?: Prisma.TripUpsertWithoutMatchesInput
+  disconnect?: Prisma.TripWhereInput | boolean
+  delete?: Prisma.TripWhereInput | boolean
   connect?: Prisma.TripWhereUniqueInput
   update?: Prisma.XOR<Prisma.XOR<Prisma.TripUpdateToOneWithWhereWithoutMatchesInput, Prisma.TripUpdateWithoutMatchesInput>, Prisma.TripUncheckedUpdateWithoutMatchesInput>
 }

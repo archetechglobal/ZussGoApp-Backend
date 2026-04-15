@@ -2,7 +2,7 @@ import { z } from "zod";
 
 export const sendMatchRequestSchema = z.object({
   receiverId: z.string().uuid("Invalid receiver ID"),
-  tripId: z.string().uuid("Invalid trip ID"),
+  tripId: z.string().uuid("Invalid trip ID").optional(),
   message: z.string().max(300).optional(),
 });
 

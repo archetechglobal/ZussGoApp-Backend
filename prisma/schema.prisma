@@ -48,6 +48,7 @@ model User {
   groupMemberships   GroupMember[]
   emergencyContacts  EmergencyContact[]
   activeTrips        ActiveTrip[]
+  trekPoints         TrekPoints?
 
   @@map("users")
 }
@@ -101,7 +102,7 @@ model MatchRequest {
   id          String             @id @default(uuid())
   senderId    String
   receiverId  String
-  tripId      String
+  tripId      String?
   status      MatchRequestStatus @default(PENDING)
   message     String?
   createdAt   DateTime           @default(now())
@@ -109,9 +110,9 @@ model MatchRequest {
 
   sender      User               @relation("SentRequests", fields: [senderId], references: [id], onDelete: Cascade)
   receiver    User               @relation("ReceivedRequests", fields: [receiverId], references: [id], onDelete: Cascade)
-  trip        Trip               @relation(fields: [tripId], references: [id])
+  trip        Trip?              @relation(fields: [tripId], references: [id])
 
-  @@unique([senderId, receiverId, tripId])
+  @@unique([senderId, receiverId])
   @@map("match_requests")
 }
 
@@ -126,17 +127,17 @@ model Match {
   id           String        @id @default(uuid())
   userAId      String
   userBId      String
-  tripId       String
+  tripId       String?
   matchScore   Int?
   isActive     Boolean       @default(true)
   createdAt    DateTime      @default(now())
 
   userA        User          @relation("MatchUserA", fields: [userAId], references: [id], onDelete: Cascade)
   userB        User          @relation("MatchUserB", fields: [userBId], references: [id], onDelete: Cascade)
-  trip         Trip          @relation(fields: [tripId], references: [id])
+  trip         Trip?         @relation(fields: [tripId], references: [id])
   conversation Conversation?
 
-  @@unique([userAId, userBId, tripId])
+  @@unique([userAId, userBId])
   @@map("matches")
 }
 
@@ -347,4 +348,34 @@ model Event {
   createdAt       DateTime @default(now())
 
   @@map("events")
+}
+
+// ─── REWARDS / TREK POINTS ───
+
+model TrekPoints {
+  id        String   @id @default(uuid())
+  userId    String   @unique
+  balance   Int      @default(0)
+  tier      String   @default("Explorer") // Explorer | Wanderer | Nomad | Pathfinder
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user    User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  ledger  PointLedger[]
+
+  @@map("trek_points")
+}
+
+model PointLedger {
+  id            String   @id @default(uuid())
+  trekPointsId  String
+  amount        Int      // positive = earn, negative = spend
+  type          String   // SIGNUP_BONUS | TRIP_COMPLETED | COMPANION_MATCHED | RATING_GIVEN | CASHBACK_REDEEMED | PROFILE_BOOST | VERIFIED_BADGE | GROUP_JOIN
+  description   String
+  referenceId   String?  // optional: tripId, matchId, etc.
+  createdAt     DateTime @default(now())
+
+  trekPoints    TrekPoints @relation(fields: [trekPointsId], references: [id], onDelete: Cascade)
+
+  @@map("point_ledger")
 }

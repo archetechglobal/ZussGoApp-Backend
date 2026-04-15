@@ -1,14 +1,16 @@
 import { prisma } from "../../../config/prisma_client.ts";
 import { MatchRequestRepository } from "../repository/match-request.repository.ts";
+import { RewardsService } from "../../rewards/service/rewards.service.ts";
 
 export class MatchRequestService {
   private repository = new MatchRequestRepository();
+  private rewardsService = new RewardsService();
 
-  send = async (senderId: string, receiverId: string, tripId: string, message?: string) => {
+  send = async (senderId: string, receiverId: string, tripId?: string, message?: string) => {
     if (senderId === receiverId) throw new Error("Cannot send request to yourself");
 
-    const existing = await this.repository.findExisting(senderId, receiverId, tripId);
-    if (existing) throw new Error("Match request already sent");
+    const existing = await this.repository.findExisting(senderId, receiverId);
+    if (existing) throw new Error("Companion request already sent");
 
     return await this.repository.create(senderId, receiverId, tripId, message);
   };
@@ -40,7 +42,7 @@ export class MatchRequestService {
         data: {
           userAId: request.senderId,
           userBId: request.receiverId,
-          tripId: request.tripId,
+          ...(request.tripId && { tripId: request.tripId }),
         },
       });
 
@@ -51,6 +53,14 @@ export class MatchRequestService {
 
       return { match, conversation };
     });
+
+    // Award Trek Points to both users (+50 each)
+    try {
+      await this.rewardsService.earnForAction(request.senderId, "COMPANION_MATCHED", result.match.id);
+      await this.rewardsService.earnForAction(request.receiverId, "COMPANION_MATCHED", result.match.id);
+    } catch (e) {
+      console.error("Failed to award match points:", e);
+    }
 
     return result;
   };
